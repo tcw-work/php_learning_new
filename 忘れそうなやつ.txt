@@ -8,7 +8,7 @@ $self = $_SERVER["SCRIPT_NAME"]; //現在のページのURLを変数に格納
 
 グローバル宣言（global_hensu.php）
 「global $c;」のようにグローバル構文を使えば、関数の外でもグローバル変数として認識される。
-
+関数外でスコープされたグローバル変数を関数内で編集する際にも上記を使用しなければならない（arrangement/index.php）
 
 
 ヒアドキュメント(qr.php)
