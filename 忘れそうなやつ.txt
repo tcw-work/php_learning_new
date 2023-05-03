@@ -13,3 +13,11 @@ $self = $_SERVER["SCRIPT_NAME"]; //現在のページのURLを変数に格納
 
 ヒアドキュメント(qr.php)
 「echo <<< END_OF_FORM...END_OF_FORM;」なかに出力したいhtmlを一気に書ける
+
+配列（hairetsu.php）
+文字列と要素名を＝で設定する場合「連想配列」と呼ばれる。
+
+変数展開（hairetsu.php）
+echo "<td>{$price}円</td>";とecho "<td>$price円</td>";はどちらでも文字列の中で変数展開が可能だが、
+後者は変数「$price」と「円」の間にすスペースを入れる必要がある。
+日本語の場合はスペースをつなぐ単語が少ないので{}を使って変数展開することが多い
