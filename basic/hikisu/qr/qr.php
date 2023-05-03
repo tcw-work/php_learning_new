@@ -18,7 +18,7 @@ switch( $param ) { //"param"に入っている文字は上記で$param変数に�
 		break;
 }
 //上記で表示するための関数設定
-function show_qrcode($size) {
+function show_qrcode($size) {//($size)は上記のswtchでこの関数を呼び出すときに数字を入れれば、引数として値を入れられる
 	$url = urlencode($_GET["url"]);//inpuで入力したurlを「%3A%～～」のようにエンコードして下記のAPIurlのパラメーターとして使用。パラメーターには://が使えないのでためエンコードする必要がある。
 	$api = "https://chart.apis.google.com/chart?cht=qr&"; //google chart APIによってグラフ作成が可能。変数として格納
 	$src = $api."chs={$size}x{$size}&chl={$url}";//上記のAPIにパラメーターとしてサイズを付ける。エンコードしたurlが入った変数（$url）も最後に加える
