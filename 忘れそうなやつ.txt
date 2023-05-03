@@ -4,3 +4,12 @@ echo $e . $f;//文字列と値を合わせるときは「.」を使う
 
 
 $self = $_SERVER["SCRIPT_NAME"]; //現在のページのURLを変数に格納
+
+
+グローバル宣言（global_hensu.php）
+「global $c;」のようにグローバル構文を使えば、関数の外でもグローバル変数として認識される。
+
+
+
+ヒアドキュメント(qr.php)
+「echo <<< END_OF_FORM...END_OF_FORM;」なかに出力したいhtmlを一気に書ける
