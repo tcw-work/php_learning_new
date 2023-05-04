@@ -11,7 +11,7 @@ foreach( $list as $f ) { //foreach()は配列の時に使えるループ処理�
 ?>
 <br><br><br>
 
-<h2>配列テスト　変数名[]で中身を指定する場合①</h2>
+<h2>配列テスト　変数名[]で中身を指定する場合(代入)①</h2>
 <?php
 $a = array();//配列を初期化した状態
 $a[0] = "配列01";
@@ -58,3 +58,43 @@ foreach( $list02 as $f02 => $price ) { //連想配列の入った$list02の中�
 	echo "<tr><th>$f02</th><td>$price yen</td></tr><br><br>";//$priceとyenの間でスペースがあるので、{}で括る必要なしで変数展開可能
 }
 ?>
+<br><br><br>
+
+<h2>配列テスト　関数array_unshift()を使って先頭に新たな配列を入れる</h2>
+<pre><?php
+$c = array(100,101,102);
+array_unshift($c ,50, 51, 52);//既存の配列の先頭に新たな配列を加える関数
+print_r($c);
+?>
+</pre>
+<br><br><br>
+
+<h2>配列テスト　関数array_push()を使って末尾に新たな配列を入れる</h2>
+<pre>
+<?php
+$d = array(100,101,102);
+array_push($d ,50, 51, 52);//既存の配列の末尾に新たな配列を加える関数
+print_r($d); //print_r()は変数の中身を詳細に確認するために使用、開発やデバッグの際に使用される。echoはHTML文書に動的な要素を挿入する場合などに使用
+?>
+</pre>
+<br><br><br>
+
+<h2>配列テスト　関数を使って、先頭・末尾だけを取り出す</h2>
+<?php
+$e = array(100,101,102);
+$e_sht = array_shift($e); //配列の先頭だけを取り出す関数
+echo($e_sht);
+echo "<br>";
+$e_pop = array_pop($e); //配列の末尾だけを取り出す関数
+echo $e_pop;
+?>
+<br><br><br>
+
+<h2>配列テスト　配列内の要素を逆順に入れ替える</h2>
+<pre>
+<?php
+$f = array(100,101,102);
+$f_re = array_reverse($f);//要素を逆順に入れ替える関数
+print_r ($f_re);
+?>
+</pre>
