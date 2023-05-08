@@ -2,11 +2,19 @@
 <?php
 $list = array(0=>"red", 6=>"green"); //日曜日なら=0なのでグレイ、土曜日なら=6でブルー（今回は1～5は下記でその他という扱いになる）
 $w = intval(date("w"));//date関数に"w"を引数として入れると、現在の曜日を1～6で取得（日曜は0、月曜は1...）
-$color = isset($list[$w]) ? $list[$w] : "blue"; //ifの代わりに三項演算子（条件式 ? 式1 : 式2）。
+$color = isset($list[$w]) ? $list[$w] : "blue"; //ifの代わりに三項演算子（条件式 ? 式1 : 式2）。配列の要素に値があるか否かで処理できるテクニック
 //↑$list[]で配列の中にアクセス。$wには曜日別の番号をdate()で取得しているので、その番号が連想配列の中の番号とマッチしたものが=色が$colorに入る。当てはまらなければ白色。
 echo "<body style='color:$color;'>";
 echo date("Y/m/d(1)");
 echo "</body>";
+?>
+<br><br><br>
+
+
+<h2>dateに引数"t"を指定すれば月末を調べられる</h2>
+<?php
+$mastu = strtotime("2023-5-14");
+echo date("t", $mastu);
 ?>
 <br><br><br>
 
@@ -28,7 +36,7 @@ for(;;) {//for(;;) は括弧の中を無限ループする。従来のfor($s_d=1
 	$s_d = date("d", $s_cur);//$s_curで出した2023年5月のタイムスタンプがdate()の第一引数"d"（日）によって「01」に変換(その為にforで31まで無限ループさせてる)
 	$s_cur += 24*60*60;//forの外側で書いたタイムスタンプを一日進める（2023-05-01 00:00:00）のタイムスタンプへとして生成。先ほどの$s_cur_moon = intval(date("m", $s_cur));は5月のタイムスタンプへとなる
 	if ($s_cur_moon > $s_moon) break;//もしdate関数で取り出した$s_cur_moonの小数点切り捨てられた数字の月（5）が$s_moon（5）を超えるまで続く
-	echo $s_d;
+	echo $s_d."\n";
 }
 ?>
 
@@ -40,7 +48,7 @@ for(;;) {//for(;;) は括弧の中を無限ループする。従来のfor($s_d=1
 <h2>5月のカレンダー(難しいバージョン)</h2>
 <?php
 showStyleTag();//ヒアドキュメントでstyleを書いた関数（後に記述）
-$yotei = array(5=>"Aさん打合せ", 10=>"Bさんと打合せ"); //5と10の日付に予定を設定
+$yotei = array(5=>"Aさん打合せ", 10=>"Bさんと打合せ", 18=>"リモート会議"); //5と10の日付に予定を設定
 showCalendar(2023,5, $yotei);//下記の自作showCalendar()関数を呼び出し。第1、2、3引数に入れる値も設定。
 
 function showCalendar($year, $mon, $yotei) {//実行時に引数の値を入れると、下記の中身の値も変わる
@@ -69,12 +77,12 @@ function showCalendar($year, $mon, $yotei) {//実行時に引数の値を入れ�
 	echo "</table>";
 }
 
-function showStyleTag() {//cssをヒアドキュメントで表示
+function showStyleTag() {//cssをヒアドキュメントで定義
 	echo <<<_STYLE_
 	<style>
 	table { border-top: solid 1px black; border-collapse: collapse; border-spacing: 0; }
 	td { border-bottom: solid 1px black; padding: 6px; margin: 0; }
-</style>
-_STYLE_;
+	</style>
+	_STYLE_;
 }
 ?>
