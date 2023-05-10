@@ -1,0 +1,1 @@
+a:1:{i:0;a:3:{s:4:"name";s:8:"tomizawa";s:4:"body";s:18:"テストでーす";s:4:"mode";s:5:"write";}}
