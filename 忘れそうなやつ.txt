@@ -32,3 +32,12 @@ array_unshift($c ,50, 51, 52);//既存の配列の先頭に新たな配列を加
 →ifよりもスッキリ書くことができる
 
 ファイル操作はサーバーによっては権限がないこともあるので、どの部分に権限かないかを関数で調べることができる（file_command.php）
+
+掲示板などのファイルの読み書きはtxtよりもjson使った方が読みやすい（keijiban_json.php）
+
+連想配列の名称
+"キー" => "バリュー",
+
+
+●WP深堀り
+http://192.168.11.6/coding/local_coding/php_learning/basic/api/weather_board/weather.php

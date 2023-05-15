@@ -21,7 +21,7 @@ echo $fruites[1];
 <?php
 
 // 初期設定 (データファイルの保存先)
-$save_file = dirname(__FILE__) . "/bbslog.txt";
+$save_file = dirname(__FILE__) . "/bbslog.json";
 
 // 掲示板の機能に応じて処理を振り分ける
 $mode = isset($_GET["mode"]) ? $_GET["mode"] : "show";//$_GET["mode"]が存在する場合はその値を$modeに代入し、存在しない場合はデフォルト値として"show"を使用
@@ -97,7 +97,7 @@ function load_data() {//load_data()にはアンシリアライズして復元さ
     if (file_exists($save_file)) {//ファイルが存在するかチェック
         // ファイルがあれば読み込む
         $txt = file_get_contents($save_file);// ファイルの内容をテキストとして取得
-        $log = unserialize($txt); // unserialize()関数を使ってテキストからデータを復元
+        $log = json_decode($txt, true); // unserialize()json_decode()を使用。この関数は第2引数に true を指定することで、連想配列としてデコードすることができます。（お作法として覚える）
     }
     return $log;// 読み込んだデータ（unserializeしたもの）を返す
 }
@@ -105,7 +105,7 @@ function load_data() {//load_data()にはアンシリアライズして復元さ
 //データのシリアライズを行う
 function save_data($log) {
     global $save_file;//$save_file変数をグローバル変数として扱う
-    $txt = serialize($log);//他関数で定義されている$logの中に入っているであろう配列の値をserializeで文字列データに変換
+    $txt = json_encode($log);//serialize()json_encode()を使用。
     file_put_contents($save_file, $txt);//シリアライズしたデータを保存
 }
 
