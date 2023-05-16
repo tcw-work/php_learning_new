@@ -38,6 +38,14 @@ array_unshift($c ,50, 51, 52);//既存の配列の先頭に新たな配列を加
 連想配列の名称
 "キー" => "バリュー",
 
+「多次元配列へのアクセス」（login.php）
+$_SESSION["login"] = array("user" => $_POST["user"]);
+$_SESSION["login"]["user"];
+二行目のように、$_SESSION の要素にさらにインデックス（キー）を指定する形式で階層的に配列にアクセスできる
+
+GETはinputの属性からだけでなく、<a href='$script?m=logout'>のようにパラメーターからも$_GET["m"]として渡すことができる
+
 
 ●WP深堀り
 http://192.168.11.6/coding/local_coding/php_learning/basic/api/weather_board/weather.php
+
