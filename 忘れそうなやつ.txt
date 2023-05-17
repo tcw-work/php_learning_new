@@ -45,6 +45,8 @@ $_SESSION["login"]["user"];
 
 GETはinputの属性からだけでなく、<a href='$script?m=logout'>のようにパラメーターからも$_GET["m"]として渡すことができる
 
+type="file"によってアップロードされたファイルはphp.iniで指定された一時的なファイルへ保存される（file_up.php）
+
 
 ●WP深堀り
 http://192.168.11.6/coding/local_coding/php_learning/basic/api/weather_board/weather.php
