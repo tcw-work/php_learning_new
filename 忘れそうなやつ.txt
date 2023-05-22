@@ -47,7 +47,20 @@ GETはinputの属性からだけでなく、<a href='$script?m=logout'>のよう
 
 type="file"によってアップロードされたファイルはphp.iniで指定された一時的なファイルへ保存される（file_up.php）
 
+\nは半角スペース、\tはタブ
+
+SQL（dictionary.php）
+prepareは実行するクエリを準備するための関数→その後のexcuteによって実行
+queryは準備されたクエリを実行して結果を取得するための関数（括弧の中にSQL文がそのまま来る）→即実行
+
+cmdでphp実行
+cd パス
+C:\xampp\php\php.exe test.php(実行したいphp)
 
 ●WP深堀り
+・APIひな形
 http://192.168.11.6/coding/local_coding/php_learning/basic/api/weather_board/weather.php
+
+・SQL操作コマンド
+DB操作コマンド一覧（db_test.php）
 
