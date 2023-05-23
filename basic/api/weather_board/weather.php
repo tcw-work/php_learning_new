@@ -4,14 +4,6 @@
 
 <h2>api（OpneWeather）テスト</h2>
 <?php
-// livedoorのapiは終了済み
-// $rss = "http://weather.livedoor.com/forcast/rss/13/63.xml";
-// $xml = file_get_contents($rss);
-// $obj = simplexml_load_string($xml);
-// foreach ($obj->channel->item as $item) {
-//     echo $item->title. "<br>";
-// }
-
 // OpenWeatherMap API
 $apiKey = "2815ab74bc1a8915867af1cb0fdef685";//サイトからapiキーを発行して入力
 $cityName = "tokyo";//都市名を入れる
