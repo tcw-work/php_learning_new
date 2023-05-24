@@ -9,11 +9,11 @@
     <div class="wrap">
         <div class=""></div>
         <div class="login">
-            <a href="login.php">ログインする</a>
+            <?php
+include 'session.php';//ログイン前後の出し分けを要素を管理
+session_part_01($script);
+?>
         </div>
-        <!-- <form action="$script">
-            <input type="text">
-        </form> -->
         <p>ダミー要素</p>
     </div>
 </body>
