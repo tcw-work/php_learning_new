@@ -24,11 +24,11 @@ if (!empty($user_mail) && !empty($user_pass)) {//メルアドと、名前、パ�
         //つまり特定のメルアド（$user_mail）の入ったカラムを検出した$stmtの行をカウント。もし$user_mail（ユニークユーザー）の入った行が１行あるか否かで条件分岐
         $user = $stmt->fetch(PDO::FETCH_ASSOC);//fetch() は結果セット（上記のメールに連なるカラム）から1行ずつデータを取得するために使用される。結果としてほしいカラムを抽出できる
         $hashed_password = $user['user_pass']; // データベースから取得したハッシュ化されたパスワード
-
         if (hash("sha512", $user_pass) === $hashed_password) {//ユーザーが入力したパスワードをハッシュ化し、DBに保存されているパスワードと一致するか確認
             // パスワードが一致する場合
+            $user_id = $user['user_id'];//先ほどのdbをfetchした際に付随しているユーザーIDを配列操作で取得（セッションIDの引数として使う）
             include 'session.php';
-            sesstion_login($user_id);
+            session_login($user_id);
             header("location: index.php");// ページをリダイレクトする
             exit;
         } else {

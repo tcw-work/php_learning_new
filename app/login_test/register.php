@@ -53,8 +53,9 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
         //↑クエリ内で配列操作する場合はダブルクォートと中括弧 ({}) で囲むことで正常にsqlが実行される
         $db->exec($query);//DBに対してsql(insert)を実行
 
+        $user_id = $db->lastInsertId();// 直前に実行されたINSERTクエリで自動生成されたユーザーIDを取得（セッションの引数に使用）
         include 'session.php';//セッション処理をまとめた関数を格納したファイル
-        sesstion_login($user_id);//ログイン時にユーザー名をセッションに保管
+        session_login($user_id);//ログイン時にユニークIDをセッションに保管
         ///メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
         header("location: index.php");// ページをリロードする
 

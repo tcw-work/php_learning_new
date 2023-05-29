@@ -1,25 +1,19 @@
 <?php
-function sesstion_login($user_id) {
-// セッションを開始する
-session_start();//sessionを開始するにはこの関数で呼び出し
-//ログイン情報をセッションに記録
-$_SESSION["login"] = array("user_id"=>$user_id);
-echo "ログイン成功";
-//ログインしている場合
-$user_name_logged = $_SESSION["login"]["user_id"];//スパーグローバル変数に入った連想配列から名前を取り出す
-echo "こんにちは、{$user_name_logged }さん!";
+session_start();// セッションを開始する
 
+function session_login($user_id) {
+//ログイン情報をセッションに記録
+$_SESSION["login"] = array("user_id"=>$user_id);//セッションIDとしてユーザーIDを保存
 }
 
-session_start();
-
-function session_part_01($script) {
+function session_part_01($script) {//リダイレクト先のindex.phpで呼び出し
     if (isset($_SESSION['login'])) {
         if (isset($_POST['logout'])) {
             unset($_SESSION['login']);
             header("Location: $script"); // ログアウト後にページをリダイレクト（これが無いとリロードすると何も表示されなくなる）
             exit();
         }
+        echo 'SessionID: ' . $_SESSION["login"]["user_id"] . '<br>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
         echo '<p>ログイン中です</p>';
         echo <<<_logout_
         <form action='$script' method="POST">
