@@ -25,14 +25,13 @@ $item = htmlspecialchars($_GET["complete"]);
 $user_id = $_SESSION["login"]["user_id"];
 $insert_query = "INSERT INTO favorites (user_id, item) VALUES ('$user_id', '$item')";// データの挿入クエリ
 $result = $db->exec($insert_query);// クエリを実行
-echo "アイテム「{$item}」を保存しました";
+echo "{$item}  を保存しました";
 
-
-
-
-
-
-
-
-
+// header("location: index.php?save_item=". urlencode($item));
 ?>
+
+<br>
+<br>
+<a href="index.php">トップページに戻る</a>
+<br>
+<a href="profile.php">プロフィールページで確認する</a>
