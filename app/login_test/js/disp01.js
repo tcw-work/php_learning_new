@@ -39,7 +39,7 @@ function updateComplete1() {
     }
     // 日付が入っていない場合
     if (date === '') {
-        date = '(発行日不明)';
+        date = '発行日不明';
         complete.value = auther01 + ' ' + date + ' ' +  "｢" + name + "｣"  + ' ' + publisher;
     }
     // 作者名が入っていない場合
@@ -65,7 +65,7 @@ function updateComplete2() {
 
     // 日付が空白の場合
     if (date === "") {
-        date = "(発行日不明)";
+        date = "発行日不明";
     }
 
     // 作者名の配列が空白だった場合、空白用の新しい配列を作る
@@ -121,28 +121,17 @@ function updateComplete3() {
     var publisher = document.getElementsByClassName("publisher")[2].value;
     var complete = document.getElementsByClassName("complete")[2];
 
-    // 「訳」の表示を制御する
-    var translatorText = translator !== '' ? translator + '訳' : '';
+    var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
+    var translatorText = translator !== '' ? translator + '訳' + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
+    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
+    var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する
 
     // 値が全部入っている場合
-    complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + translatorText + ' ' + publisher;
-
-    //出版社が入っていない場合
-    if (publisher === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' +  translatorText;
-    }
-    // 翻訳者が入っていない場合
-    if (translatorText === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + publisher;
-    }
-    // 日付が入っていない場合
-    if (date === '') {
-        date = '発行日不明';
-        complete.value = auther01 + ' ' + '(' + date + ')' + ' ' + "｢" + name + "｣" + translatorText + ' ' + publisher;
-    }
+    complete.value = auther01Text + (dateText || '(発行日不明) ') + nameText + translatorText + publisherText;
     // 作者名が入っていない場合
     if (auther01 === '') {
-        complete.value = "｢" + name + "｣" + ' ' + '(' + (date || '発行日不明') + ')' + ' ' +  translatorText+ ' ' + publisher;
+        complete.value = nameText + (dateText || '(発行日不明) ') + translatorText + publisherText;
     }
 
 }
@@ -157,28 +146,36 @@ function updateComplete4() {
     var publisher = document.getElementsByClassName("publisher")[3].value;
     var complete = document.getElementsByClassName("complete")[3];
 
-    // 「ページ番号」の表示を制御する
-    var pageText = page !== '' ? 'p' + page : '';
+    var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
+    var pageText = page !== '' ? 'p' + page + ' ' : ''; // 「ページ番号」の表示を制御する
+    var thesisText = thesis !== '' ? "｢" + thesis + "｣" + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
+    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
+    var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する
 
     // 値が全部入っている場合
-    complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + "｢" + thesis + "｣" + ' ' + pageText + ' ' + publisher;
+    complete.value = auther01Text + (dateText || '(発行日不明) ') + nameText + thesisText + pageText + publisherText;
 
     //出版社が入っていない場合
-    if (publisher === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + "｢" + thesis + "｣" + ' ' + pageText;
-    }
+    // if (publisher === '') {
+    //     complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + thesisText + ' ' + pageText;
+    // }
+    //論文の書かれた書籍が入っていない場合
+    // if (thesis === '') {
+    //     complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + pageText + ' ' + publisher;
+    // }
     // // ページ番号が入っていない場合
-    if (pageText === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + "｢" + thesis + "｣" + ' ' + publisher;
-    }
+    // if (pageText === '') {
+    //     complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + thesisText + ' ' + publisher;
+    // }
     // // 日付が入っていない場合
-    if (date === '') {
-        date = '発行日不明';
-        complete.value = auther01 + ' ' + '(' + date + ')' + ' ' + "｢" + name + "｣" + ' ' + "｢" + thesis + "｣" + ' ' + pageText + ' ' + publisher;
-    }
-    // // 作者名が入っていない場合
+    // if (date === '') {
+    //     date = '発行日不明';
+    //     complete.value = auther01 + ' ' + '(' + date + ')' + ' ' + "｢" + name + "｣" + ' ' + thesisText + ' ' + pageText + ' ' + publisher;
+    // }
+    // // // 作者名が入っていない場合
     if (auther01 === '') {
-        complete.value = "｢" + name + "｣" + ' ' +  "｢" + thesis + "｣" + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + pageText + ' ' + publisher;
+        complete.value = nameText + thesisText + (dateText || '(発行日不明) ') + pageText + publisherText;
     }
 }
 
@@ -194,35 +191,28 @@ function updateComplete5() {
     var publisher = document.getElementsByClassName("publisher")[4].value;
     var complete = document.getElementsByClassName("complete")[4];
 
-    // 「ページ番号」の表示を制御する
-    var pageText = page !== '' ? 'p' + page : '';
-    var pageText02 = page02 !== '' ? '-' + page02 : '';
+    var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
+    var pageText = page !== '' ? 'p' + page : ''; // 「ページ番号」の表示を制御する
+    var pageText02 = page02 !== '' ? '-' + page02  + ' '  : '';
+    var thesisText = thesis !== '' ? "｢" + thesis + "｣" + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
+    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
+    var editorText = editor !== '' ? editor + ' ' : '';// 「編者名」の表示を制御する
+    var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する
+
 
     // 値が全部入っている場合
-    complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + pageText + pageText02 + ' ' + publisher;
-
-    //出版社が入っていない場合
-    if (publisher === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + pageText + pageText02;
-    }
-    // // ページ番号①が入っていない場合
+    complete.value = auther01Text + (dateText || '(発行日不明) ') + nameText + editorText + thesisText + pageText + pageText02 + publisherText;
+    // // // ページ番号①が入っていない場合
     if (pageText === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + publisher;
+        complete.value = auther01Text + (dateText || '(発行日不明)') + nameText + editorText + thesisText + publisherText;
     }
     if (pageText02 === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + pageText + ' ' + publisher;
-    }
-    if (thesis === '') {
-        complete.value = auther01 + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + pageText + pageText02 + ' ' + publisher;
-    }
-    // // 日付が入っていない場合
-    if (date === '') {
-        date = '発行日不明';
-        complete.value = auther01 + ' ' + '(' + date + ')' + ' ' + "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + pageText + pageText02 + ' ' + publisher;
+        complete.value = auther01Text + (dateText || '(発行日不明)') + nameText + editorText + thesisText + pageText + ' ' + publisherText;
     }
     // // 作者名が入っていない場合
     if (auther01 === '') {
-        complete.value = "｢" + name + "｣" + ' ' + editor + ' ' + "｢" + thesis + "｣" + ' ' + '(' + (date || '発行日不明') + ')' + ' ' + pageText + pageText02 + ' ' + publisher;
+        complete.value = nameText + editorText + thesisText + (dateText || '(発行日不明) ') + pageText + pageText02 + publisherText;
     }
 
 }

@@ -21,11 +21,11 @@ _TABLE_;
 $db->exec($create_table);
 
 //-----保存処理-----------------------------------------------------------------------------------------------------------------------------------------------------------
-$item = htmlspecialchars($_GET["complete"]);
+$item = rtrim(htmlspecialchars($_GET["complete"]));//語尾に空白文字があった場合は削除
 $user_id = $_SESSION["login"]["user_id"];
 $insert_query = "INSERT INTO favorites (user_id, item) VALUES ('$user_id', '$item')";// データの挿入クエリ
 $result = $db->exec($insert_query);// クエリを実行
-echo "{$item}  を保存しました";
+echo "{$item}を保存しました";
 
 // header("location: index.php?save_item=". urlencode($item));
 ?>
