@@ -29,7 +29,7 @@ $error_message = array(
 
 if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルアドと、名前、パスワードが空でない場合はtrue処理
 
-    //既存ユーザー用処理。もしDBに既にあったら、insertせずにsessionIDだけ持たせる
+    //既存ユーザー用処理。もしDBに既にあったら、insertせずにIDだけ持たせる
     $check_infor = "SELECT * FROM users WHERE user_mail = :user_mail";//sql文でメルアドの入ったカラムを指定。 {$user_name}で指定すると、「SQLインジェクション」と呼ばれるセキュリティ上の脆弱性を引き起こす
     $stmt = $db->prepare($check_infor);//上記sql文の実行準備
     $stmt->bindParam(':user_mail', $user_mail);//上記のselectのsql文では、まだ特定のユーザーを指定していないので、ここで:user_mail（プレースホルダ）を$user_mail（特定のユーザー）に指定する
@@ -60,9 +60,12 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
         header("location: index.php");// ページをリロードする
 
         if (!empty($user_mail)) {//メールアドレスを登録しているならメール送信
-            // echo "メールも成功";
             include 'mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
-            send_mail($user_name, $user_mail);//mail.php内に定義された関数に引数を加えて実行
+            $mailSender = new MailSender();//mail.phpの内容はクラスで作られているので、そのインスタンスを作成
+            $mailSender->subject = "登録メールのテスト（件名）";//公開（public）プロパティに値を渡す（件名代入）
+            $mailSender->setContent("メールの本文（テスト）です。");//setContent というメソッドを呼び出し、その引数としてメールの本文を渡す（本文代入）
+            $mailSender->send($user_name, $user_mail);//メソッドを呼び出し、引数として値を渡す（引数をセットして関数実行）
+            //※()があればメソッド呼び出し、なければプロパティへ値を渡すということ
             exit;
         }
     }

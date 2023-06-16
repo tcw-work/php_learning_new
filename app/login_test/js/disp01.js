@@ -2,7 +2,7 @@
 var forms = document.getElementsByClassName("myForm"); //myForm クラスを持つすべてのフォームに対してイベントリスナーを追加
 for (var i = 0; i < forms.length; i++) { // "myForm" クラスを持つすべてのフォームに対してループ処理を行う
     var nameInput = forms[i].getElementsByClassName("name")[
-        0]; //iの中にはforms.length; i++の処理によって、myFormというクラスをもつ要素（フォーム）が配列として格納される
+        0]; //iの中にはforms.length; i++の処理によって、myFormというクラスをもつ要素（フォーム）がコレクションとして格納される
     //ここでの0はforms[i]に格納されたmyFormというクラスをもつ要素の中身にある最初の要素を意味する。なので[1]を使用せずとも一回の処理で各コレクションにアクセス可能。
     var saveButton = forms[i].getElementsByClassName("submit")[0];
     // コレクション＝getElementsByClassName("name") のようにクラス名が "name" である要素の集合を取得し、コレクションとして扱われる。今回の場合はformsがコレクション（集合体）

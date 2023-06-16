@@ -1,25 +1,39 @@
 <?php
-function send_mail($user_name, $user_mail) {// $user_name, $user_pass, $user_mail を使用してメールの処理を行う（引数の内容はregister.phpで呼び出されたときに定義されている）
-// 言語とエンコードをセット（お作法として覚えておく）
-mb_language("Japanese");//日本語の文字列処理やエンコードが必要な場合には、mb_language("Japanese")を設定しておく
-mb_internal_encoding("UTF-8");//文字エンコーディング
-//送信者を宛名をセット
-$from = "tomizawa@efit.co.jp"; //送信元
-$to = $user_mail; //充て先。（register.phpで定義）
-//メールヘッダー作成
-$encodedFrom = mb_encode_mimeheader($from);//念のため送信元をエンコードしておく（特殊な文字列が使われなければ不要）
-$header = "From: $encodedFrom\n";
-$header .= "Replay-to: $encodedFrom";
-//件名や本文をチェック
-$subject = "登録メールのテスト";
-$body = "こんにちは{$user_name}さん。メールの本文（テスト）です。";//。$user_nameはregister.phpで定義
-//日本語メール送信
-$r = mb_send_mail($to, $subject, $body, $header);
-//mb_send_mail(宛先, 件名, 本文, 追加ヘッダー); 追加ヘッダーには送信者（from）や返信先（to）が入っている
-if ($r) {//もしmb_send_mail関数が実行して成功（true）したら
-    echo "メール送信成功";
-} else {
-    echo "メール送信失敗";
+//register.phpとcontact.send.phpで使いまわす
+class MailSender {
+    private $from;//使用する全てのプロパティをクラス定義の冒頭で明示的に定義することが一般的
+    private $header;///書かなくても動くが、メソッドを明示的にしておく（推奨）
+    private $contentPass;//書かなくても動くが、メソッドを明示的にしておく（推奨）
+    public $subject;//件名はプロパティ操作で動的に設定
+
+    //privateはアクセス修飾子
+    //$this-> の部分がクラスのプロパティにあたる
+    //function()で定義されるものはクラスのメソッド
+
+    public function __construct() {//共通項目はコンストラクタで必ず処理されるようにする
+        mb_language("Japanese");
+        mb_internal_encoding("UTF-8");
+
+        $this->from = mb_encode_mimeheader("tomizawa@efit.co.jp"); 
+        $this->header = "From: {$this->from}\nReply-to: {$this->from}";
+    }
+
+    public function setContent($content) {//インスタンス時にメソッド操作として文言、変数を代入。あえてメソッドを使っているが、単一なのでsubjectみたいにプロパティで操作してもよい
+        $this->contentPass = $content;
+    }
+
+    public function send($name, $mail) {
+        $to = $mail;//プロパティにしてもいいが、あえてこのままやってみる。このfunction（メソッド）外で使いまわしはできない
+        $body = "{$name}さん。{$this->contentPass}";//{$this->greeting}はプロパティを参照するので、このように書く
+
+        $r = mb_send_mail($to, $this->subject, $body, $this->header); //関数実行
+
+        if ($r) {//送信確認用
+            echo "メール送信成功";
+        } else {
+            echo "メール送信失敗";
+        }
+    }
 }
-}
+
 ?>
