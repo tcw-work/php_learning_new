@@ -1,0 +1,10 @@
+<html>
+    <head>
+	<meta charset="UTF-8">
+    </head>
+    <body>
+        <p>告知メールのテストですenglish。</p>
+        <p style="color:#ff0000;">文字テスト</p>
+		<a href="https://t-creative-works.com/">リダイレクトテスト</a>
+    </body>
+</html>

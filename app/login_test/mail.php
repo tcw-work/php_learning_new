@@ -14,8 +14,10 @@ class MailSender {
         mb_language("Japanese");
         mb_internal_encoding("UTF-8");
 
-        $this->from = mb_encode_mimeheader("tomizawa@efit.co.jp"); 
-        $this->header = "From: {$this->from}\nReply-to: {$this->from}";
+        $this->from = mb_encode_mimeheader("tomizawa@t-creative-works.com"); 
+        // $this->header = "From: {$this->from}\nReply-to: {$this->from}";
+        $this->header = "From: {$this->from}\nReply-to: {$this->from}\nMIME-Version: 1.0\nContent-Type: text/html;";// /nMIME-Version～以降はHTML日本語文字のエンコーディング設定
+        // $this->header = "From: {$this->from}\nReply-to: {$this->from}\nMIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8"; //上記が本番環境で反映されなければこちらを試す
     }
 
     public function setContent($content) {//インスタンス時にメソッド操作として文言、変数を代入。あえてメソッドを使っているが、単一なのでsubjectみたいにプロパティで操作してもよい

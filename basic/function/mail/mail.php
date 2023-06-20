@@ -3,7 +3,7 @@
 mb_language("Japanese");//日本語の文字列処理やエンコードが必要な場合には、mb_language("Japanese")を設定しておく
 mb_internal_encoding("UTF-8");//文字エンコーディング
 //送信者を宛名をセット
-$from = "tomizawa@efit.co.jp"; //送信元
+$from = "tomizawa@t-creative-works.com"; //送信元
 $to = "jbjbjb7712@gmail.com"; //充て先
 //メールヘッダー作成
 $encodedFrom = mb_encode_mimeheader($from);//念のため送信元をエンコードしておく（特殊な文字列が使われなければ不要）

@@ -1,6 +1,6 @@
 <?php
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include 'db.php';
+require_once 'db.php';
 
 //-----テーブルを作成-----------------------------------------------------------------------------------------------------------------------------------------------------------
 // テーブルは作成してもこの時点では実行不可能。IF NOTを加えることでテーブルが存在していない場合の処理ができる（存在している場合はalerdy existと出る）
@@ -23,6 +23,7 @@ $user_mail = htmlspecialchars($_GET["user_mail"]);
 $error_message = array(
     "error_user_mail_same" => "既に使われているメールアドレスです",
     "error_user_mail" => "メールアドレスを入力してください",
+    "error_user_mail_halfSize" => "メールアドレスを半角英数字で入力してください",
     "error_user_name" => "ユーザー名を入力してください",
     "error_user_pass" => "パスワードを入力してください",
 );
@@ -54,13 +55,13 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
         $db->exec($query);//DBに対してsql(insert)を実行
 
         $user_id = $db->lastInsertId();// 直前に実行されたINSERTクエリで自動生成されたユーザーIDを取得（セッションの引数に使用）
-        include 'session.php';//セッション処理をまとめた関数を格納したファイル
+        require_once 'session.php';//セッション処理をまとめた関数を格納したファイル
         session_login($user_id);//ログイン時にユニークIDをセッションに保管
         ///メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
         header("location: index.php");// ページをリロードする
 
         if (!empty($user_mail)) {//メールアドレスを登録しているならメール送信
-            include 'mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
+            require_once 'mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
             $mailSender = new MailSender();//mail.phpの内容はクラスで作られているので、そのインスタンスを作成
             $mailSender->subject = "登録メールのテスト（件名）";//公開（public）プロパティに値を渡す（件名代入）
             $mailSender->setContent("メールの本文（テスト）です。");//setContent というメソッドを呼び出し、その引数としてメールの本文を渡す（本文代入）
@@ -69,7 +70,10 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
             exit;
         }
     }
-
+    if (mb_check_encoding($user_mail, 'UTF-8')) {//全角文字がある場合は入力エラーでリダイレクト（DB操作のifより外だと全角でもインサートされてしまうので、同階層で記述）
+        header("location: register_form.php?error_message=" . urlencode($error_message["error_user_mail_halfSize"]) . "&user_name=" . urlencode($user_name) . "&user_mail=" . urlencode($user_mail));
+        exit;
+    }
 } else if (empty($user_name)) {
     header("location: register_form.php?error_message=" . urlencode($error_message["error_user_name"]) . "&user_name=" . urlencode($user_name) . "&user_mail=" . urlencode($user_mail));
     exit;
@@ -80,8 +84,6 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
     header("location: register_form.php?error_message=" . urlencode($error_message["error_user_mail"]) . "&user_name=" . urlencode($user_name) . "&user_mail=" . urlencode($user_mail));
     exit;
 }
-
-
 
 
 

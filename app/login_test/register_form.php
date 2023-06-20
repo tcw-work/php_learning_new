@@ -22,6 +22,14 @@
             <?php
                 if (isset($_GET["error_message"])) {
                     $error_message = $_GET["error_message"];
+                    if ($error_message === "メールアドレスを半角英数字で入力してください") {
+                        echo '<div style="color: red;">メールアドレスを半角英数字で入力してください</div>';
+                    }
+                }
+            ?>
+            <?php
+                if (isset($_GET["error_message"])) {
+                    $error_message = $_GET["error_message"];
                     if ($error_message === "既に使われているメールアドレスです") {
                         echo '<div style="color: red;">既に使われているメールアドレスです</div>';
                     }
