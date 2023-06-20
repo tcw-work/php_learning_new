@@ -28,7 +28,7 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
         <form action='$script' method="POST">
             <input type="hidden" name="logout"><br>
             <input type="submit" value="ログアウトする"><br>
-            <a href="notice_mail.php">メール一斉送信実行（管理者用になる予定）</a>
+            <a href="mail/notice_mail.php">メール一斉送信実行（管理者用になる予定）</a>
         </form>
         _logout_;
         return true;//return 文は特定の条件が満たされた場合や処理を終了したい場合に使用。これがなければログアウトしたときに下記のif文も実行されてしまい、両方とも表示される

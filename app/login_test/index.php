@@ -11,7 +11,7 @@
         <div class=""></div>
         <div class="login">
             <?php
-                include 'session.php';//ログイン前後の出し分けを要素を管理
+                include 'function/session.php';//ログイン前後の出し分けを要素を管理
                 session_part_01($script);
             ?>
         </div>
