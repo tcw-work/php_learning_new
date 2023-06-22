@@ -42,30 +42,33 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
         //$user_nameとmailもパラメーターにしているのは、送信エラーでリダイレクトされたときに入力窓の内容を表示するため（register_form.php参照）
         exit;
     } else {//もし既存ユーザーでなければ
+         // アクティベーションキーの生成
+
+        $activation_key = bin2hex(random_bytes(32));  // 64文字のランダムな文字列を作る（アクティベーションキーとして使用）
         $user_infor = array (
             "user_name"=>$user_name,//サニタイジングした情報を連想配列＋新しい変数に格納
             "user_pass"=>$user_pass = hash("sha512", $user_pass),//パスワードはハッシュ化。第一引＝はハッシュアルゴリズムで第二引数は入力データ
             "user_mail"=>$user_mail,
+            "activation_key"=>$activation_key,  // アクティベーションキーを追加
+            "is_activated"=>0  // 初期値は0（非アクティブ）
         );
         // print_r($user_infor);//表示確認用（配列の中身を全表示）
         // echo $user_infor["user_name"];//表示確認用（配列の中身を個別に全表示）
 
-        $query = "INSERT INTO users (user_name, user_pass, user_mail) VALUES ('{$user_infor['user_name']}', '{$user_infor['user_pass']}', '{$user_infor['user_mail']}')";
+        $query = "INSERT INTO users (user_name, user_pass, user_mail, activation_key, is_activated) VALUES ('{$user_infor['user_name']}', '{$user_infor['user_pass']}', '{$user_infor['user_mail']}', '{$user_infor['activation_key']}', {$user_infor['is_activated']})";
         //↑クエリ内で配列操作する場合はダブルクォートと中括弧 ({}) で囲むことで正常にsqlが実行される
         $db->exec($query);//DBに対してsql(insert)を実行
 
-        $user_id = $db->lastInsertId();// 直前に実行されたINSERTクエリで自動生成されたユーザーIDを取得（セッションの引数に使用）
-        require_once 'function/session.php';//セッション処理をまとめた関数を格納したファイル
-        session_login($user_id);//ログイン時にユニークIDをセッションに保管
-        ///メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
-        header("location: index.php");// ページをリロードする
-
-        if (!empty($user_mail)) {//メールアドレスを登録しているならメール送信
+        $user_id = $db->lastInsertId();// 直前に実行されたINSERTクエリで自動生成されたユーザーIDを取得（セッションの引数として使用して渡す）
+        // ///メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
+        header("location: register_finish.php");// ページをリロードする
+        if (!empty($user_mail)) {//メールアドレスを登録しているならアクティベートコード付きメール送信
             require_once 'mail/mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
             $from_mail = "tomizawa@t-creative-works.com";//インスタンス作成時に__constructに入れる引数（送りてのアドレス）
             $mailSender = new MailSender($from_mail);//mail.phpの内容はクラスで作られているので、インスタンス化
-            $mailSender->subject = "登録メールのテスト（件名）";//公開（public）プロパティに値を渡す（件名代入）
-            $mailSender->setContent("メールの本文（テスト）です。");//setContent というメソッドを呼び出し、その引数としてメールの本文を渡す（本文代入）
+            $mailSender->subject = "アカウント認証メール";//公開（public）プロパティに値を渡す（件名代入）
+            $activation_url = "http://192.168.11.6/coding/local_coding/php_learning/app/login_test/activate.php?key={$activation_key}&unique={$user_id}"; // アクティベーションリンク（処理はactivate.phpへ）
+            $mailSender->setContent("アカウントを有効化するには、以下のリンクをクリックしてください：{$activation_url}");//setContent というメソッドを呼び出し、その引数としてメールのリンク付き本文を渡す（本文代入）
             $mailSender->send($user_name, $user_mail);//メソッドを呼び出し、引数として値を渡す（引数をセットして関数実行）
             //※()があればメソッド呼び出し、なければプロパティへ値を渡すということ
             exit;
