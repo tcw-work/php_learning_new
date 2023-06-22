@@ -8,7 +8,9 @@ $result = $db->query($check_infor);
 
 //-----メールクラスへのアクセス-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include 'mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
-$mailSender = new MailSender();//mail.phpの内容はクラスで作られているので、インスタンス化
+$from_mail = "tomizawa@t-creative-works.com";//インスタンス作成時に__constructに入れる引数（送りてのアドレス）
+$mailSender = new MailSender($from_mail);//mail.phpの内容はクラスで作られているので、インスタンス化
+
 $mailSender->subject = "告知メール";//プロパティへ（件名代入）
 // $mailSender->send($c_name, $result);//ここで実行するとすべてのユーザーには送れないので、後ほどループで処理する
 

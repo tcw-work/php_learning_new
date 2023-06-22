@@ -10,11 +10,11 @@ class MailSender {
     //$this-> の部分がクラスのプロパティにあたる
     //function()で定義されるものはクラスのメソッド
 
-    public function __construct() {//共通項目はコンストラクタで必ず処理されるようにする
+    public function __construct($from_mail) {//共通項目はコンストラクタで必ず処理されるようにする
         mb_language("Japanese");
         mb_internal_encoding("UTF-8");
 
-        $this->from = mb_encode_mimeheader("tomizawa@t-creative-works.com"); 
+        $this->from = mb_encode_mimeheader($from_mail); 
         // $this->header = "From: {$this->from}\nReply-to: {$this->from}";
         $this->header = "From: {$this->from}\nReply-to: {$this->from}\nMIME-Version: 1.0\nContent-Type: text/html;";// /nMIME-Version～以降はHTML日本語文字のエンコーディング設定
         // $this->header = "From: {$this->from}\nReply-to: {$this->from}\nMIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8"; //上記が本番環境で反映されなければこちらを試す

@@ -8,14 +8,16 @@
 
 <body>
     <div class="wrap">
-        <div class=""></div>
         <div class="login">
             <?php
                 include 'function/session.php';//ログイン前後の出し分けを要素を管理
                 session_part_01($script);
             ?>
         </div>
-        <a href="profile.php">プロフィールページ</a>
+        <a href="profile.php">プロフィールページ</a><br>
+        <a href="record.php">履歴検索ページ</a><br>
+        <a href="mail/contact.php">お問い合わせページ</a><br>
+        <a href="mail/notice_mail.php">メール一斉送信実行（管理者用になる予定）</a>
 
         <form action="save.php" method="GET" class="myForm">
             <h2>作者が一人の場合</h2>

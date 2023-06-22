@@ -7,6 +7,14 @@
 
 <body>
     <div class="wrap">
+        <?php //未ログインで検索からお気に入り保存に失敗して飛ばされてきたユーザー
+                if (isset($_GET["error_message"])) {
+                    $error_message = $_GET["error_message"];
+                    if ($error_message === "お気に入り保存を行うにはログインするか新規登録をおこなってください。") {
+                        echo '<div style="color: red;">お気に入り保存を行うにはログインするか新規登録をおこなってください。</div>';
+                    }
+                }
+        ?>
         <form action="register.php" method="GET">
             <!--送信エラー時に入力値が消えないようにvalueを設定-->
             <input type="text" name="user_mail" placeholder="メールアドレス"

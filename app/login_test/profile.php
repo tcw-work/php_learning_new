@@ -2,16 +2,9 @@
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include 'function/db.php';
 
-session_start();// セッションを開始する
-if (isset($_SESSION['login'])) {
-    if (isset($_POST['logout'])) {
-        unset($_SESSION['login']);
-        header("Location: $script"); // ログアウト後にページをリダイレクト（これが無いとリロードすると何も表示されなくなる）
-        exit();
-    }
-    echo 'UserID: ' . $_SESSION["login"]["user_id"] . '<br>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
-    echo '<p>ログイン中です</p>';
+require_once 'function/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
 
+if (isset($_SESSION['login'])) {
 //-----テーブルデータへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 $user_id = $_SESSION["login"]["user_id"];//userのユニークIDを変数化
 $query = "SELECT * FROM favorites WHERE user_id = '$user_id'";// テーブルから該当するuser_idのレコードを取得

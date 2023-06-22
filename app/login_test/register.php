@@ -62,7 +62,8 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
 
         if (!empty($user_mail)) {//メールアドレスを登録しているならメール送信
             require_once 'mail/mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
-            $mailSender = new MailSender();//mail.phpの内容はクラスで作られているので、そのインスタンスを作成
+            $from_mail = "tomizawa@t-creative-works.com";//インスタンス作成時に__constructに入れる引数（送りてのアドレス）
+            $mailSender = new MailSender($from_mail);//mail.phpの内容はクラスで作られているので、インスタンス化
             $mailSender->subject = "登録メールのテスト（件名）";//公開（public）プロパティに値を渡す（件名代入）
             $mailSender->setContent("メールの本文（テスト）です。");//setContent というメソッドを呼び出し、その引数としてメールの本文を渡す（本文代入）
             $mailSender->send($user_name, $user_mail);//メソッドを呼び出し、引数として値を渡す（引数をセットして関数実行）
