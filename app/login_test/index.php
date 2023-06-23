@@ -18,7 +18,7 @@
         <a href="record.php">履歴検索ページ</a><br>
         <a href="mail/contact.php">お問い合わせページ</a><br>
         <a href="mail/notice_mail.php">メール一斉送信実行（管理者用になる予定）</a><br>
-        <a href="calil.php">カーリルapi（開発中）</a><br>
+        <a href="api/library.php">カーリルapi（開発中）</a><br>
 
         <form action="save.php" method="GET" class="myForm">
             <h2>作者が一人の場合</h2>
