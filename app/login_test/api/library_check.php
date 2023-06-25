@@ -29,8 +29,8 @@ if (!$response) {
     die("Empty response");
 }
 
-header("Content-Type: text/plain");
-echo $response;
+header("Content-Type: text/plain");//HTTPレスポンスのヘッダーを設定。レスポンスの本文がプレーンテキスト（テキストの形式化されていない単純なテキスト）であることをクライアント（ブラウザ）示す。
+echo $response;//レスポンスの本文表示
 exit;
 
 // $apiKey = "ad889080055d9e27bb1d349144e8deb"; // あなたのAPIキーに置き換えてください

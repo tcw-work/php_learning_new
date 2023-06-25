@@ -1,6 +1,6 @@
 <?php
 $bookTitle = "1週間でPHPの基礎が学べる本";//本のタイトルを明記
-$apiUrl = "https://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=title%3D%22" . urlencode($bookTitle) . "%22&recordSchema=dcndl_simple";//v国立国会図書館APIを検索するためのURLを定義
+$apiUrl = "https://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=title%3D%22" . urlencode($bookTitle) . "%22&recordSchema=dcndl_simple";//国立国会図書館APIを検索するためのURLを定義
 //SRU(Search/Retrieve via URL)検索プロトコルに準拠。operation=searchRetrieve: このパラメータは、APIのどの操作を実行するかを指定。query=はAPIに送るクエリを定義。
 //ecordSchema=dcndl_simpleは国立国会図書館で用いられるシンプルなメタデータスキーマ（APIスキーマー＝APIから返されるデータの構造や形式を定義するためのもの）
 
@@ -8,7 +8,7 @@ $apiUrl = "https://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=title%3D
 
 $curl = curl_init();//cURLというPHPのライブラリを使ってAPIリクエスト（新しいcURLセッショ）を初期化して開始。この関数は通常、APIリクエストの最初のステップとして呼び出す
 
-//cURLのオプションを設定（下記のオプションを設定することで、APIリクエストの動作を詳細に制御することができ）
+//cURLのオプションを設定（下記のオプションを設定することで、APIリクエストの動作を詳細に制御することができる）
 curl_setopt_array($curl, array(//cURLライブラリに含まれる関数で、一度に複数のcURLオプションを設定するために使用（設定したいオプションとその値をペアとした連想配列にする）
     CURLOPT_URL => $apiUrl,//リクエストの結果を文字列として表示
     CURLOPT_RETURNTRANSFER => true,//リクエスト結果から得る戻り値を文字列として受け取る。falseの場合は実行結果が文字列としてではなく、元のデータとして表示される
@@ -30,27 +30,42 @@ if ($err) {//エラーがあればそれを表示して処理を停止
     die("cURL Error: " . $err);
 }
 
-if (!$response) {//レスポンスが空の場合、エラーメッセージを表示して処理を停止
-    die("Empty response");
+if (!$response) {//レスポンスが空の場合
+    die("Empty response");//エラーメッセージを表示して処理を停止
 }
 
-libxml_use_internal_errors(true);//libxml_use_internal_errors(true)は、libxmlエラーを内部に格納し、ユーザー定義のエラーハンドリングを可能する
-$xml = new SimpleXMLElement($response);//レスポンスはXML形式なので、それをパースするためにSimpleXMLElementを使用
-if ($xml === false) {//XMLのパースに失敗した場合はエラーメッセージを表示
+libxml_use_internal_errors(true);//libxmlは、XML関連の処理を行うためのライブラリ。trueを渡すと、libxmlが発生するエラーを内部に蓄えるようになる（すぐにエラーメッセージは出さない。）
+$xml = new SimpleXMLElement($response);//SimpleXMLElementとはPHPに予め備えられているクラスであり、XMLに含まれている文字列（本文）をオブジェクトとして格納できる
+//特定の形式のデータ（この場合はXML）を読み取り、そのデータをプログラムが扱える形式（上記）のことをパースと呼ぶ
+if ($xml === false) {//XMLの本文をオブジェクトにする際にエラーがあったら
     echo "Failed loading XML: ";
-    foreach(libxml_get_errors() as $error) {
+    foreach(libxml_get_errors() as $error) {//new SimpleXMLElement($response); が失敗した場合、libxmlがエラーメッセージを内部に蓄えて、エラーが複数でも全て表示する
         echo "<br>", $error->message;
     }
     exit;
 }
+//●要約
+//①libxml_use_internal_errors(true);でエラーがあった場合に、それを蓄えておく
+//②$xml = new SimpleXMLElement($response);　で引数にセットした$responseの戻り値をオブジェクトにする
+//③foreach(libxml_get_errors() as $error)で、エラーがあった場合に蓄えていたエラーを出す
 
-foreach ($xml->records->record as $record) {//パースしたXMLから、それぞれのレコードの情報（タイトル、著者、出版社、発行日、識別子）を取得し、それらを画面に出力
-    $dc = $record->recordData->children('http://ndl.go.jp/dcndl/dcndl_simple/')->dc;
-    $title = (string)$dc->children('http://purl.org/dc/elements/1.1/')->title;
-    $creator = (string)$dc->children('http://purl.org/dc/elements/1.1/')->creator;
-    $publisher= (string)$dc->children('http://purl.org/dc/elements/1.1/')->publisher;
-    $issued = (string)$dc->children('http://purl.org/dc/terms/')->issued;
-    $identifier = (string)$dc->children('http://purl.org/dc/elements/1.1/')->identifier;
+
+foreach ($xml->records->record as $record) {//パースしたXML（$xml）から、それぞれのレコードの情報（タイトル、著者、出版社、発行日、識別子）を取得し、それらを画面に出力
+    //上記は連想配列ではなくSimpleXMLElementを使ってXMLのデータを扱う際の形式（オブジェクト操作という認識でオッケー）
+    //$xml（パースしたXML全体）からrecords（エレメント）を取得し、その中のrecord（子エレメント）を取得。エレメントはAPI毎に異なるので、取得したXMLデータ（library_check.php）や仕様書を参照
+    $sample = $record->recordData->children('http://ndl.go.jp/dcndl/dcndl_simple/')->dc;
+    //複数あるrecordDataの中に「http://ndl.go.jp/dcndl/dcndl_simple/」がいくつか入っていると、衝突を起こすので、それを一意のものとして判断することができる（XMLの「xmlns」の部分で名前空間として既に設定されている）
+    //→「http://ndl.go.jp/dcndl/dcndl_simple/」は一意であるため、複数ある場合それぞれに処理が走る
+    //※名前空間を明示することで、具体的な「コンテキスト」または「カテゴリ」を指定して、同名の要素があっても混乱を避けることができる
+    //つまりコンテキストの内容が全く同じでも、この名前空間の値によって、別の要素と判定することができるということ。
+    //children()はSimpleXMLElementクラスのメソッドで、指定した上記の名前空間の子エレメントを返す
+    $title = (string)$sample->children('http://purl.org/dc/elements/1.1/')->title;
+    //上記はhttp://ndl.go.jp/dcndl/dcndl_simple/という名前空間をもつdcエレメントの、さらにhttp://purl.org/dc/elements/1.1/という名前空間をもつtaitleエレメントを指定しているということ
+    $creator = (string)$sample->children('http://purl.org/dc/elements/1.1/')->creator;
+    $publisher= (string)$sample->children('http://purl.org/dc/elements/1.1/')->publisher;
+    $issued = (string)$sample->children('http://purl.org/dc/terms/')->issued;
+    //上記は別の名前空間が使われている。dcterms（発行日の直前）とxmlns:dcterms（名前空間の直前）が一致しているか否かで入力する文字列を判断すればオッケー
+    $identifier = (string)$sample->children('http://purl.org/dc/elements/1.1/')->identifier;
     echo "Title: {$title}<br>";
     echo "Author: {$creator}<br>";
     echo "publisher: {$publisher}<br>";
