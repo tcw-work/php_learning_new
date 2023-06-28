@@ -1,5 +1,5 @@
 <?php
-require_once 'function/db.php';
+require_once 'common/db.php';
 
 $activation_key = htmlspecialchars($_GET["key"]);//urlからアクティベートキーを変数に格納
 
@@ -19,6 +19,6 @@ if ($stmt->rowCount() > 0) {//もし$stmtが1行以上に影響を及ぼした�
 if (isset($_GET['unique'])) {  // URLに'unique'パラメータが存在するか確認
     $user_id = $_GET['unique'];  // パラメータの値を変数に代入
 }
-require_once 'function/session.php';
+require_once 'common/session.php';
 session_login($user_id);//パラメーターで渡されたユーザーIDをログイン時にセッションに保管（ログイン前後の画面だし訳）
 ?>

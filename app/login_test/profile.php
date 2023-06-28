@@ -1,52 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
+</head>
+</body>
+
+<?php //削除成功時にdelete.phpから受け取るメッセージ表示
+    if (isset($_GET["delete_message"])) {
+        // URLデコードを行い、メッセージを取得
+        $delete_message = urldecode($_GET["delete_message"]);// URLエンコードでは、スペースは %20 と表現されるので、rawurldecode() 関数を使用してデコードする
+        echo '<div style="color: red;">' . $delete_message . '</div>';
+    }
+?>
+
+
 <?php
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include 'function/db.php';
-
-require_once 'function/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
-
-if (isset($_SESSION['login'])) {
-//-----テーブルデータへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-$user_id = $_SESSION["login"]["user_id"];//userのユニークIDを変数化
-$query = "SELECT * FROM favorites WHERE user_id = '$user_id'";// テーブルから該当するuser_idのレコードを取得
-$result = $db->query($query);//sql実行
-
-// 結果を出力。条件満たすまで（DBから対象のカラムを全部取り出し、falseが帰ってくるまで）ループ
-function session_part_01($result) {
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {//fetch() は結果セット（先ほどのIDに連なるカラム）から1行ずつデータを取得するために使用される。結果としてほしいカラムを抽出できる（結果は$rowに全て保存）
-       //取得したらfetch関数は次の行に進む。もし取得できる行がなくなった場合、fetch関数はfalseを返すため、ループは終了となる（whileには必ずしも比較演算子は必要ない）。
-        echo "お気に入りID: " . $row['favorite_id'] . "<br>";//$row連想クエリの結果セットの各行が連想配列として格納されるので、favorite_idを連想配列のキーとして呼び出す
-        echo '<input type="checkbox" name="delete_items[]" value="' . $row['favorite_id'] . '">'; // 削除用のラジオボタンを表示
-        echo "・" . $row['item'] . "<br>";
-        echo "<br>";
-        echo "<br>";
-    }
-}
-
-$script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
-echo '<form action="' . $script . '" method="POST">';//action属性に変数セットする時の書き方　"' . $script . '"
-session_part_01($result);//ループ処理呼び出し
-echo '<input type="submit" name="delete_button" value="選択したアイテムを削除">';// 削除ボタンを表示
-echo '</form>';
+include 'common/db.php';
+require_once 'common/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
+require_once 'function/item_list.php';//全てのアイテム表示
 
 
-// 削除ボタンが押された場合の処理
-if (isset($_POST['delete_button'])) {//値の入ったボタンがセット（クリック）されていたら
-    if (isset($_POST['delete_items'])) {//ラジオボタンの値がセット（クリック）されていたら
-        $delete_items = $_POST['delete_items'];//POSTで送られてきたdelete_itemsという値（$row['favorite_id']でアイテムIDが入っている）
-
-        // 選択されたアイテムを削除
-        foreach ($delete_items as $favorite_id) {
-            $delete_query = "DELETE FROM favorites WHERE favorite_id = '$favorite_id'";
-            $db->exec($delete_query);
-        }
-
-        echo "選択したアイテムを削除しました。";
-        // ページをリダイレクトしてキャッシュを避ける
-        header("Location: " . $_SERVER['PHP_SELF']);
-    }
-}
-
-
-
-}
 ?>
+
+
+<!-- <script src="js/ajax.js"></script>
+
+<script>
+ajaxSubmit('.myForm', "delete.php");
+</script> -->
+
+</body>
+
+
+</html>

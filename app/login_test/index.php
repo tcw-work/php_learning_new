@@ -10,7 +10,7 @@
     <div class="wrap">
         <div class="login">
             <?php
-                include 'function/session.php';//ログイン前後の出し分けを要素を管理
+                include 'common/session.php';//ログイン前後の出し分けを要素を管理
                 session_part_01($script);
             ?>
         </div>
@@ -20,7 +20,7 @@
         <a href="mail/notice_mail.php">メール一斉送信実行（管理者用になる予定）</a><br>
         <a href="api/library.php">カーリルapi（開発中）</a><br>
 
-        <form action="save.php" method="GET" class="myForm">
+        <form action="function/save.php" method="GET" class="myForm">
             <h2>作者が一人の場合</h2>
             <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete1()">
             <input type="hidden" name="auther02" class="auther02" placeholder="作者名02">
@@ -33,7 +33,7 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
 
-        <form action="save.php" method="GET" class="myForm">
+        <form action="function/save.php" method="GET" class="myForm">
             <h2>作者が複数の場合</h2>
             <input type="text" name="auther01" class="auther01" placeholder="作者名01" oninput="updateComplete2()">
             <input type="text" name="auther02" class="auther02" placeholder="作者名02" oninput="updateComplete2()">
@@ -46,7 +46,7 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
 
-        <form action="save.php" method="GET" class="myForm">
+        <form action="function/save.php" method="GET" class="myForm">
             <h2>外国人作者・翻訳の場合</h2>
             <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete3()">
             <input type="text" name="date" class="date" placeholder="発行日" oninput="updateComplete3()">
@@ -58,7 +58,7 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
 
-        <form action="save.php" method="GET" class="myForm">
+        <form action="function/save.php" method="GET" class="myForm">
             <h2>論文から出典する場合</h2>
             <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete4()">
             <input type="text" name="date" class="date" placeholder="発行日" oninput="updateComplete4()">
@@ -71,7 +71,7 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
 
-        <form action="save.php" method="GET" class="myForm">
+        <form action="function/save.php" method="GET" class="myForm">
             <h2>本に掲載された論文から出典する場合</h2>
             <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete5()">
             <input type="text" name="editor" class="editor" placeholder="編者名" oninput="updateComplete5()">
@@ -86,13 +86,13 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
     </div>
+    <script src="js/disp01.js"></script>
+    <script src="js/ajax.js"></script>
+
+    <script>
+    ajaxSubmit('.myForm', "function/save.php");
+    </script>
 </body>
 
-
-
-<script>
-
-</script>
-<script src="js/disp01.js"></script>
 
 </html>
