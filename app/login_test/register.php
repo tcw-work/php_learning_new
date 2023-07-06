@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS users (
     user_name TEXT, /* ユーザー名 */
     user_pass CHAR, /* パスワード */
     user_mail TEXT, /* メールアドレス */
-    user_document TEXT /* 文字保存 */
+    user_document, TEXT /* 文字保存 */
+    user_level, TEXT /* 文字保存 */
 );
 _TABLE_;
 $result = $db->exec($create_table);//ここでテーブルが作成される

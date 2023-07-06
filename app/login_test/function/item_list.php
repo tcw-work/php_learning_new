@@ -10,6 +10,7 @@ if (isset($_SESSION['login'])) {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {//fetch() は結果セット（先ほどのIDに連なるカラム）から1行ずつデータを取得するために使用される。結果としてほしいカラムを抽出できる（結果は$rowに全て保存）
            //取得したらfetch関数は次の行に進む。もし取得できる行がなくなった場合、fetch関数はfalseを返すため、ループは終了となる（whileには必ずしも比較演算子は必要ない）。
             echo "お気に入りID: " . $row['favorite_id'] . "<br>";//$row連想クエリの結果セットの各行が連想配列として格納されるので、favorite_idを連想配列のキーとして呼び出す
+            echo "いいね数: " . $row['goods'] . "<br>";//いいねの数
             echo '<input type="checkbox" name="delete_items[]" value="' . $row['favorite_id'] . '">'; // 削除用のラジオボタンを表示
             echo "・" . $row['item'] . "<br>";
             echo "<br>";

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS favorites (
     favorite_id INT AUTO_INCREMENT PRIMARY KEY, /* お気に入りレコードの一意のID （ユニークな値で自動的に生成される） */
     user_id TEXT, /* ユーザーID（紐づけ） */
     item TEXT, /* お気に入りアイテム */
-    good TEXT /* いいね数 */
+    goods TEXT /* いいね数 */
 );
 _TABLE_;
 $db->exec($create_table);

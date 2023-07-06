@@ -23,6 +23,14 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
             exit();
         }
         echo 'UserID: ' . $_SESSION["login"]["user_id"] . '<br>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
+        
+        include dirname(__DIR__).'/common/db.php';
+        include dirname(__DIR__).'/function/total_goods.php';//総いいね数を表示
+        $user_id = $_SESSION["login"]["user_id"];
+        $counter = new GoodsCounter($db, $user_id);//インスタンス作成
+        $counter->displayTotalGoods();//デフォルトのいいね文言
+
+
         $state = new State("ログインしている");//クラスのインスタンス実行
         echo <<<_logout_
         <form action='$script' method="POST">

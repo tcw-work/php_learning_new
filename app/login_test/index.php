@@ -13,6 +13,9 @@
                 include 'common/session.php';//ログイン前後の出し分けを要素を管理
                 session_part_01($script);
             ?>
+            <?php
+                // include 'function/total_goods.php';
+            ?>
         </div>
         <a href="profile.php">プロフィールページ</a><br>
         <a href="record.php">履歴検索ページ</a><br>
