@@ -1,9 +1,22 @@
 <?php
-session_start();// セッションを開始する
+
+//セッション情報をcookieに保存し、再訪問の際にサーバー側（session）とブラウザ（cookie）のセッションidを照会して自動ログイン
+if(session_status() != PHP_SESSION_ACTIVE) {//現在のセッションのステータスを取得し、それがアクティブ出ない場合の条件分岐（つまり、セッションが無効または存在しない場合）
+    if (isset($_COOKIE["session_id"])) {// クッキーにセッションIDが保存されているか確認
+        session_id($_COOKIE["session_id"]);// セッションIDが存在する場合は、それを使用してセッションを再開。
+        //session_id関数はPHPのデフォルト関数で、特定のセッションID（引数）にアクセスしたり、新しいセッションIDを設定したりするために使用（今回はクッキーから代入）
+    }
+    session_start();// セッションが既に開始していない場合にだけ session_start() を呼び出す
+}
+
 
 function session_login($user_id) {
 //ログイン情報をセッションに記録
 $_SESSION["login"] = array("user_id"=>$user_id);//セッションIDとしてユーザーIDを保存
+
+    //セッションIDをクッキーに保存（1週間有効）
+    setcookie("session_id", session_id(), time() + 604800);//"session_id"はcookieの名前、 session_id()は名前の通り今のセッションのID
+    //time関数はクッキーが有効である期間（604800秒＝7日間）をUNIXタイムスタンプ形式で指定。7日以内に再訪問すれば再び7日間有効になる
 }
 
 function session_part_01($script) {//リダイレクト先のindex.phpで呼び出し
@@ -41,11 +54,14 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
         return true;//return 文は特定の条件が満たされた場合や処理を終了したい場合に使用。これがなければログアウトしたときに下記のif文も実行されてしまい、両方とも表示される
     }
 
+    
+
     // ログアウト状態（セッション変数になにも入っていない場合の表示）＝新規ユーザー向け
     $state = new State("ログインしていない");//クラスのインスタンス実行
     echo '<a href="register_form.php">新規登録する</a><br>';
     echo '<a href="login_form.php">ログインする</a><br>';
 }
+
 
 
 $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
