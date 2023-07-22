@@ -26,7 +26,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);//fetchして全レコード抽出
 $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
 echo '<form action="function/repository_save.php" method="POST" class="myForm">';//action属性に変数セットする時の書き方　"' . $script . '"
 if (empty($results)) { // $resultsが空の場合（結果が0の場合）
-    header("location: ../record.php?correct_message=". urlencode("結果が見つかりませんでした。"));
+    echo "結果が見つかりませんでした。";
 } else {
     foreach ($results as $result) {//DBから抽出したキーワードを含む全レコードに対してループを掛けてある分だけだす。foreach(変数, 代入される配列変数)で配列の要素を一つずつ順番に取り出す
         echo '<input type="checkbox" name="save_items[]" value="'.$result['item'].'">'; // 保存用に送るチェックボックスを表示。
