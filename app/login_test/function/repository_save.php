@@ -3,7 +3,7 @@
 <?php
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include '../common/db.php';
-require_once '../common/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
+require_once '../common/session.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
 include 'item_check.php'; // itemの重複チェックファイルをインクルード
 
 $user_id = $_SESSION["login"]["user_id"];

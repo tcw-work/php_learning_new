@@ -20,7 +20,8 @@
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include 'common/db.php';
 
-require_once 'common/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
+require_once 'common/session.php';//ログイン前後の出し分けを要素を管理
+session_part_01($script);
 
 require_once 'function/item_list.php';//全てのアイテム表示
 

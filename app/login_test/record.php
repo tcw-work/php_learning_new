@@ -1,7 +1,8 @@
 <?php
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include 'common/db.php';
-require_once 'common/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
+require_once 'common/session.php';//ログイン前後の出し分けを要素を管理
+session_part_01($script);
 ?>
 
 <?php //ログインで検索からお気に入り保存に成功して飛ばされてきたユーザーに表示
@@ -26,16 +27,13 @@ require_once 'common/session_admin.php';//ログインID確認用。本番アッ
         <input type="text" name="keyword" placeholder="キーワードを入力">
         <input type="submit">
     </form>
+    <div id="response-message"></div>
 
+    <script src="js/ajax.js"></script>
 
-    <!-- <?php
-        // require_once 'function/repository.php';
-    ?> -->
-
-    <!-- <script src="js/ajax.js"></script>
     <script>
     ajaxSubmit('.myForm', "function/repository.php");
-    </script> -->
+    </script>
 </body>
 
 

@@ -10,8 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_name TEXT, /* ユーザー名 */
     user_pass CHAR, /* パスワード */
     user_mail TEXT, /* メールアドレス */
-    user_document, TEXT /* 文字保存 */
-    user_level, TEXT /* 文字保存 */
+    user_level TEXT /* 文字保存 */
 );
 _TABLE_;
 $result = $db->exec($create_table);//ここでテーブルが作成される
@@ -61,8 +60,9 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
         $db->exec($query);//DBに対してsql(insert)を実行
 
         $user_id = $db->lastInsertId();// 直前に実行されたINSERTクエリで自動生成されたユーザーIDを取得（セッションの引数として使用して渡す）
-        // ///メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
-        header("location: register_finish.php");// ページをリロードする
+        //メルアドと、名前、パスワードが入っていて、問題ない場合はルートにリダイレクト
+        $correct_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
+        header("location: index.php?correct_message=" . urlencode($correct_message));// ページをリロードする
         if (!empty($user_mail)) {//メールアドレスを登録しているならアクティベートコード付きメール送信
             require_once 'mail/mail.php';//メール送信に関する関数を格納しているmail.phpを呼びだし
             $from_mail = "tomizawa@t-creative-works.com";//インスタンス作成時に__constructに入れる引数（送りてのアドレス）

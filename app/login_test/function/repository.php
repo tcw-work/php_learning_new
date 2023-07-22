@@ -1,9 +1,7 @@
-<!-- 表示と保存の両方の処理を行う -->
-
 <?php
 //-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
 include '../common/db.php';
-require_once '../common/session_admin.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
+require_once '../common/session.php';//ログインID確認用。本番アップ前にユーザーIDは非表示にする
 
 //SQL実行準備//$db（PDOインスタンス）は関数内のスコープ内からアクセスできないので、引数として値を渡す（基本的に関数内からは外部の変数にアクセスできない）
 $keyword = "";
@@ -26,7 +24,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);//fetchして全レコード抽出
 
 //selectしたデータをループで表示する
 $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
-echo '<form action="repository_save.php" method="POST" class="myForm">';//action属性に変数セットする時の書き方　"' . $script . '"
+echo '<form action="function/repository_save.php" method="POST" class="myForm">';//action属性に変数セットする時の書き方　"' . $script . '"
 if (empty($results)) { // $resultsが空の場合（結果が0の場合）
     header("location: ../record.php?correct_message=". urlencode("結果が見つかりませんでした。"));
 } else {
@@ -40,7 +38,4 @@ if (empty($results)) { // $resultsが空の場合（結果が0の場合）
     echo '<input type="submit" name="save_button" value="選択したアイテムを保存">';// 保存ボタンを表示
 }
 echo '</form>';
-
-
-
 ?>

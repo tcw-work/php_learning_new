@@ -8,15 +8,31 @@
 
 <body>
     <div class="wrap">
+        <?php
+            if (isset($_GET['correct_message'])) {//regiter.phpから
+                $correct_message = urldecode($_GET['correct_message']);
+                echo "<p>" . "登録メールを送りました！" . "</p>";
+            }
+            if (isset($_GET['activate_message'])) {//acivate.phpから
+                $activate_message = urldecode($_GET['activate_message']);
+                echo "<p>" . "登録が完了しました！" . "</p>";
+            }
+            if (isset($_GET['mailTrue_message'])) {//mail.phpから
+                $mailTrue_message = urldecode($_GET['mailTrue_message']);
+                echo "<p>" . "メールを送信しました！" . "</p>";
+            }
+            if (isset($_GET['mailFalse_message'])) {//mail.phpから
+                $mailFalse_message = urldecode($_GET['mailFalse_message']);
+                echo "<p>" . "メール送信に失敗しました..." . "</p>";
+            }
+        ?>
         <div class="login">
             <?php
                 include 'common/session.php';//ログイン前後の出し分けを要素を管理
                 session_part_01($script);
             ?>
-            <?php
-                // include 'function/total_goods.php';
-            ?>
         </div>
+        <br>
         <a href="profile.php">プロフィールページ</a><br>
         <a href="record.php">履歴検索ページ</a><br>
         <a href="mail/contact.php">お問い合わせページ</a><br>

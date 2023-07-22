@@ -31,9 +31,11 @@ class MailSender {
         $r = mb_send_mail($to, $this->subject, $body, $this->header); //関数実行
 
         if ($r) {//送信確認用
-            echo "メール送信成功";
+            $mailTrue_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
+            header("location: ../index.php?mailTrue_message=" . urlencode($mailTrue_message));// ページをリロードする
         } else {
-            echo "メール送信失敗";
+            $mailFalse_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
+            header("location: ../index.php?mailFalse_message=" . urlencode($mailFalse_message));// ページをリロードする
         }
     }
 }

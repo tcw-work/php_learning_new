@@ -28,8 +28,9 @@ if (!empty($user_mail) && !empty($user_pass)) {//メルアドと、名前、パ�
         if (hash("sha512", $user_pass) === $hashed_password) {//ユーザーが入力したパスワードをハッシュ化し、DBに保存されているパスワードと一致するか確認
             // パスワードが一致する場合
             $user_id = $user['user_id'];//先ほどのdbをfetchした際に付随しているユーザーIDを配列操作で取得（セッションIDの引数として使う）
+            $user_name = $user['user_name']; // ユーザー名を取得
             require_once 'common/session.php';
-            session_login($user_id);
+            session_login($user_id, $user_name);
             header("location: index.php");// ページをリダイレクトする
             exit;
         } else {
