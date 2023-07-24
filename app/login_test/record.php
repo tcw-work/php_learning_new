@@ -27,9 +27,13 @@ session_part_01($script);
         <input type="text" name="keyword" placeholder="キーワードを入力">
         <input type="submit">
     </form>
+
+    <!-- 出力結果表示エリア -->
     <div id="response-message"></div>
 
+
     <script src="js/ajax.js"></script>
+
 
     <script>
     ajaxSubmit('.myForm', "function/repository.php");

@@ -29,6 +29,8 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
         }
     }
 
+    echo '<a href="/coding/local_coding/php_learning/app/login_test/">Suorce Pack</a><br><br>';
+
     if (isset($_SESSION['login'])) {
         if (isset($_POST['logout'])) {//ログアウト切り替え処理
             unset($_SESSION['login']);

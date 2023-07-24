@@ -1,9 +1,9 @@
-<!-- <form action="contact_check.php" method="post">
-    <input type="text" id="c_name" name="c_name" placeholder="名前">
-    <input type="text" id="c_mail" name="c_mail" placeholder="メールアドレス">
-    <textarea class="input" id="c_content" name="c_content" rows="7" placeholder="お問い合わせ内容"></textarea>
-    <input type="submit" value="送信する" class="submit">
-</form> -->
+<?php
+//-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
+include '../common/db.php';
+require_once '../common/session.php';//ログイン前後の出し分けを要素を管理
+session_part_01($script);
+?>
 
 <head>
     <meta charset="utf-8">

@@ -21,8 +21,10 @@ function ajaxSubmit(formClass, formUrl) {//.myForm、urlの値はそれぞれの
                     if (currentPath === '/coding/local_coding/php_learning/app/login_test/' || currentPath === '/coding/local_coding/php_learning/app/login_test/index.php') {//トップ成功時
                         alert(response);
                     }
-                    // 特定のパスと一致するか確認して出し分け
                     if (currentPath === '/coding/local_coding/php_learning/app/login_test/record.php') {//検索履歴成功時
+                        $('#response-message').html(response);
+                    }
+                    if (currentPath === '/coding/local_coding/php_learning/app/login_test/api/library.php') {//検索履歴成功時
                         $('#response-message').html(response);
                     }
                 },
@@ -34,7 +36,10 @@ function ajaxSubmit(formClass, formUrl) {//.myForm、urlの値はそれぞれの
                         alert(error);
                     }
                     if (currentPath === '/coding/local_coding/php_learning/app/login_test/record.php') {//検索履歴失敗時
-                        $('#response-message').html('An error occurred: ' + error);  // エラーメッセージを表示失敗時
+                        // $('#response-message').html('An error occurred: ' + error);  // エラーメッセージを表示失敗時
+                    }
+                    if (currentPath === '/coding/local_coding/php_learning/app/login_test/api/record.php') {//検索履歴失敗時
+                        // $('#response-message').html('An error occurred: ' + error);  // エラーメッセージを表示失敗時
                     }
                 }
             });
