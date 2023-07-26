@@ -203,7 +203,7 @@ function updateComplete5() {
 
     // 値が全部入っている場合
     complete.value = auther01Text + (dateText || '(発行日不明) ') + nameText + editorText + thesisText + pageText + pageText02 + publisherText;
-    // // // ページ番号①が入っていない場合
+    //ページ番号①が入っていない場合
     if (pageText === '') {
         complete.value = auther01Text + (dateText || '(発行日不明)') + nameText + editorText + thesisText + publisherText;
     }
