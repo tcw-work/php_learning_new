@@ -4,6 +4,11 @@
 <head>
     <meta charset="utf-8">
     <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
 </head>
 
 <body>
@@ -105,12 +110,45 @@
             <input type="submit" value="保存" class="submit" disabled>
         </form>
     </div>
+
+    <!-- firebaseトークン確認用 -->
+    <p id="token-display">Loading...</p>
+
     <script src="js/disp01.js"></script>
     <script src="js/ajax.js"></script>
+    <script src="push.js"></script>
+
+    <script>
+    // Firebase初期化設定 start
+    const firebaseConfig = { //firebaseのプロジェクトの設定→マイアプリ→SDK の設定と構成→configに表示されている内容をペースト
+        apiKey: "AIzaSyAtgi3Zgm3hI3LLK1i7HwQZijgUdFxui1A",
+        authDomain: "source-pack.firebaseapp.com",
+        projectId: "source-pack",
+        storageBucket: "source-pack.appspot.com",
+        messagingSenderId: "610617270696",
+        appId: "1:610617270696:web:830036e658b04f5c5b7d9d"
+    };
+    firebase.initializeApp(firebaseConfig); //Firebaseを初期化するための関数呼び出し
+    // Firebase初期化設定 end
+
+    // ServiceWorker登録
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    }
+    </script>
+
+
 
     <script>
     ajaxSubmit('.myForm', "function/save.php");
     </script>
+
+
+
 </body>
 
 
