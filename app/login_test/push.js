@@ -10,6 +10,20 @@ $(window).on('load', function () {
             }).then((currentToken) => {
                 if (currentToken) {
                     console.log('Token: ', currentToken);
+
+                    // トークン情報をDBに入れるためにajaxで非同期通信でpush_token.phpを実行
+                    $.ajax({
+                        url: '/function/push_token.php',  // the endpoint to save the token
+                        type: 'POST', 
+                        data: { token: currentToken },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+
                     // 確認用にHTMLに表示
                     document.getElementById('token-display').textContent = "Current token: " + currentToken;
                 } else {
