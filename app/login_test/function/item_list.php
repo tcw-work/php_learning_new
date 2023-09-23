@@ -5,6 +5,8 @@ if (isset($_SESSION['login'])) {
     $query = "SELECT * FROM favorites WHERE user_id = '$user_id'";// テーブルから該当するuser_idのレコードを取得
     $result = $db->query($query);//sql実行
     
+    require_once("delete.php");
+
     // 結果を出力。条件満たすまで（DBから対象のカラムを全部取り出し、falseが帰ってくるまで）ループ
     function session_part_02($result) {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {//fetch() は結果セット（先ほどのIDに連なるカラム）から1行ずつデータを取得するために使用される。結果としてほしいカラムを抽出できる（結果は$rowに全て保存）
@@ -22,8 +24,6 @@ if (isset($_SESSION['login'])) {
     session_part_02($result);//ループ処理呼び出し
     echo '<input type="submit" name="delete_button" value="選択したアイテムを削除">';// 削除ボタンを表示
     echo '</form>';
-    
-    require_once("delete.php");
     
     }
 ?>

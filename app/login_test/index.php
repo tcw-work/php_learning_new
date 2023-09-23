@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
     <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
     <link rel="manifest" href="manifest.json">
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
@@ -114,8 +117,8 @@
     <!-- firebaseトークン確認用 -->
     <p id="token-display">Loading...</p>
 
-    <script src="js/disp01.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="src/js/disp01.js"></script>
+    <script src="src/js/ajax.js"></script>
     <script src="push.js"></script>
 
     <script>

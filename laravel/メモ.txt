@@ -1,0 +1,196 @@
+●手順
+①VSコードの左下クリック→WSLへの接続をクリック
+
+②Docer起動
+
+③ターミナルで下記の順で打ち込む
+cd test-project
+sail up -d
+
+③Laravel Sailの設定に従ったDockerコンテナがバックグラウンドで起動
+http://localhost/
+
+
+●情報
+・WSL
+tomizawa
+tomitomi
+
+・Docer
+jb
+tomizawa7
+bou
+
+・PHP myadmin
+ユーザー
+sail
+
+pass
+password
+
+↑これらアイパスは.env（test-projectルート）にて定義されている
+
+●メモ
+
+・laravelではWEBアプリケーションを「プロジェクト」という形でまとめる
+→アプリケーションの実行に必要なっファイルやフォルダーを１つのフォルダにまとめたもの
+
+・Docer
+→コンテナ型のアプリケーション実行環境（MySQLなども入っている）
+sail up -d コマンドを実行すると、Laravel Sailの設定に従ったDockerコンテナがバックグラウンドで起動
+
+・Laravel　Sail
+→Docerを使った開発環境で、必要最低限のツールをインストールでき、本番環境と同じ環境で動作確認が可能となる
+
+・WSL
+→windows上でlinuxを動かすもの（windowsのDocerはこの機能を利用するので、必須）。Ubuntuも実行される
+
+・Ubuntu
+本格的なLinuxの環境をWindows上で利用することができる。Dockerデーモンが実行され、コンテナとしてさまざまなサービス（PHP、MySQLなど）が動作
+
+※環境構築手順
+→WINDOWS OS→WSL（Linux用Windowsサブシステム）→Ubuntu→Docer→コンテナ（Docerの中の機能群）
+
+
+
+
+
+●VSコードプラグイン
+remote development（vscodeプラグイン）
+→WSLのリモート環境に接続した状態でプロジェクトを編集可能になる
+
+Tailwind CSS Intelisense
+→Tailwind CSSのクラス名を入れるとTailwind CSSのクラス名の候補を表示してくれる
+
+Laravel Blade Sniooets
+→blade.phpファイル上のコードの入力が楽になる
+
+●laravel sail
+
+ubunatsを起動
+㏅ test-project（下記に続く）
+
+起動（他のコマンドは打てなくなる）
+./vendor/bin/sail up
+
+バックグラウンド起動（他のコマンドも打てる）
+./vendor/bin/sail up -d
+
+・sailの停止
+./vendor/bin/sail stop
+
+停止
+curl + c
+
+
+●VSコードで.bashrc設定後に設定後にターミナルで動かす
+cd test-project
+×alias sail(動かなかったので下記でやった)
+
+sail up -d
+→この時点でLinux 環境の中でコードを編集・実行できるようになるがDocker や Laravel Sail はまだ自動的には起動していない
+
+sail artisan migrate
+パッケージをインストールしたとき、新しいマイグレーションファイルがプロジェクトに追加されることがある。例えば、ユーザー認証に関連するテーブル（users テーブルなど）
+新しいテーブルやデータベースの変更をアプリケーションのデータベースに反映させるためにこのコマンドを使う必要がある
+つまりDBに変更を及ぼすパッケージをインストールした際は、このコマンドを打つ必要がある
+
+
+●パッケージ
+Laravel ui（vueのフロントエンド選択可能）
+Laravel Breeze（ログイン認証を実装できるパッケージ。今回はこっち）
+
+sail composer require laravel/breeze --dev（パッケージインストール）
+→パッケージ（コード）をプロジェクトに追加ダウンロードされるが、まだアプリケーションで使用される設定やビュー、ルートなどはセットアップされていない。
+つまりこれはプロジェクトにダウンロードするための記述（※ダウンロード）
+
+sail artisan breeze:install（breezeインストール）
+→れはダウンロードしたBreezeの機能を実際にプロジェクトで動作するように設定するためのもの（※組み込み）
+
+
+●breezeを日本語化する際の注意点
+下記をubunatsにインストール（cd入れなくていい）
+
+・compose
+sudo apt update
+sudo apt install composer
+
+・PHP拡張モジュール
+sudo apt update
+sudo apt install php8.1-xml php8.1-dom php8.1-curl
+
+・上記が準備できたら日本語化パッケージ入れる（https://github.com/askdkc/breezejp）
+composer require askdkc/breezejp --dev
+php artisan breezejp
+
+
+●開発と本番環境の設定
+
+・開発環境と本番環境で.envファイルの中身を書き換えてアップする必要がある
+
+APP_NAME=Laravel# Webアプリケーションの名前（APP_以下は開発と本番で設定を変える必要がある）
+APP_ENV=local# Webアプリケーションの実行環境（デフォルトは開発環境）
+APP_KEY=base64:oTISGKqt3knPuPotATxUDfi2l+UTbxjyQEKUhqo+vRw=# プロジェクト作成時に自動生成される暗号化に使う鍵
+APP_DEBUG=true# エラーが発生したときのデバック情報をブラウザに表示（本番では悪用されかねないのでfalse）
+APP_URL=http://localhost# WebアプリケーションのURL
+
+・webアプリはconfig/app.phpを通して.envファイルを読み込んでいる
+上記パスの29行目辺りの　「 'env' => env('APP_ENV', 'production'),」　（←.envのAPP_ENVを読み込むものとする、もしなければproduction（ 本番環境での実行）とするという意味）
+※つまり開発環境と本番環境で別々の.envファイルを用意しておけばオッケ
+→.env.development、.env.production （これらは.gitignore に追加しておくと安心）
+
+
+●PHPのバージョン変更・確認
+p103
+
+
+●ルート
+
+・書き方
+P135
+
+・route/以下のルート設定は主に下記
+Route::HTTPメソッド('URL', [コントローラー::class,''メソッド])
+->name('ルート名');
+
+・有効になっているルートリスト一覧表示コマンド
+sail artisan route:list
+→内訳：HTTPメソッド、ドメイン以下のURL、ルート名、コントローラー名、メソッド名
+
+・ルート設定で行ったルート名をタグの中に入れると、そこにリンクできる
+<a href="{{ route('login') }}" class=
+
+
+●コントローラ
+
+・アッパーキャメルケース（区切り大文字）ファイル追加コマンド
+sail artisan make:controller TestController
+
+・実際にhttp://localhost/testに反映するフロー
+
+①上記コマンド売ってTestController.php作成
+
+②クラスの中に下記追加
+    public function test() {
+        return view('test');
+    }
+
+③resource/view/のディレクトリにtest.blade.phpを追加
+→表示させたい内容「こんにちは」を追加
+
+④route/web.phpに下記追加
+
+use App\Http\Controllers\TestController;
+Route::get('test', [TestController::class, 'test'])
+            ->name('test');
+
+
+●コンポーネントとCSS反映　ｐ１５１
+
+Tailwind.cssのコンパイルは下記のコマンドでLaravel Viteサーバーを起動させる（打つと他のコマンド打てなくなるのでubunatsで打つ）
+sail npm run dev
+Ctrl + CでLaravel Viteサーバーをストップさせると、なにも反映されてない状態になる
+
+本番環境に移行するためのファイル生成は下記のコマンドで行う
+sail npm run build
+これによりpublic/build/asetsのCSSが更新される

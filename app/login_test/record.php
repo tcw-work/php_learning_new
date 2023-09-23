@@ -32,7 +32,7 @@ session_part_01($script);
     <div id="response-message"></div>
 
 
-    <script src="js/ajax.js"></script>
+    <script src="src/js/ajax.js"></script>
 
 
     <script>

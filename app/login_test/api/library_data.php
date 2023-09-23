@@ -23,7 +23,7 @@ session_part_01($script);
     <!-- 出力結果表示エリア -->
     <div id="response-message"></div>
 
-    <script src="../js/ajax.js"></script>
+    <script src="../src/js/ajax.js"></script>
     <!-- <script>
     ajaxSubmit('.myForm', "library_data.php");
     </script> -->

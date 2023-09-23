@@ -105,8 +105,8 @@
         </form>
 
     </div>
-    <script src="js/disp02.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="src/js/disp02.js"></script>
+    <script src="src/js/ajax.js"></script>
 
     <script>
     ajaxSubmit('.myForm', "function/save.php");
