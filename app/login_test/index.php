@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=1440, maximum-scale=1.0" />
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
@@ -13,6 +16,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
 </head>
+
+<div class="Xserver">Xserver確認フラグ</div>
 
 <body>
     <div class="wrap">
@@ -122,6 +127,11 @@
     <script src="push.js"></script>
 
     <script>
+    ajaxSubmit('.myForm', "function/save.php");
+    </script>
+
+
+    <script>
     // Firebase初期化設定 start
     const firebaseConfig = { //firebaseのプロジェクトの設定→マイアプリ→SDK の設定と構成→configに表示されている内容をペースト
         apiKey: "AIzaSyAtgi3Zgm3hI3LLK1i7HwQZijgUdFxui1A",
@@ -146,9 +156,6 @@
 
 
 
-    <script>
-    ajaxSubmit('.myForm', "function/save.php");
-    </script>
 
 
 

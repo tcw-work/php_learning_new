@@ -1,46 +1,43 @@
-
-// ServiceWorker処理：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
-
 // キャッシュ名とキャッシュファイルの指定
-var CACHE_NAME = 'pwa-sample-caches-v2';
-var urlsToCache = [
-	"/",
+const CACHE_NAME = 'pwa-sample-caches-v3'; // キャッシュ名を変更して新しいキャッシュを作成
+const urlsToCache = [
+    "/",
     "index.php",
-	"api/library.php",
-	"api/library_data.php",
-	"common/session.php",
-	"function/repository.php",
-	"login_form.php",
-	"mail/contact.php",
-	"mail/mail.php",
-	"profile.php",
-	"record.php",
-	"register_finish.php",
-	"register_form.php",
-	"web.php",
-	"image/icon-192.png"
+    "image/icon-192.png"
+    // 動的に変わるコンテンツやAPIのレスポンスはキャッシュから除外
 ];
-//document.write("<script type='text/javascript' src='list.js'></script>");
 
 // インストール処理
 self.addEventListener('install', function(event) {
-	event.waitUntil(
-		caches
-			.open(CACHE_NAME)
-			.then(function(cache) {
-				return cache.addAll(urlsToCache);
-			})
-	);
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(function(cache) {
+                return cache.addAll(urlsToCache);
+            })
+    );
+    self.skipWaiting(); // 新しいService Workerをすぐにアクティブにする
 });
 
-// リソースフェッチ時のキャッシュロード処理
-self.addEventListener('fetch', function(event) {
-	event.respondWith(
-		caches
-			.match(event.request)
-			.then(function(response) {
-				return response ? response : fetch(event.request);
-			})
-	);
+// アクティブ時の古いキャッシュの削除
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
 });
 
+// リソースフェッチ時のキャッシュロード処理（ネットワークに繋がらなければキャッシュを使ってサイトを表示する）
+self.addEventListener('fetch', function(event) {//fetch(event.request) でまずネットワークリクエストを試みる
+    event.respondWith(//ネットワークリクエストが成功すれば、そのレスポンスが返される
+        fetch(event.request).catch(function() {//ネットワークリクエストが失敗すると、.catch 部分が実行される。
+            return caches.match(event.request);//.catch 内で caches.match(event.request) が呼び出され、キャッシュ内で該当するリクエストのレスポンスがあればそれが返さる）
+        })
+    );
+});

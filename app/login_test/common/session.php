@@ -1,5 +1,9 @@
 <?php
 
+// header("Cache-Control:no-cache,no-store,must-revalidate,max-age=0");
+// header("Cache-Control:pre-check=0,post-check=0", false);
+// header("Pragma:no-cache");
+
 //セッション情報をcookieに保存し、再訪問の際にサーバー側（session）とブラウザ（cookie）のセッションidを照会して自動ログイン
 if(session_status() != PHP_SESSION_ACTIVE) {//現在のセッションのステータスを取得し、それがアクティブ出ない場合の条件分岐（つまり、セッションが無効または存在しない場合）
     if (isset($_COOKIE["session_id"])) {// クッキーにセッションIDが保存されているか確認
