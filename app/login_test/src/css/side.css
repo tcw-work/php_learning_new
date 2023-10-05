@@ -1,0 +1,60 @@
+.side {
+  width: 282px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.25);
+}
+.side h1 {
+  font-weight: bold;
+}
+.side h1 a {
+  color: #000;
+  text-decoration: none;
+}
+.side .side_parents {
+  padding: 24px 24px;
+  border-bottom: 1px solid #d0d0d0;
+}
+.side .side_childrens {
+  display: block;
+}
+.side .side_childrens:not(:last-child) {
+  margin-bottom: 16px;
+}
+.side .side_parents_common {
+  padding: 24px 24px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 20px 29px;
+}
+.side .side_parents_common .ttl2-2 {
+  margin-left: 0px;
+}
+.side .side_parents_func {
+  background-position: 20px 24px;
+}
+.side .ttl2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+.side .ttl2-2 {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.side .ttl2-2 img {
+  margin-right: 8px;
+}
+.side .link {
+  color: #2e70fc;
+}
+.side form input {
+  padding: 0;
+  font-size: 16px;
+  color: #757e95;
+  background-color: #ffffff;
+  border: none;
+  font-family: "Noto Serif JP", serif;
+  cursor: pointer;
+}/*# sourceMappingURL=side.css.map */

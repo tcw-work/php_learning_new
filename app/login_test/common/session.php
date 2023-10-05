@@ -29,42 +29,40 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
         public $state_log;
         function __construct($state_log) {
             $this->state_log = $state_log;
-            echo "<p>{$this->state_log}時のインスタンステスト</p>";
+            echo "<div class='side_childrens'>{$this->state_log}時のインスタンステスト</div>";
         }
     }
 
-    echo '<a href="/coding/local_coding/php_learning/app/login_test/">Suorce Pack</a><br><br>';
-
     if (isset($_SESSION['login'])) {
+        $state = new State("ログイン中");//クラスのインスタンス実行
         if (isset($_POST['logout'])) {//ログアウト切り替え処理
             unset($_SESSION['login']);
             header("Location: $script"); // ログアウト後にページをリダイレクト（これが無いとリロードすると何も表示されなくなる）
             exit();
         }
-        echo 'ユーザー名: ' . $_SESSION["login"]["user_name"] . '様' . '<br>';
-        echo 'UserID: ' . $_SESSION["login"]["user_id"] . '<br>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
-
-        $state = new State("ログイン中");//クラスのインスタンス実行
-        echo <<<_logout_
-        <form action='$script' method="POST">
-            <input type="hidden" name="logout"><br>
-            <input type="submit" value="ログアウトする"><br>
-        </form>
-        _logout_;
+        echo  '<div class="side_childrens ttl2">' . $_SESSION["login"]["user_name"] . '様' . '</div>';
+        echo '<div class="side_childrens">' . 'UserID: ' . $_SESSION["login"]["user_id"] . '</div>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
 
         $user_id = $_SESSION["login"]["user_id"];
         include dirname(__DIR__).'/common/db.php';
-
-        include dirname(__DIR__).'/function/total_goods.php';//総いいね数を表示
-        $counter = new GoodsCounter($db, $user_id);//インスタンス作成
-        $counter->displayTotalGoods();//デフォルトのいいね文言
 
         include dirname(__DIR__).'/function/total_generates.php';//総いいね数を表示
         $counter = new GeneratesCounter($db, $user_id);//インスタンス作成
         $counter->displayTotalGenerates();//デフォルトのいいね文言
 
+        include dirname(__DIR__).'/function/total_goods.php';//総いいね数を表示
+        $counter = new GoodsCounter($db, $user_id);//インスタンス作成
+        $counter->displayTotalGoods();//デフォルトのいいね文言
+
         include dirname(__DIR__).'/function/total_level.php';
         total_level($db, $user_id);
+
+        echo <<<_logout_
+        <form action='$script' method="POST" class="login_state side_childrens">
+            <input type="hidden" name="logout">
+            <input type="submit" value="ログアウトする">
+        </form>
+        _logout_;
 
         return true;//return 文は特定の条件が満たされた場合や処理を終了したい場合に使用。これがなければログアウトしたときに下記のif文も実行されてしまい、両方とも表示される
     }
@@ -73,9 +71,9 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
 
     // ログアウト状態（セッション変数になにも入っていない場合の表示）＝新規ユーザー向け
     $state = new State("ログインしていない");//クラスのインスタンス実行
-    echo 'ゲストユーザー様' . '<br>';
-    echo '<a href="register_form.php">新規登録する</a><br>';
-    echo '<a href="login_form.php">ログインする</a><br>';
+    echo '<div class="side_childrens">ゲストユーザー様</div>';
+    echo '<div class="side_childrens"><a href="login_form.php" class="link">ログインする</a></div>';
+    echo '<div class="side_childrens"><a href="register_form.php">新規登録する</a></div>';
 }
 
 

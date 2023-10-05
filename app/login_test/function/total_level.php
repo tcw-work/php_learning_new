@@ -51,7 +51,7 @@ try {//tryにより、この中で一つでも処理にエラー（例外）が�
     $db->commit();//全ての処理が成功されたら、ここでＤＢを更新
 
     // 結果の出力
-    echo "レベル" . $new_level . "到達！";
+    echo '<div class="side_childrens"><p>レベル' . $new_level . '到達！</p></div>';
 } catch (Exception $e) {//catchブロックではExceptionオブジェクト（ここでは$e）を引数に取る（お作法）
     // エラーが発生した時はロールバック
     $db->rollBack();//もしＤＢ更新処理でのエラーが発生したら、エラー表示

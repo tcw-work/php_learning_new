@@ -31,7 +31,7 @@ class GoodsCounter {//文言を使いまわせるようにクラスで作成し�
         return $result['total_goods'];
     }
 
-    public function displayTotalGoods($messageFormat = "<p>シェアされた回数「%s」回！</p>") {//インスタンス作成後にこれを呼び出し（文言変更可能）
+    public function displayTotalGoods($messageFormat = '<div class="side_childrens"><p>シェアされた回数：%s回！</p></div>') {//インスタンス作成後にこれを呼び出し（文言変更可能）
         $total_goods = $this->getTotalGoods();//上記メソッド呼び出し時にgetTotalGoods()も実行される
         echo sprintf($messageFormat, $total_goods);
     }
