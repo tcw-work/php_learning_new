@@ -6,6 +6,31 @@
     box-shadow:
         18px 18px 36px 0px rgba(208, 208, 208, 0.7),
         -18px -18px 36px 0px rgba(255, 255, 255, 0.25);
+    .side_wrap {
+        position: fixed;
+        width: 282px;
+        height: 100vh; /* ビューポートの高さに合わる */
+        overflow-y: auto; /* 縦方向のスクロールを許可 */
+        direction: rtl;
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow:
+            18px 18px 36px 0px rgba(208, 208, 208, 0.7),
+            -18px -18px 36px 0px rgba(255, 255, 255, 0.25);
+    }
+    .side_wrap > * {
+        direction: ltr;
+    }
+    .side_wrap::-webkit-scrollbar {
+        width: 10px;
+    }
+    .side_wrap::-webkit-scrollbar-track {
+        background-color: #e9eaf0;
+    }
+    .side_wrap::-webkit-scrollbar-thumb {
+        background-color: #fff;
+        border-radius: 10px;
+    }
     h1 {
         font-weight: bold;
         a {
@@ -25,15 +50,53 @@
         }
     }
     .side_parents_common {
-        padding: 24px 24px;
+        padding: 24px 0px;
         background-size: 20px;
         background-repeat: no-repeat;
         background-position: 20px 29px;
+        // &:last-child {
+        //     border: none;
+        // }
         .side_childrens {
-            // margin-left: 30px;
+            padding: 8px 24px;
+            margin-bottom: 0;
+            cursor: pointer;
+            // -webkit-transition: all 0.2s ease;
+            // transition: all 0.2s ease;
+            &:hover {
+                background: #e9eaf0;
+            }
+        }
+        .side_childrens .index_trigger {
+        }
+        .side_childrens.act {
+            background: #e9eaf0;
         }
         .ttl2-2 {
             margin-left: 0px;
+            position: relative;
+            .triangle {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-right: 12px solid transparent;
+                border-left: 12px solid transparent;
+                border-bottom: 12px solid #757e95;
+                border-top: 0;
+                position: absolute;
+                top: 50%;
+                right: 0%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+        .ttl2-2_act {
+            .triangle {
+                border-right: 12px solid transparent;
+                border-left: 12px solid transparent;
+                border-top: 12px solid #757e95;
+                border-bottom: 0;
+            }
         }
     }
     .side_parents_book {
@@ -58,6 +121,7 @@
     }
     .link {
         color: #2e70fc;
+        text-decoration: underline;
     }
     form {
         input {
@@ -68,6 +132,55 @@
             border: none;
             font-family: "Noto Serif JP", serif;
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .side {
+        width: 100%;
+        .side_wrap {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: auto;
+            z-index: 9;
+            border-radius: 0px;
+        }
+        .side_wrap.act {
+            height: 100%;
+        }
+        .side_wrap::-webkit-scrollbar {
+            width: 00px;
+        }
+        .side_parents {
+            display: none;
+        }
+        .side_parents_mainTtl {
+            position: relative;
+            display: block;
+            .triangle {
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-right: 12px solid transparent;
+                border-left: 12px solid transparent;
+                border-bottom: 12px solid #757e95;
+                border-top: 0;
+                position: absolute;
+                top: 50%;
+                right: 0%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+        .side_parents_mainTtl.act {
+            .triangle {
+                border-right: 12px solid transparent;
+                border-left: 12px solid transparent;
+                border-top: 12px solid #757e95;
+                border-bottom: 0;
+            }
         }
     }
 }

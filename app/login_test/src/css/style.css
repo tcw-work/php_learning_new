@@ -1,9 +1,16 @@
+@charset "UTF-8";
 .wrap {
   display: flex;
+  background-color: #f5f5f5;
 }
 .wrap main {
   width: 100%;
-  margin: 40px 0px 40px 40px;
+  margin: 40px 0px 0px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.wrap main section {
+  position: relative;
 }
 .wrap main form input {
   width: 320px;
@@ -15,50 +22,68 @@
   border: none;
   display: block;
   box-sizing: border-box;
+  font-size: 16px;
+}
+.wrap main form input.required::-moz-placeholder {
+  color: #ff5a5f;
+}
+.wrap main form input.required::placeholder {
+  color: #ff5a5f;
 }
 .wrap main form .complete {
   max-width: 996px;
   width: 100%;
+  background: none;
 }
 .wrap main form .cmp_box {
   max-width: 996px;
   width: 100%;
-  padding: 24px 28px;
-  margin-bottom: 20px;
+  padding: 24px 28px 0px 28px;
+  margin-top: 40px;
+  margin-bottom: 80px;
   border-radius: 24px;
-  background: #f5f5f5;
+  background: #e9eaf0;
   box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
   border: none;
   display: block;
+  flex-direction: column; /* 縦方向に子要素を配置 */
+  align-items: center; /* 横方向中央に子要素を配置 */
   box-sizing: border-box;
+  overflow: hidden;
 }
 .wrap main form .cmp_box input {
   box-shadow: none;
 }
-.wrap main form .cmp_box input.complete {
+.wrap main form .cmp_box .complete_disp {
   font-size: 16px;
+  margin-right: 32px;
+  margin-bottom: 24px;
   font-weight: bold;
-  padding: 0;
-  margin-bottom: 0;
-  border-radius: 0px;
   color: #757e95;
-  outline: none;
+  float: left;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .wrap main form .cmp_box .cmp_in {
   margin-bottom: 20px;
   display: flex;
 }
 .wrap main form .cmp_box .cmp_func {
-  margin-left: 24px;
+  margin-bottom: 24px;
   display: flex;
+  float: left;
 }
 .wrap main form .cmp_box .cmp_func p {
   display: flex;
   align-items: center;
   line-height: 1;
+  cursor: pointer;
 }
 .wrap main form .cmp_box .cmp_func p:not(:first-child) {
-  margin-left: 24px;
+  margin-left: 16px;
+}
+.wrap main form .cmp_box .cmp_func p input {
+  cursor: pointer;
 }
 .wrap main form .cmp_box .cmp_func span {
   margin-right: 8px;
@@ -70,8 +95,83 @@
   background: none;
   color: #757e95;
 }
+.wrap main .decoration {
+  width: 920px;
+  transform: rotate(90deg);
+  position: absolute;
+  top: 385px;
+  right: -400px;
+  line-height: 1;
+  overflow: hidden;
+}
+.wrap main .decoration p {
+  font-size: 138px;
+  font-weight: bold;
+  color: #ffffff;
+}
 .wrap .common_ttl {
   font-size: 20px;
   margin-bottom: 32px;
   font-weight: bold;
+}
+.wrap .other_pattern {
+  margin-bottom: 48px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrap .other_pattern .other_box {
+  width: 240px;
+  height: 135px;
+  padding: 24px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  border-radius: 24px;
+  font-weight: normal;
+  display: block;
+  background: #f5f5f5;
+  box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+.wrap .other_pattern .other_box .box_num {
+  font-size: 20px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1;
+}
+.wrap .other_pattern .other_box .box_ttl {
+  font-size: 16px;
+  text-align: center;
+}
+.wrap .other_pattern .other_box:hover {
+  background: #e9eaf0;
+}
+.wrap .other_pattern .other_box.act {
+  background: #e9eaf0;
+}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    display: block;
+  }
+  .wrap main {
+    width: 100%;
+    margin: 160px 0px 0px 0px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+  }
+  .wrap main form input {
+    width: 100%;
+  }
+  .wrap main .decoration {
+    top: 1045px;
+  }
+  .wrap .other_pattern {
+    justify-content: space-between;
+  }
+  .wrap .other_pattern .other_box {
+    width: 48%;
+    height: auto;
+    margin-right: 0px;
+  }
 }/*# sourceMappingURL=style.css.map */

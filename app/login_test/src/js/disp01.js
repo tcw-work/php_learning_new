@@ -29,6 +29,7 @@ function updateComplete1() {
     var name = document.getElementsByClassName("name")[0].value;
     var publisher = document.getElementsByClassName("publisher")[0].value;
     var complete = document.getElementsByClassName("complete")[0];
+    var completeDispElement = document.getElementsByClassName("complete_disp")[0];
 
     // 値が全部入っている場合
     complete.value = auther01 + ' ' + '(' + date + ')' + ' ' + "｢" + name + "｣" + ' ' + publisher;
@@ -46,6 +47,8 @@ function updateComplete1() {
     if (auther01 === '') {
         complete.value =  "｢" + name + "｣"  + ' ' + '(' + date + ')' + ' ' + publisher;
     }
+    // ここでcomplete_dispの内容を更新
+    completeDispElement.textContent = complete.value;
 }
 
 //作者が複数のパターン
@@ -59,9 +62,7 @@ function updateComplete2() {
     var name = document.getElementsByClassName("name")[1].value;
     var publisher = document.getElementsByClassName("publisher")[1].value;
     var complete = document.getElementsByClassName("complete")[1];
-
-
-
+    var completeDispElement = document.getElementsByClassName("complete_disp")[1];
 
     // 日付が空白の場合
     if (date === "") {
@@ -109,7 +110,9 @@ function updateComplete2() {
         " " +
         publisher;
     }
-    }
+        // ここでcomplete_dispの内容を更新
+        completeDispElement.textContent = complete.value;
+}
 
 
 //外国人作者・翻訳のパターン
@@ -120,6 +123,7 @@ function updateComplete3() {
     var translator = document.getElementsByClassName("translator")[0].value;
     var publisher = document.getElementsByClassName("publisher")[2].value;
     var complete = document.getElementsByClassName("complete")[2];
+    var completeDispElement = document.getElementsByClassName("complete_disp")[2];
 
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var translatorText = translator !== '' ? translator + '訳' + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
@@ -133,7 +137,8 @@ function updateComplete3() {
     if (auther01 === '') {
         complete.value = nameText + (dateText || '(発行日不明) ') + translatorText + publisherText;
     }
-
+    // ここでcomplete_dispの内容を更新
+    completeDispElement.textContent = complete.value;
 }
 
 //論文から出典するパターン
@@ -145,6 +150,7 @@ function updateComplete4() {
     var page = document.getElementsByClassName("page")[0].value;
     var publisher = document.getElementsByClassName("publisher")[3].value;
     var complete = document.getElementsByClassName("complete")[3];
+    var completeDispElement = document.getElementsByClassName("complete_disp")[3];
 
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var pageText = page !== '' ? 'p' + page + ' ' : ''; // 「ページ番号」の表示を制御する
@@ -177,6 +183,8 @@ function updateComplete4() {
     if (auther01 === '') {
         complete.value = nameText + thesisText + (dateText || '(発行日不明) ') + pageText + publisherText;
     }
+    // ここでcomplete_dispの内容を更新
+    completeDispElement.textContent = complete.value;
 }
 
 //本に掲載された論文から出典するパターン
@@ -190,6 +198,7 @@ function updateComplete5() {
     var page02 = document.getElementsByClassName("page02")[0].value;
     var publisher = document.getElementsByClassName("publisher")[4].value;
     var complete = document.getElementsByClassName("complete")[4];
+    var completeDispElement = document.getElementsByClassName("complete_disp")[4];
 
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var pageText = page !== '' ? 'p' + page : ''; // 「ページ番号」の表示を制御する
@@ -214,6 +223,7 @@ function updateComplete5() {
     if (auther01 === '') {
         complete.value = nameText + editorText + thesisText + (dateText || '(発行日不明) ') + pageText + pageText02 + publisherText;
     }
-
+    // ここでcomplete_dispの内容を更新
+    completeDispElement.textContent = complete.value;
 }
 

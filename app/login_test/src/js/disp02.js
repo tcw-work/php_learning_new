@@ -30,6 +30,7 @@ function updateComplete1() {
     var url = document.getElementsByClassName("url")[0].value;
     var access = document.getElementsByClassName("access")[0].value;
     var complete = document.getElementsByClassName("complete")[0];
+	var completeDispElement = document.getElementsByClassName("complete_disp")[0];
 
     var accessText = access !== '' ? "(" + '閲覧日:' + access + ')' + ' ' : '';// 「閲覧日」の表示を制御する
     var urlText = url !== '' ? url + '' + ' ' : '';// URLの表示を制御する
@@ -43,6 +44,8 @@ function updateComplete1() {
     if (auther01 === '') {
         complete.value = nameText + dateText + urlText + accessText;
     }
+	// ここでcomplete_dispの内容を更新
+	completeDispElement.textContent = complete.value;
 }
 
 //サイト内の記事から参照
@@ -54,6 +57,7 @@ function updateComplete2() {
     var url = document.getElementsByClassName("url")[1].value;
     var access = document.getElementsByClassName("access")[1].value;
     var complete = document.getElementsByClassName("complete")[1];
+	var completeDispElement = document.getElementsByClassName("complete_disp")[1];
 
     var accessText = access !== '' ? "(" + '閲覧日:' + access + ')' + ' ' : '';// 「閲覧日」の表示を制御する
     var urlText = url !== '' ? url + '' + ' ' : '';// URLの表示を制御する
@@ -68,6 +72,8 @@ function updateComplete2() {
     if (auther01 === '') {
         complete.value = headingText + nameText + dateText + urlText + accessText;
     }
+	// ここでcomplete_dispの内容を更新
+	completeDispElement.textContent = complete.value;
 }
 
 //サイト内の記事から参照
@@ -86,6 +92,7 @@ function updateComplete3() {
     var url = document.getElementsByClassName("url")[2].value;
     var access = document.getElementsByClassName("access")[2].value;
     var complete = document.getElementsByClassName("complete")[2];
+	var completeDispElement = document.getElementsByClassName("complete_disp")[2];
 
     var accessText = access !== '' ? "(" + '閲覧日:' + access + ')' + ' ' : '';// 「閲覧日」の表示を制御する
     var urlText = url !== '' ? url + "," + ' ' : '';// URLの表示を制御する
@@ -111,6 +118,8 @@ function updateComplete3() {
     if (nonEmptyAuthors.length === 0) {
         complete.value = headingText + nameText + dateText + urlText + accessText;
     }
+	// ここでcomplete_dispの内容を更新
+	completeDispElement.textContent = complete.value;
 }
 
 //オンラインジャーナルから参照
@@ -127,6 +136,7 @@ function updateComplete4() {
     var page = document.getElementsByClassName("page")[0].value;
     var page02 = document.getElementsByClassName("page02")[0].value;
     var complete = document.getElementsByClassName("complete")[3];
+	var completeDispElement = document.getElementsByClassName("complete_disp")[3];
 
     var accessText = access !== '' ? "(" + '閲覧日:' + access + ')' + ' ' : '';// 「閲覧日」の表示を制御する
     var urlText = url !== '' ? url + "," + ' ' : '';// URLの表示を制御する
@@ -158,5 +168,6 @@ function updateComplete4() {
         var pageText = page !== '' ? 'p' + page + '.' + ' ' : ''; // 初めのページ番号
         complete.value = auther01Text + dateText + thesisText + mediumText + volumText + numberText + nameText + pageText + urlText + accessText;
     }
-
+	// ここでcomplete_dispの内容を更新
+	completeDispElement.textContent = complete.value;
 }

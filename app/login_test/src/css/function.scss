@@ -106,6 +106,21 @@ nav,
 section {
     display: block;
 }
+.is_pc {
+    display: block;
+}
+.is_sp {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .is_sp {
+        display: block;
+    }
+    .is_pc {
+        display: none;
+    }
+}
+
 body {
     line-height: 1;
 }
@@ -128,9 +143,16 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+html {
+    scroll-padding-top: 40px;
+}
 body {
     font-family: "Noto Serif JP", serif;
     line-height: 1.6;
+    background-color: #f5f5f5;
+}
+body.act_hidden {
+    overflow: hidden;
 }
 input {
     font-family: "Noto Serif JP", serif;
@@ -143,4 +165,10 @@ a {
 }
 .mb_24 {
     margin-bottom: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        scroll-padding-top: 160px;
+    }
 }
