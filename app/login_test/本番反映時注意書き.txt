@@ -2,7 +2,6 @@
 ・common.php
 ・register.php
 ・login.php(headerlocationのパラメーターを必要に応じて)
-・mail.php （header("location: ./index.php?mailFalse_message="の相対パス　（もとは../だったけどこのままでオッケー）
 ・#index01がないときに本とWeb両方が選択される問題（script.js）
 
 
