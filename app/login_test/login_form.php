@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -6,15 +6,25 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-</head>
+</head> -->
 
-<body>
-    <div class="wrap">
-        <form action="login.php" method="GET">
-            <!--送信エラー時に入力値が消えないようにvalueを設定-->
-            <input type="text" name="user_mail" placeholder="メールアドレス"
-                value="<?php echo isset($_GET['user_mail']) ? htmlspecialchars($_GET['user_mail']) : ''; ?>"><br>
-            <?php
+<!-- <body>
+    <div class="wrap"> -->
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/side.php'; ?>
+
+<main class="login_form">
+    <div class="decoration">
+        <p>Source Pack</p>
+    </div>
+
+
+    <form action="login.php" method="GET">
+        <h2 class="common_ttl">ログイン</h2>
+        <!--送信エラー時に入力値が消えないようにvalueを設定-->
+        <input type="text" name="user_mail" placeholder="メールアドレス"
+            value="<?php echo isset($_GET['user_mail']) ? htmlspecialchars($_GET['user_mail']) : ''; ?>">
+        <?php
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "メールアドレスが違います") {
@@ -22,7 +32,7 @@
                         }
                     }
                 ?>
-            <?php
+        <?php
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "メールアドレスを入力してください") {
@@ -30,8 +40,8 @@
                         }
                     }
                 ?>
-            <input type="text" name="user_pass" placeholder="パスワード"><br>
-            <?php
+        <input type="text" name="user_pass" placeholder="パスワード">
+        <?php
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "パスワードが違います") {
@@ -39,7 +49,7 @@
                         }
                     }
                 ?>
-            <?php
+        <?php
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "パスワードを入力してください") {
@@ -47,9 +57,11 @@
                         }
                     }
                 ?>
-            <input type="submit">
-        </form>
-    </div>
+        <input type="submit">
+    </form>
+</main>
+<?php include 'includes/footer.php'; ?>
+<!-- </div>
 </body>
 
-</html>
+</html> -->

@@ -6,7 +6,6 @@
 .wrap main {
   width: 100%;
   margin: 40px 0px 0px 40px;
-  position: relative;
   overflow: hidden;
 }
 .wrap main section {
@@ -95,12 +94,15 @@
   background: none;
   color: #757e95;
 }
+.wrap main input[type=submit] {
+  cursor: pointer;
+}
 .wrap main .decoration {
   width: 920px;
   transform: rotate(90deg);
   position: absolute;
-  top: 385px;
-  right: -400px;
+  top: 405px;
+  right: -391px;
   line-height: 1;
   overflow: hidden;
 }
@@ -109,10 +111,59 @@
   font-weight: bold;
   color: #ffffff;
 }
+.wrap main .message_active {
+  padding: 28px 40px;
+  width: 463px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: #f5f5f5;
+  box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+  color: #757e95;
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrap main .message_active h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+.wrap main .message_active p {
+  font-size: 16px;
+}
+.wrap main .message_active p:not(:last-child) {
+  margin-bottom: 20px;
+}
+.wrap main .message_active .close {
+  position: absolute;
+  right: 22px;
+  top: -19px;
+  cursor: pointer;
+}
+.wrap main .message_active .close:before, .wrap main .message_active .close:after {
+  content: "";
+  background-color: #757e95;
+  width: 25px;
+  height: 3px;
+  display: block;
+  position: absolute;
+}
+.wrap main .message_active .close:before {
+  transform: rotate(45deg);
+}
+.wrap main .message_active .close:after {
+  transform: rotate(-45deg);
+}
 .wrap .common_ttl {
   font-size: 20px;
   margin-bottom: 32px;
   font-weight: bold;
+}
+.wrap .form_des {
+  margin-bottom: 40px;
 }
 .wrap .other_pattern {
   margin-bottom: 48px;
@@ -164,7 +215,7 @@
     width: 100%;
   }
   .wrap main .decoration {
-    top: 1045px;
+    display: none;
   }
   .wrap .other_pattern {
     justify-content: space-between;

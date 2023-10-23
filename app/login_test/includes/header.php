@@ -20,3 +20,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
 </head>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<body>
+    <div class="modal"></div>
+    <div class="wrap">

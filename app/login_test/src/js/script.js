@@ -102,3 +102,15 @@ $(window).on('popstate', function() {
 });
 
 });
+
+$(document).ready(function() {
+    // ページが読み込まれたときの処理
+
+    // 「<div class="message">」の中に子要素があるか確認
+    if ($('.message').children('p').length > 0) {
+      // 子要素がある場合、<main>に「modal_active」クラスを追加
+      $('.modal').addClass('modal_active');
+      $('.message').addClass('message_active');
+      $('body').addClass('overflow_active');
+    }
+  });

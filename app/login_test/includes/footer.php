@@ -31,3 +31,8 @@ if ('serviceWorker' in navigator) {
     });
 }
 </script>
+
+</div><!-- wrap終了 -->
+</body>
+
+</html>

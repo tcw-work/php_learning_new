@@ -1,26 +1,7 @@
 <aside>
     <div class="side">
         <div class="side_wrap">
-            <div class="message">
-                <?php
-			if (isset($_GET['correct_message'])) {//regiter.phpから
-				$correct_message = urldecode($_GET['correct_message']);
-				echo "<p>" . "登録メールを送りました！" . "</p>";
-			}
-			if (isset($_GET['activate_message'])) {//acivate.phpから
-				$activate_message = urldecode($_GET['activate_message']);
-				echo "<p>" . "登録が完了しました！" . "</p>";
-			}
-			if (isset($_GET['mailTrue_message'])) {//mail.phpから
-				$mailTrue_message = urldecode($_GET['mailTrue_message']);
-				echo "<p>" . "メールを送信しました！" . "</p>";
-			}
-			if (isset($_GET['mailFalse_message'])) {//mail.phpから
-				$mailFalse_message = urldecode($_GET['mailFalse_message']);
-				echo "<p>" . "メール送信に失敗しました..." . "</p>";
-			}
-			?>
-            </div>
+
             <div class="side_parents side_parents_mainTtl">
                 <h1 class="ttl f_24"><a href="/coding/local_coding/php_learning/app/login_test/">Suorce Pack</a>
                     <span class="triangle is_sp"></span>
@@ -30,7 +11,8 @@
             <div class="side_parents side_parents_session">
                 <div class="login">
                     <?php
-					include 'common/session.php';//ログイン前後の出し分けを要素を管理
+                    include __DIR__ . '/../common/session.php';//ログイン前後の出し分けを要素を管理
+                    // __DIR__ は、そのファイルが存在するディレクトリの絶対パス（下層ページでも表示できる）
 					session_part_01($script);
 				?>
                 </div>
@@ -64,7 +46,7 @@
                 <p class="side_childrens web_trigger web_trigger01"><a href="web.php#web01">WEBサイト(全体)から出典する場合</a>
                 </p>
                 <p class="side_childrens web_trigger web_trigger02"><a href="web.php#web02">サイト内の記事・論文を出典する場合</a></p>
-                <p class="side_childrens web_trigger web_trigger03"><a href="web.php#web03">>作者が複数のサイト内の記事・論文を出典する場合</a>
+                <p class="side_childrens web_trigger web_trigger03"><a href="web.php#web03">作者が複数のサイト内の記事・論文を出典する場合</a>
                 </p>
                 <p class="side_childrens web_trigger web_trigger04"><a href="web.php#web04">オンラインジャーナルから出典する場合</a></p>
             </div>

@@ -1,24 +1,10 @@
-<?php
-//-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include '../common/db.php';
+<?php include '../includes/header.php'; ?>
+<?php include '../includes/side.php'; ?>
 
-require_once '../common/session.php';//ログイン前後の出し分けを要素を管理
-session_part_01($script);
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-    <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
-</head>
-
-<body>
-
+<main class="login_form">
+    <div class="decoration">
+        <p>Source Pack</p>
+    </div>
     <form action="library_data.php" method="GET" class="myForm">
         <input type="text" name="bookTitle" placeholder="キーワードを入力">
         <input type="submit">
@@ -31,6 +17,5 @@ session_part_01($script);
     <script>
     ajaxSubmit('.myForm', "library_data.php");
     </script> -->
-</body>
-
-</html>
+</main>
+<?php include '../includes/footer.php'; ?>
