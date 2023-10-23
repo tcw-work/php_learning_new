@@ -10,7 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="src/css/style.css">
+    <!-- <link rel="stylesheet" href="src/css/style.css"> -->
+
+
+    <link rel="stylesheet" href="http://localhost:8081/src/css/style.css">
+
     <link rel="stylesheet" href="src/css/side.css">
     <link rel="stylesheet" href="src/css/function.css">
     <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>

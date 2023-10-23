@@ -3,7 +3,7 @@
         <div class="side_wrap">
 
             <div class="side_parents side_parents_mainTtl">
-                <h1 class="ttl f_24"><a href="/coding/local_coding/php_learning/app/login_test/">Suorce Pack</a>
+                <h1 class="ttl f_24"><a href="http://localhost:8081/">Suorce Pack</a>
                     <span class="triangle is_sp"></span>
                 </h1>
             </div>

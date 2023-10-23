@@ -68,7 +68,7 @@ if (!empty($user_mail) && !empty($user_name) && !empty($user_pass)) {//メルア
             $from_mail = "tomizawa@t-creative-works.com";//インスタンス作成時に__constructに入れる引数（送りてのアドレス）
             $mailSender = new MailSender($from_mail);//mail.phpの内容はクラスで作られているので、インスタンス化
             $mailSender->subject = "アカウント認証メール";//公開（public）プロパティに値を渡す（件名代入）
-            $activation_url = "http://192.168.11.6/coding/local_coding/php_learning/app/login_test/activate.php?key={$activation_key}&unique={$user_id}"; // アクティベーションリンク（処理はactivate.phpへ）
+            $activation_url = "http://localhost:8081/activate.php?key={$activation_key}&unique={$user_id}"; // アクティベーションリンク（処理はactivate.phpへ）
             $mailSender->setContent("アカウントを有効化するには、以下のリンクをクリックしてください：{$activation_url}");//setContent というメソッドを呼び出し、その引数としてメールのリンク付き本文を渡す（本文代入）
             $mailSender->send($user_name, $user_mail);//メソッドを呼び出し、引数として値を渡す（引数をセットして関数実行）
             //※()があればメソッド呼び出し、なければプロパティへ値を渡すということ
