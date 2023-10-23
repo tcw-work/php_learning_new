@@ -101,6 +101,43 @@
         }
         input[type="submit"] {
             cursor: pointer;
+            border-radius: 24px;
+            background: #f5f5f5;
+            color: #757e95;
+            box-shadow:
+                6px 6px 12px 0px rgba(208, 208, 208, 0.7),
+                -6px -6px 12px 0px rgba(255, 255, 255, 0.7);
+        }
+        form.btn_two {
+            display: flex;
+            input[type="submit"] {
+                margin-left: 24px;
+            }
+        }
+        .lib_btn {
+            width: 100%;
+            margin-bottom: 120px;
+            display: flex;
+            a {
+                display: block;
+                cursor: pointer;
+                border-radius: 24px;
+                background: #f5f5f5;
+                color: #757e95;
+                box-shadow:
+                    6px 6px 12px 0px rgba(208, 208, 208, 0.7),
+                    -6px -6px 12px 0px rgba(255, 255, 255, 0.7);
+                width: 320px;
+                padding: 8px 14px;
+                margin-bottom: 20px;
+                border: none;
+                box-sizing: border-box;
+                font-size: 16px;
+                text-align: center;
+                &:last-child {
+                    margin-left: 24px;
+                }
+            }
         }
         .decoration {
             width: 920px;
@@ -218,6 +255,37 @@
             background: #e9eaf0;
         }
     }
+    #response-message {
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        .lib_parent {
+            margin-right: 60px;
+            width: 320px;
+            border-radius: 24px;
+            background: #f5f5f5;
+            box-shadow:
+                18px 18px 36px 0px rgba(208, 208, 208, 0.7),
+                -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            margin-left: 0px;
+            padding: 28px 20px;
+            box-sizing: border-box;
+        }
+        .lib_cont {
+            display: flex;
+            word-break: break-all;
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+        .lib_child1 {
+            min-width: 84px;
+        }
+        .lib_child2 {
+            margin-left: 5px;
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -244,6 +312,25 @@
                 width: 48%;
                 height: auto;
                 margin-right: 0px;
+            }
+        }
+        #response-message {
+            display: block;
+            .lib_parent {
+                width: 100%;
+                margin-right: 0px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .wrap {
+        main {
+            form.btn_two {
+                display: block;
+                input[type="submit"] {
+                    margin-left: 0px;
+                }
             }
         }
     }

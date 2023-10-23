@@ -21,6 +21,7 @@
 
     <form action="login.php" method="GET">
         <h2 class="common_ttl">ログイン</h2>
+        <p class="form_des">テキストテキストテキストテキストテキスト</p>
         <!--送信エラー時に入力値が消えないようにvalueを設定-->
         <input type="text" name="user_mail" placeholder="メールアドレス"
             value="<?php echo isset($_GET['user_mail']) ? htmlspecialchars($_GET['user_mail']) : ''; ?>">

@@ -19,7 +19,7 @@ class GeneratesCounter {//文言を使いまわせるようにクラスで作成
         //値をアクション実行ではなく、値を設定する場合は戻り値をつける（それ以外はtrueもしくは省略、falseでOK）
     }
 
-    public function displayTotalGenerates($messageFormat = '<div class="side_childrens"><a href="profile.php" class="link">現在の保存履歴：%d個！</a></div>') {//インスタンス作成後に呼び出される処理
+    public function displayTotalGenerates($messageFormat = '<div class="side_childrens"><a href="/profile.php" class="link">現在の保存履歴：%d個！</a></div>') {//インスタンス作成後に呼び出される処理
         //$messageFormat = "<p>自作回数：%d</p>"はデフォルト引数として設定しているので、呼び出しもとでは引数をセットしないようにする
         $total_generates = $this->getTotalGenerates();//getTotalGenerates();で作ったカウント結果を取得
         echo sprintf($messageFormat, $total_generates);//sprintf関数により$messageFormatの%d（sprintf関数の機能の一部で、書式指定子という）は$total_generates（カウント結果）に置き換わる

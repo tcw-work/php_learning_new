@@ -1,3 +1,6 @@
+<?php include __DIR__ . '/../config.php'; ?>
+<!-- 検証と本番でパスの出し分け -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -13,10 +16,10 @@
     <!-- <link rel="stylesheet" href="src/css/style.css"> -->
 
 
-    <link rel="stylesheet" href="http://localhost:8081/src/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL . '/src/css/style.css'; ?>">
 
-    <link rel="stylesheet" href="src/css/side.css">
-    <link rel="stylesheet" href="src/css/function.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL . '/src/css/side.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . '/src/css/function.css'; ?>">
     <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
     <link rel="manifest" href="manifest.json">
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>

@@ -1,41 +1,23 @@
-<?php
-//-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include '../common/db.php';
-require_once '../common/session.php';//ログイン前後の出し分けを要素を管理
-session_part_01($script);
-?>
+<?php include __DIR__ . '/../includes/header.php';?>
+<?php include __DIR__ . '/../includes/side.php';?>
 
-<!DOCTYPE html>
-<html lang="ja">
+<main class="liburary_data">
+    <div class="decoration">
+        <p>Source Pack</p>
+    </div>
 
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-    <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
-</head>
-
-<body>
-
-    <form action="library_data.php" method="GET" class="myForm">
+    <h2 class="common_ttl">書籍情報をタイトルから検索する</h2>
+    <p class="form_des">国立国会図書館の....テキストテキストテキストテキストテキスト</p>
+    <form action="library_data.php" method="GET" class="myForm_liburary btn_two">
         <input type="text" name="bookTitle" placeholder="キーワードを入力">
         <input type="submit">
     </form>
 
     <!-- 出力結果表示エリア -->
-    <div id="response-message"></div>
+    <div id="response-message">
 
-    <script src="../src/js/ajax.js"></script>
-    <!-- <script>
-    ajaxSubmit('.myForm', "library_data.php");
-    </script> -->
-</body>
-
-</html>
-
-<?php
-$recordsPerPage = 10; // 1ページあたりの表示数を設定
+        <?php
+$recordsPerPage = 12; // 1ページあたりの表示数を設定
 $page = (isset($_GET["page"]) && is_numeric($_GET["page"])) ? intval($_GET["page"]) : 1; // ページ番号を取得、無ければ1を設定（pageパラメーターは後ほど設定）
 $startRecord = ($page - 1) * $recordsPerPage + 1; // 開始レコードを計算
 //現在のページ番号から1を引いた数に1ページ当たりのレコード数を掛けて、前のページまでに表示されるべき全レコード数が計算
@@ -112,14 +94,17 @@ if(isset($xml->records->record)){//isset()関数で$xml->recordsが存在して�
         $issued = (string)$sample->children('http://purl.org/dc/terms/')->issued;
         //上記は別の名前空間が使われている。dcterms（発行日の直前）とxmlns:dcterms（名前空間の直前）が一致しているか否かで入力する文字列を判断すればオッケー
         $identifier = (string)$sample->children('http://purl.org/dc/elements/1.1/')->identifier;
-        echo "Title: {$title}<br>";
-        echo "Author: {$creator}<br>";
-        echo "publisher: {$publisher}<br>";
-        echo "issued: {$issued}<br>";
-        echo "identifier: {$identifier}<br>";
+        echo "<div class='lib_parent'>";
+            echo "<div class='lib_cont'><p class='lib_child1'>Title : </p><p class='lib_child2'>{$title}</p></div>";
+            echo "<div class='lib_cont'><p class='lib_child1'>Author :</p> <p class='lib_child2'>{$creator}</p></div>";
+            echo "<div class='lib_cont'><p class='lib_child1'>publisher :</p> <p class='lib_child2'>{$publisher}</p></div>";
+            echo "<div class='lib_cont'><p class='lib_child1'>issued :</p> <p class='lib_child2'>{$issued}</p></div>";
+            // echo "<div class='lib_cont'><p class='lib_child1'>identifier :</p> <p class='lib_child2'>{$identifier}</p></div>";
+        echo "</div>";
 
         $recordCount++; // レコードを処理するたびにカウントを増やす
     }
+    echo "<div class='lib_btn'>";
     // 結果の表示後にページングボタンを生成
     if ($page > 1) {//ページパラメーターが1以上なら
         echo '<a href="?bookTitle=' . urlencode($bookTitle) . '&page=' . ($page - 1) . '" id="prev-button">前のページ</a>';
@@ -128,11 +113,17 @@ if(isset($xml->records->record)){//isset()関数で$xml->recordsが存在して�
     if ($recordCount >= $recordsPerPage) {
         echo '<a href="?bookTitle=' . urlencode($bookTitle) . '&page=' . ($page + 1) . '" id="next-button">次のページ</a>';
     }
+    echo "</div>";
 }else{
     echo "検索結果が見つかりませんでした。単語や余分な空欄が入っていいないなどを確認してください・";
 }
-
-
-
-
 ?>
+
+    </div>
+</main>
+<!-- <script src="../src/js/ajax.js"></script> -->
+<!-- <script>
+    ajaxSubmit('.myForm', "library_data.php");
+    </script> -->
+
+<?php include __DIR__ . '/../includes/footer.php';?>

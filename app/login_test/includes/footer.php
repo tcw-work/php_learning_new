@@ -1,8 +1,8 @@
 <!-- firebaseトークン確認用 -->
 <p id="token-display">Loading...</p>
-<script src="src/js/ajax.js"></script>
-<script src="push.js"></script>
-<script src="src/js/script.js"></script>
+<script src="<?php echo BASE_URL . '/src/js/ajax.js'; ?>"></script>
+<script src="<?php echo BASE_URL . '/push.js'; ?>"></script>
+<script src="<?php echo BASE_URL . '/src/js/script.js'; ?>"></script>
 
 <script>
 ajaxSubmit('.myForm', "function/save.php");

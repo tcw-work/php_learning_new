@@ -40,7 +40,7 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
             header("Location: $script"); // ログアウト後にページをリダイレクト（これが無いとリロードすると何も表示されなくなる）
             exit();
         }
-        echo  '<div class="side_childrens ttl2">' . $_SESSION["login"]["user_name"] . '様' . '</div>';
+        echo  '<div class="side_childrens ttl2">' . $_SESSION["login"]["user_name"] . ' 様' . '</div>';
         echo '<div class="side_childrens">' . 'UserID: ' . $_SESSION["login"]["user_id"] . '</div>'; // セッションIDとユーザーIDがリンクしているかを表示して確認
 
         $user_id = $_SESSION["login"]["user_id"];
@@ -72,8 +72,8 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
     // ログアウト状態（セッション変数になにも入っていない場合の表示）＝新規ユーザー向け
     $state = new State("ログインしていない");//クラスのインスタンス実行
     echo '<div class="side_childrens">ゲストユーザー様</div>';
-    echo '<div class="side_childrens"><a href="login_form.php" class="link">ログインする</a></div>';
-    echo '<div class="side_childrens"><a href="register_form.php">新規登録する</a></div>';
+    echo '<div class="side_childrens"><a href="' . BASE_URL . '/login_form.php" class="link">ログインする</a></div>';
+     echo '<div class="side_childrens"><a href="' . BASE_URL . '/register_form.php">新規登録する</a></div>';
 }
 
 
