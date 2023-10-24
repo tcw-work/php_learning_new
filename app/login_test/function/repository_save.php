@@ -15,7 +15,7 @@ $user_id = $_SESSION["login"]["user_id"];
                 //$itemはArray([0] => "item1", [1] => "item3")のように配列変数となっているので、insertに$itemをセットすれば一括保存ができるといった仕組みになっている
 
                 if (isItemSaved($db, $user_id, $item)) {//「もし$db, $user_id, $itemの組み合わせが既にデータベースに存在するなら…（item_check.php）
-                    header("location: ../record.php?correct_message=". urlencode("{$item}" . " " . "は既に保存されています。"));
+                    header("location: ../record.php?correct_message=". urlencode("既に{$item}は保存されています。"));
                 } else {
                     $count_query = "SELECT COUNT(*) FROM favorites WHERE user_id = '$user_id'";//sessionからuser_idを参照してfavaritesテーブルを選択
                     $count_result = $db->query($count_query)->fetchColumn();//dbからクエ実行。PDOStatementオブジェクトのfetchColumnメソッドは、次の行から単一のカラムをす
@@ -31,7 +31,7 @@ $user_id = $_SESSION["login"]["user_id"];
                         $update_query = "UPDATE favorites SET goods = goods + 1 WHERE favorite_id = '$favorite_id'";//保存処理が走るたびに、そのfavorite_idを持つgoodsをインクリメント
                         $db->exec($update_query); // UPDATEクエリを実行
     
-                        header("location: ../record.php?correct_message=". urlencode("{$item}". " " . "を保存しました"));
+                        header("location: ../record.php?correct_message=". urlencode("{$item}を保存しました"));
     
                     }
                 }

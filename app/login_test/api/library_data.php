@@ -1,25 +1,25 @@
-<?php include __DIR__ . '/../includes/header.php';?>
-<?php include __DIR__ . '/../includes/side.php';?>
+    <?php include __DIR__ . '/../includes/header.php';?>
+    <?php include __DIR__ . '/../includes/side.php';?>
 
-<main class="liburary_data">
+    <main class="liburary_data">
 
-    <h2 class="common_ttl">書籍情報をタイトルから検索する</h2>
+        <h2 class="common_ttl">書籍情報をタイトルから検索する</h2>
 
 
-    <div class="form_des">
-        <p>本の名前はわかるが手元に著書がない場合、こちらで本の名前を入力するだけで、作者名、出版社、発行日を検索することができます。</p>
-        <p>日本最大の蔵書数を誇る、国立国会図書館のデータからお探しの作品情報を提供します。</p>
-        <p>本の名前を一部だけ入力するよりも、なるべくフルネームで入力した方が、より詳細な情報をサーチすることできます。</p>
-    </div>
-    <form action="library_data.php" method="GET" class="myForm_liburary btn_two">
-        <input type="text" name="bookTitle" placeholder="キーワードを入力">
-        <input type="submit">
-    </form>
+        <div class="form_des">
+            <p>本の名前はわかるが手元に著書がない場合、こちらで本の名前を入力するだけで、作者名、出版社、発行日を検索することができます。</p>
+            <p>日本最大の蔵書数を誇る、国立国会図書館のデータからお探しの作品情報を提供します。</p>
+            <p>本の名前を一部だけ入力するよりも、なるべくフルネームで入力した方が、より詳細な情報をサーチすることできます。</p>
+        </div>
+        <form action="library_data.php" method="GET" class="myForm_liburary btn_two">
+            <input type="text" name="bookTitle" placeholder="キーワードを入力">
+            <input type="submit">
+        </form>
 
-    <!-- 出力結果表示エリア -->
-    <div id="response-message">
+        <!-- 出力結果表示エリア -->
+        <div id="response-message">
 
-        <?php
+            <?php
 $recordsPerPage = 12; // 1ページあたりの表示数を設定
 $page = (isset($_GET["page"]) && is_numeric($_GET["page"])) ? intval($_GET["page"]) : 1; // ページ番号を取得、無ければ1を設定（pageパラメーターは後ほど設定）
 $startRecord = ($page - 1) * $recordsPerPage + 1; // 開始レコードを計算
@@ -122,11 +122,11 @@ if(isset($xml->records->record)){//isset()関数で$xml->recordsが存在して�
 }
 ?>
 
-    </div>
-</main>
-<!-- <script src="../src/js/ajax.js"></script> -->
-<!-- <script>
+        </div>
+    </main>
+    <!-- <script src="../src/js/ajax.js"></script> -->
+    <!-- <script>
     ajaxSubmit('.myForm', "library_data.php");
     </script> -->
 
-<?php include __DIR__ . '/../includes/footer.php';?>
+    <?php include __DIR__ . '/../includes/footer.php';?>
