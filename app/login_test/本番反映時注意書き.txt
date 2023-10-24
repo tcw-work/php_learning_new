@@ -4,6 +4,9 @@
 ・login.php(headerlocationのパラメーターを必要に応じて)
 ・#index01がないときに本とWeb両方が選択される問題（script.js）
 
+バグ
+・/record.php→保存したときに後、再検索できなくなる
+
 
 ディレクトリ一覧
 

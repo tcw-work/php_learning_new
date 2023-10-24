@@ -14,14 +14,14 @@
 <?php include 'includes/side.php'; ?>
 
 <main class="login_form">
-    <div class="decoration">
-        <p>Source Pack</p>
-    </div>
 
 
     <form action="login.php" method="GET">
-        <h2 class="common_ttl">ログイン</h2>
-        <p class="form_des">テキストテキストテキストテキストテキスト</p>
+        <div class="form_des">
+            <h2 class="common_ttl">ログイン</h2>
+            <p>既に登録済みの方は、こちらからログインしてください。</p>
+            <p>まだ登録が完了していない方は、まずは<a href="register_fiom">こちら</a>から登録を行ってください。</p>
+        </div>
         <!--送信エラー時に入力値が消えないようにvalueを設定-->
         <input type="text" name="user_mail" placeholder="メールアドレス"
             value="<?php echo isset($_GET['user_mail']) ? htmlspecialchars($_GET['user_mail']) : ''; ?>">

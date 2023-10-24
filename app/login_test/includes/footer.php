@@ -9,6 +9,8 @@ ajaxSubmit('.myForm', "function/save.php");
 </script>
 
 
+
+
 <script>
 // Firebase初期化設定 start
 const firebaseConfig = { //firebaseのプロジェクトの設定→マイアプリ→SDK の設定と構成→configに表示されている内容をペースト

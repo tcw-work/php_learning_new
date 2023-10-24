@@ -2,11 +2,28 @@
 .wrap {
   display: flex;
   background-color: #f5f5f5;
+  position: relative;
+}
+.wrap .decoration {
+  width: 920px;
+  transform: rotate(90deg);
+  position: absolute;
+  top: 405px;
+  right: -391px;
+  line-height: 1;
+  overflow: hidden;
+  z-index: 1;
+}
+.wrap .decoration p {
+  font-size: 138px;
+  font-weight: bold;
+  color: #ffffff;
 }
 .wrap main {
   width: 100%;
-  margin: 40px 0px 0px 40px;
+  margin: 40px 40px 0px 40px;
   overflow: hidden;
+  z-index: 9;
 }
 .wrap main section {
   position: relative;
@@ -36,7 +53,7 @@
 }
 .wrap main form .cmp_box {
   max-width: 996px;
-  width: 100%;
+  width: 83%;
   padding: 24px 28px 0px 28px;
   margin-top: 40px;
   margin-bottom: 80px;
@@ -130,20 +147,6 @@
 .wrap main .lib_btn a:last-child {
   margin-left: 24px;
 }
-.wrap main .decoration {
-  width: 920px;
-  transform: rotate(90deg);
-  position: absolute;
-  top: 405px;
-  right: -391px;
-  line-height: 1;
-  overflow: hidden;
-}
-.wrap main .decoration p {
-  font-size: 138px;
-  font-weight: bold;
-  color: #ffffff;
-}
 .wrap main .message_active {
   padding: 28px 40px;
   width: 463px;
@@ -197,6 +200,9 @@
 }
 .wrap .form_des {
   margin-bottom: 40px;
+}
+.wrap .form_des p:not(:last-child) {
+  margin-bottom: 16px;
 }
 .wrap .other_pattern {
   margin-bottom: 48px;
@@ -267,6 +273,9 @@
   .wrap {
     display: block;
   }
+  .wrap .decoration {
+    display: none;
+  }
   .wrap main {
     width: 100%;
     margin: 160px 0px 0px 0px;
@@ -276,8 +285,8 @@
   .wrap main form input {
     width: 100%;
   }
-  .wrap main .decoration {
-    display: none;
+  .wrap main form .cmp_box {
+    width: 100%;
   }
   .wrap .other_pattern {
     justify-content: space-between;

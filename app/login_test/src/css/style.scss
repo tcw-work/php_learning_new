@@ -1,11 +1,30 @@
 .wrap {
     display: flex;
     background-color: #f5f5f5;
+    position: relative;
+    .decoration {
+        width: 920px;
+        transform: rotate(90deg);
+        position: absolute;
+        top: 405px;
+        right: -391px;
+        line-height: 1;
+        overflow: hidden;
+        z-index: 1;
+        // -webkit-transform: translate(-50%, -50%);
+        // transform: translate(-50%, -50%);
+        p {
+            font-size: 138px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    }
     main {
         width: 100%;
-        margin: 40px 0px 0px 40px;
+        margin: 40px 40px 0px 40px;
         // position: relative;
         overflow: hidden;
+        z-index: 9;
         section {
             position: relative;
         }
@@ -37,7 +56,7 @@
             }
             .cmp_box {
                 max-width: 996px;
-                width: 100%;
+                width: 83%;
                 padding: 24px 28px 0px 28px;
                 margin-top: 40px;
                 margin-bottom: 80px;
@@ -139,22 +158,7 @@
                 }
             }
         }
-        .decoration {
-            width: 920px;
-            transform: rotate(90deg);
-            position: absolute;
-            top: 405px;
-            right: -391px;
-            line-height: 1;
-            overflow: hidden;
-            // -webkit-transform: translate(-50%, -50%);
-            // transform: translate(-50%, -50%);
-            p {
-                font-size: 138px;
-                font-weight: bold;
-                color: #ffffff;
-            }
-        }
+
         .message_active {
             padding: 28px 40px;
             width: 463px;
@@ -213,6 +217,11 @@
     }
     .form_des {
         margin-bottom: 40px;
+        p {
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
     }
 
     .other_pattern {
@@ -291,6 +300,10 @@
 @media screen and (max-width: 768px) {
     .wrap {
         display: block;
+        .decoration {
+            display: none;
+            // top: 1045px;
+        }
         main {
             width: 100%;
             margin: 160px 0px 0px 0px;
@@ -300,10 +313,9 @@
                 input {
                     width: 100%;
                 }
-            }
-            .decoration {
-                display: none;
-                // top: 1045px;
+                .cmp_box {
+                    width: 100%;
+                }
             }
         }
         .other_pattern {

@@ -3,9 +3,6 @@
 
 <?php include 'includes/side.php'; ?>
 <main class="register_form.php">
-    <div class="decoration">
-        <p>Source Pack</p>
-    </div>
     <?php //未ログインで検索からお気に入り保存に失敗して飛ばされてきたユーザー
                 if (isset($_GET["error_message"])) {
                     $error_message = $_GET["error_message"];
@@ -16,7 +13,10 @@
         ?>
     <form action="register.php" method="GET">
         <h2 class="common_ttl">新規登録</h2>
-        <p class="form_des">テキストテキストテキストテキストテキスト</p>
+        <div class="form_des">
+            <p>Source Packに登録し、サイトの機能をフル活用しましょう。</p>
+            <p>保存機能や出典の作成・コピーされた回数なども確認することができるようになります。</p>
+        </div>
         <!--送信エラー時に入力値が消えないようにvalueを設定-->
         <input type="text" name="user_mail" placeholder="メールアドレス"
             value="<?php echo isset($_GET['user_mail']) ? htmlspecialchars($_GET['user_mail']) : ''; ?>">

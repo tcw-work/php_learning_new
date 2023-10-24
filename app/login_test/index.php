@@ -27,9 +27,7 @@
 			}
 			?>
     </div>
-    <div class="decoration">
-        <p>Source Pack</p>
-    </div>
+
     <section id="index01" class="index_section">
         <form action="function/save.php" method="GET" class="myForm">
             <h2 class="common_ttl">作者が一人の場合</h2>

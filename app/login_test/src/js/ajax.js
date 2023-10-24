@@ -20,27 +20,36 @@ function ajaxSubmit(formClass, formUrl) {//.myForm、urlの値はそれぞれの
                     //success 関数内で response を使うことで、サーバーから返されたデータにアクセスできる。このデータは、通常、サーバーが行った処理の結果や、新たに生成されたデータなどが含まれる
                     console.log(response); // // 成功時の処理。デバッグ用にレスポンスをコンソールに出力
                     // 特定のパスと一致するか確認して出し分け
-                    if (currentPath === 'http://localhost:8081/' || currentPath === 'http://localhost:8081/index.php' || currentPath === 'http://localhost:8081/web.php') {//トップ成功時
+                    if (currentPath === baseUrl + '/' || currentPath === baseUrl + '/' + 'index.php' || currentPath === baseUrl + '/' + 'web.php') {//トップ成功時
                         alert(response);
                     }
-                    if (currentPath === 'http://localhost:8081/record.php') {//検索履歴成功時
+                    if (currentPath === baseUrl + '/' + 'record.php') {//検索履歴成功時
                         $('#response-message').html(response);
                     }
-                    if (currentPath === 'http://localhost:8081/api/library.php') {//検索履歴成功時
+                    if (currentPath === baseUrl + '/' + 'api/library.php') {//検索履歴成功時
                         $('#response-message').html(response);
                     }
+                    // if (currentPath === 'http://localhost:8081/' || currentPath === 'http://localhost:8081/index.php' || currentPath === 'http://localhost:8081/web.php') {//トップ成功時
+                    // alert(response);
+                    // }
+                    // if (currentPath === 'http://localhost:8081/record.php') {//検索履歴成功時
+                    //     $('#response-message').html(response);
+                    // }
+                    // if (currentPath === 'http://localhost:8081/api/library.php') {//検索履歴成功時
+                    //     $('#response-message').html(response);
+                    // }
                 },
                 error: function(xhr, status, error) {
                     //xhrは404などのステータスコードやレスポンスを、statusはリクエストタイムアウトや中断などの状態、errorはサーバーから返されるNot Foundなどのエラーを表す
                     //success と errorまたは failのようなコールバック関数はajaxでよく使われる
                     console.log(error); // エラー時の処理。デバッグ用にエラー情報をコンソールに出力
-                    if (currentPath === 'http://localhost:8081/' || currentPath === 'http://localhost:8081/index.php' || currentPath === 'http://localhost:8081/web.php') {//トップ
+                    if (currentPath === baseUrl || currentPath === baseUrl + '/' + 'index.php' || currentPath === baseUrl + '/' + 'web.php') {//トップ
                         alert(error);
                     }
-                    if (currentPath === 'http://localhost:8081/record.php') {//検索履歴失敗時
+                    if (currentPath === baseUrl + '/' + 'record.php') {//検索履歴失敗時
                         // $('#response-message').html('An error occurred: ' + error);  // エラーメッセージを表示失敗時
                     }
-                    if (currentPath === 'http://localhost:8081/api/record.php') {//検索履歴失敗時
+                    if (currentPath === baseUrl + '/' + 'api/record.php') {//検索履歴失敗時
                         // $('#response-message').html('An error occurred: ' + error);  // エラーメッセージを表示失敗時
                     }
                 }

@@ -3,11 +3,14 @@
 
 
 <main class="liburary">
-    <div class="decoration">
-        <p>Source Pack</p>
-    </div>
     <h2 class="common_ttl">書籍情報をタイトルから検索する</h2>
-    <p class="form_des">国立国会図書館の....テキストテキストテキストテキストテキスト</p>
+
+    <div class="form_des">
+        <p>本の名前はわかるが手元に著書がない場合、こちらで本の名前を入力するだけで、作者名、出版社、発行日を検索することができます。</p>
+        <p>日本最大の蔵書数を誇る、国立国会図書館のデータからお探しの作品情報を提供します。</p>
+        <p>本の名前を一部だけ入力するよりも、なるべくフルネームで入力した方が、より詳細な情報をサーチすることできます。</p>
+    </div>
+
     <form action="library_data.php" method="GET" class="myForm_liburary btn_two">
         <input type="text" name="bookTitle" placeholder="キーワードを入力">
         <input type="submit">

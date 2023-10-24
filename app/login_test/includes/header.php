@@ -1,6 +1,8 @@
 <?php include __DIR__ . '/../config.php'; ?>
 <!-- 検証と本番でパスの出し分け -->
 
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -26,6 +28,12 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+
+    <script>
+    //js版にも変換
+    var baseUrl = '<?php echo BASE_URL; ?>';
+    console.log(baseUrl);
+    </script>
 </head>
 
 <!DOCTYPE html>
@@ -34,3 +42,6 @@
 <body>
     <div class="modal"></div>
     <div class="wrap">
+        <div class="decoration">
+            <p>Source Pack</p>
+        </div>

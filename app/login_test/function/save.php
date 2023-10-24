@@ -38,12 +38,12 @@ if (isset($_SESSION['login'])) {
             return;
         } 
         if (isItemSaved($db, $user_id, $item)) {//「もし$db, $user_id, $itemの組み合わせが既にデータベースに存在するなら…（item_check.php）
-            echo "既に{$item}は保存されています。";
+            echo "既に{$item}". " " . "は保存されています。";
             return;
         }
         $insert_query = "INSERT INTO favorites (user_id, item) VALUES ('$user_id', '$item')";// データの挿入クエリ
         $result = $db->exec($insert_query);// 挿入クエリを実行
-        echo "{$item}を保存しました";
+        echo "{$item}". " " . "を保存しました";
 
 } else {
     echo '保存するにはログインするか、新規登録を行ってください。';

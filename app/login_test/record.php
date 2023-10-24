@@ -1,30 +1,24 @@
-<?php
-//-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include 'common/db.php';
-require_once 'common/session.php';//ログイン前後の出し分けを要素を管理
-session_part_01($script);
-?>
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/side.php'; ?>
 
-<?php //ログインで検索からお気に入り保存に成功して飛ばされてきたユーザーに表示
+<main class="login_form">
+
+    <h2 class="common_ttl">他のユーザーが作った出典を検索・コピーする</h2>
+
+    <?php //ログインで検索からお気に入り保存に成功して飛ばされてきたユーザーに表示
     if (isset($_GET["correct_message"])) {
         // URLデコードを行い、メッセージを取得
         $correct_message = urldecode($_GET["correct_message"]);// URLエンコードでは、スペースは %20 と表現されるので、rawurldecode() 関数を使用してデコードする
-        echo '<div style="color: red;">' . $correct_message . '</div>';
+        echo '<div class="red mb_32">' . $correct_message . '</div>';
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
+    <div class="form_des">
+        <p>このページでは、これまで他のユーザーが作成したデータをキーワード入力で検索することができます。</p>
+        <p>本の名前、作者名、出版社名からも検索可能ですが、キーワードを一部だけ入力するよりも、なるべく完成形に近い形で入力した方が、より詳細な情報をサーチすることできます。</p>
+        <p>検索結果はご自身の出典としてもコピーすることができます。</p>
+    </div>
 
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-    <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
-</head>
-
-<body>
 
     <form action="function/repository.php" method="GET" class="myForm">
         <input type="text" name="keyword" placeholder="キーワードを入力">
@@ -33,15 +27,10 @@ session_part_01($script);
 
     <!-- 出力結果表示エリア -->
     <div id="response-message"></div>
+</main>
 
 
-    <script src="src/js/ajax.js"></script>
-
-
-    <script>
-    ajaxSubmit('.myForm', "function/repository.php");
-    </script>
-</body>
-
-
-</html>
+<?php include 'includes/footer.php'; ?>
+<script>
+ajaxSubmit('.myForm', "function/repository.php");
+</script>
