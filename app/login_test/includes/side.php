@@ -1,13 +1,11 @@
 <aside>
     <div class="side">
         <div class="side_wrap">
-
             <div class="side_parents side_parents_mainTtl">
                 <h1 class="ttl f_24"><a href="<?php echo BASE_URL . '/'; ?>">Suorce Pack</a>
                     <span class="triangle is_sp"></span>
                 </h1>
             </div>
-
             <div class="side_parents side_parents_session">
                 <div class="login">
                     <?php
@@ -25,7 +23,7 @@
                 <a href="<?php echo BASE_URL . '/record.php'; ?>" class="side_childrens">データベースから検索</a>
                 <a href="<?php echo BASE_URL . '/mail/contact.php'; ?>" class="side_childrens">お問い合わせページ</a>
                 <a href="<?php echo BASE_URL . '/mail/notice_mail.php'; ?>" class="side_childrens">メール一斉送信実行（管理者用）</a>
-                <a href="<?php echo BASE_URL . '/api/library.php'; ?>" class="side_childrens">国立国会図書館データベース</a>
+                <a href="<?php echo BASE_URL . ''; ?>" class="side_childrens">国立国会図書館データベース</a>
             </div>
             <div class="side_parents side_parents_common side_parents_index">
                 <p class="side_childrens ttl2-2"><img src="src/image/side_icon01.png" alt="">著書から出典を作る
@@ -40,7 +38,7 @@
                 <p class="side_childrens index_trigger index_trigger04"><a
                         href="<?php echo BASE_URL . '/index.php#index04'; ?>">論文から出典する場合</a></p>
                 <p class="side_childrens index_trigger index_trigger05"><a
-                        href="index.php#index05">本に掲載された論文から出典する場合</a>
+                        href="<?php echo BASE_URL . '/index.php#index05'; ?>">本に掲載された論文から出典する場合</a>
                 </p>
             </div>
             <div class="side_parents side_parents_common side_parents_web">
@@ -58,11 +56,6 @@
                 <p class="side_childrens web_trigger web_trigger04"><a
                         href="<?php echo BASE_URL . '/web.php#web04'; ?>">オンラインジャーナルから出典する場合</a></p>
             </div>
-            <!--
-			<div class="side_childrens"><a href="register_form.php">新規登録する</a></div>
-			<div class="side_childrens"><p>レベル</p></div>
--->
-
         </div>
     </div>
 </aside>

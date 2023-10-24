@@ -11,7 +11,8 @@ if (isset($_POST['delete_button'])) {//値の入ったボタンがセット（�
         }
 
         $delete_message = "選択したアイテムを削除しました。";
-        header("location:profile.php?delete_message=". urlencode($delete_message));
+        // header("location:profile.php?delete_message=". urlencode($delete_message));//headerだとそれより先にechoなどで要素を表示したりするとエラーが出る（side.phpごされ）
+        echo '<script>window.location.replace("profile.php?delete_message=' . urlencode($delete_message) . '");</script>';//代わりにJSで飛ばす
         exit; // リダイレクト後、スクリプトの実行を停止
     }
 }

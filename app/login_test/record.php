@@ -1,5 +1,6 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/side.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/includes/side.php'; ?>
+
 
 <main class="login_form">
 
@@ -20,7 +21,7 @@
     </div>
 
 
-    <form action="function/repository.php" method="GET" class="myForm">
+    <form action="function/repository.php" method="GET" class="myForm_repository">
         <input type="text" name="keyword" placeholder="キーワードを入力">
         <input type="submit">
     </form>
@@ -29,8 +30,5 @@
     <div id="response-message"></div>
 </main>
 
-
-<?php include 'includes/footer.php'; ?>
-<script>
-ajaxSubmit('.myForm', "function/repository.php");
-</script>
+<?php include __DIR__ . '/includes/footer.php'; ?>
+<?//php include 'includes/footer.php'; ?>

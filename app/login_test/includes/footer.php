@@ -6,9 +6,9 @@
 
 <script>
 ajaxSubmit('.myForm', "function/save.php");
+ajaxSubmit('.myForm_repository', "function/repository.php");
+// ajaxSubmit('.myForm_item_list', "function/delete.php");
 </script>
-
-
 
 
 <script>

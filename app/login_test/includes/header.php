@@ -2,6 +2,8 @@
 <!-- 検証と本番でパスの出し分け -->
 
 
+<!DOCTYPE html>
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -36,8 +38,6 @@
     </script>
 </head>
 
-<!DOCTYPE html>
-<html lang="ja">
 
 <body>
     <div class="modal"></div>
