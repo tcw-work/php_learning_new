@@ -24,19 +24,33 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);//fetchして全レコード抽出
 
 //selectしたデータをループで表示する
 $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
-echo '<form action="function/repository_save.php" method="POST" class="myForm">';//action属性に変数セットする時の書き方　"' . $script . '"
+echo '<form action="function/repository_save.php" method="POST" class="myForm form_long">';//action属性に変数セットする時の書き方　"' . $script . '"
+echo '<div class="record_container">';
 if (empty($results)) { // $resultsが空の場合（結果が0の場合）
     // header("location: ../record.php?correct_message=". urlencode("結果が見つかりませんでした。"));
     echo "結果が見つかりませんでした。";
 } else {
     foreach ($results as $result) {//DBから抽出したキーワードを含む全レコードに対してループを掛けてある分だけだす。foreach(変数, 代入される配列変数)で配列の要素を一つずつ順番に取り出す
-        echo '<input type="checkbox" name="save_items[]" value="'.$result['item'].'">'; // 保存用に送るチェックボックスを表示。
         //name属性に[]を追加することで、複数選択が可能なチェックボックスを作ることができる（後にsave_itemsはforeachループで処理する）
         $_SESSION['favorite_id'][$result['item']] = $result['favorite_id']; // セッションにfavorite_idの値を保存
-        echo $result['item'] . '<br>';
-        echo $result['favorite_id'] . '<br>';
+            // echo $result['favorite_id'] . '<br>';
+            // echo $result['item'] . '<br>';
+        // echo '<input type="checkbox" name="save_items[]" value="'.$result['item'].'">'; // 保存用に送るチェックボックスを表示。
+
+        echo <<< _recordList_
+        <div class="record_box">
+            <div class="record_sum">
+                <p class="record_r_ttl">Result</p>
+                <p>出典ID: {$result['favorite_id']}</p>
+                <p><input type="checkbox" name="save_items[]" value="{$result['item']}"></p>
+            </div>
+            <p class="record_main">{$result['item']}</p>
+        </div>
+_recordList_;
+
     }
-    echo '<input type="submit" name="save_button" value="選択したアイテムを保存">';// 保存ボタンを表示
+    echo '<div class="record_btn"><input type="submit" name="save_button" value="選択したアイテムを保存"></div>';// 保存ボタンを表示
 }
+
 echo '</form>';
 ?>

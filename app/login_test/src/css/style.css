@@ -157,9 +157,9 @@
   color: #757e95;
   z-index: 99;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -20%);
 }
 .wrap main .message_active h2 {
   text-align: center;
@@ -192,6 +192,51 @@
 }
 .wrap main .message_active .close:after {
   transform: rotate(-45deg);
+}
+.wrap main .form_long {
+  max-width: 925px;
+  width: 88%;
+  margin-bottom: 120px;
+}
+.wrap main .form_long .record_box {
+  padding: 28px 16px;
+  max-width: 996px;
+  width: 100%;
+  margin-bottom: 54px;
+  border-radius: 24px;
+  background: #f5f5f5;
+  box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+}
+.wrap main .form_long .record_box:last-child {
+  margin-bottom: 60px;
+}
+.wrap main .form_long .record_box .record_sum {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+.wrap main .form_long .record_box .record_sum p {
+  margin-right: 16px;
+  font-size: 14px;
+}
+.wrap main .form_long .record_box .record_sum p.record_r_ttl {
+  font-size: 18px;
+  font-weight: bold;
+}
+.wrap main .form_long .record_box .record_sum input {
+  margin: 0;
+  width: auto;
+  background: none;
+  box-shadow: none;
+  border: 1px solid #d0d0d0;
+}
+.wrap main .form_long .record_box p.record_main {
+  font-size: 16px;
+}
+.wrap main .form_long .record_btn {
+  display: flex;
+  justify-content: center;
 }
 .wrap .common_ttl {
   font-size: 20px;
@@ -269,6 +314,10 @@
   margin-left: 5px;
 }
 
+.overflow_active .wrap main {
+  z-index: auto;
+}
+
 @media screen and (max-width: 768px) {
   .wrap {
     display: block;
@@ -286,6 +335,14 @@
     width: 100%;
   }
   .wrap main form .cmp_box {
+    width: 100%;
+  }
+  .wrap main .form_long {
+    max-width: 765px;
+    width: 100%;
+  }
+  .wrap main .form_long .record_box {
+    max-width: 765px;
     width: 100%;
   }
   .wrap .other_pattern {

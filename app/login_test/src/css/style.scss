@@ -171,10 +171,9 @@
             color: #757e95;
             z-index: 99;
             position: absolute;
-            top: 50%;
+            top: 20%;
             left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -20%);
             h2 {
                 text-align: center;
                 font-weight: bold;
@@ -207,6 +206,54 @@
                 &:after {
                     transform: rotate(-45deg);
                 }
+            }
+        }
+
+        .form_long {
+            max-width: 925px;
+            width: 88%;
+            margin-bottom: 120px;
+            .record_box {
+                padding: 28px 16px;
+                max-width: 996px;
+                width: 100%;
+                margin-bottom: 54px;
+                border-radius: 24px;
+                background: #f5f5f5;
+                box-shadow:
+                    18px 18px 36px 0px rgba(208, 208, 208, 0.7),
+                    -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+                box-sizing: border-box;
+                &:last-child {
+                    margin-bottom: 60px;
+                }
+                .record_sum {
+                    margin-bottom: 24px;
+                    display: flex;
+                    align-items: center;
+                    p {
+                        margin-right: 16px;
+                        font-size: 14px;
+                    }
+                    p.record_r_ttl {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                    input {
+                        margin: 0;
+                        width: auto;
+                        background: none;
+                        box-shadow: none;
+                        border: 1px solid #d0d0d0;
+                    }
+                }
+                p.record_main {
+                    font-size: 16px;
+                }
+            }
+            .record_btn {
+                display: flex;
+                justify-content: center;
             }
         }
     }
@@ -296,6 +343,13 @@
         }
     }
 }
+.overflow_active {
+    .wrap {
+        main {
+            z-index: auto;
+        }
+    }
+}
 
 @media screen and (max-width: 768px) {
     .wrap {
@@ -314,6 +368,14 @@
                     width: 100%;
                 }
                 .cmp_box {
+                    width: 100%;
+                }
+            }
+            .form_long {
+                max-width: 765px;
+                width: 100%;
+                .record_box {
+                    max-width: 765px;
                     width: 100%;
                 }
             }

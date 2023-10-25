@@ -2,7 +2,7 @@
 <?php include __DIR__ . '/includes/side.php'; ?>
 
 
-<main class="login_form">
+<main class="record_form">
 
     <h2 class="common_ttl">他のユーザーが作った出典を検索・コピーする</h2>
 

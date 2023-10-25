@@ -29,7 +29,7 @@
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "メールアドレスが違います") {
-                            echo '<div style="color: red;">メールアドレスが違います</div>';
+                            echo '<div class="red mb_32">メールアドレスが違います</div>';
                         }
                     }
                 ?>
@@ -37,7 +37,7 @@
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "メールアドレスを入力してください") {
-                            echo '<div style="color: red;">メールアドレスを入力してください</div>';
+                            echo '<div class="red mb_32">メールアドレスを入力してください</div>';
                         }
                     }
                 ?>
@@ -46,7 +46,7 @@
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "パスワードが違います") {
-                            echo '<div style="color: red;">パスワードが違います</div>';
+                            echo '<div class="red mb_32">パスワードが違います</div>';
                         }
                     }
                 ?>
@@ -54,7 +54,7 @@
                     if (isset($_GET["error_message"])) {
                         $error_message = $_GET["error_message"];
                         if ($error_message === "パスワードを入力してください") {
-                            echo '<div style="color: red;">パスワードを入力してください</div>';
+                            echo '<div class="red mb_32">パスワードを入力してください</div>';
                         }
                     }
                 ?>

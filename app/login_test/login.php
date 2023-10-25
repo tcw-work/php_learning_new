@@ -16,7 +16,7 @@ $error_message = array(
 if (!empty($user_mail) && !empty($user_pass)) {//メルアドと、名前、パスワードが空でない場合はtrue処理
 
     //既存ユーザー用処理。もしDBに既にあったら、insertせずにsessionIDだけ持たせる
-    $check_infor = "SELECT * FROM users WHERE user_mail = :user_mail";//sql文でメルアドの入ったカラムとnameやid、passなど横展開している全てのカラムを指定。（* は「すべてのカラム」という意味になるので）。
+    $check_infor = "SELECT * FROM users WHERE user_mail = :user_mail AND is_activated = 1";//sql文でメルアドの入ったカラムとnameやid、pass、メール認証など横展開している全てのカラムを指定。（* は「すべてのカラム」という意味になるので）。
     // {$user_name}で指定すると、「SQLインジェクション」と呼ばれるセキュリティ上の脆弱性を引き起こす
     $stmt = $db->prepare($check_infor);//上記sql文の実行準備
     $stmt->bindParam(':user_mail', $user_mail);//上記のselectのsql文では、まだ特定のユーザーを指定していないので、ここで:user_mail（プレースホルダ）を$user_mail（特定のユーザー）に指定する
