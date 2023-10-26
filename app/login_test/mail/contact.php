@@ -1,27 +1,28 @@
-<?php
-//-----データベースへの接続-----------------------------------------------------------------------------------------------------------------------------------------------------------
-include '../common/db.php';
-require_once '../common/session.php';//ログイン前後の出し分けを要素を管理
-session_part_01($script);
-?>
+<?php include __DIR__ . '/../includes/header.php';?>
+<?php include __DIR__ . '/../includes/side.php';?>
 
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-    <script src="https://corporate.t-creative-works.com/js/jquery-3.5.0.min.js"></script>
-</head>
 
-<form id="contact" method="post" action="contact_send.php">
-    <input type="text" id="c_name" name="c_name" placeholder="名前（必須）">
-    <input type="text" id="c_mail" name="c_mail" placeholder="メールアドレス（必須）">
-    <span id="mail_error" style="color: red; display: none;">メールアドレスが不正です</span>
-    <textarea class="input" id="c_content" name="c_content" rows="7" placeholder="お問い合わせ内容（必須）"></textarea>
-    <input type="submit" value="送信する" id="submit_button" disabled>
-</form>
+<main class="contact">
+    <h2 class="common_ttl">お問い合わせ</h2>
 
-<script>
+    <div class="form_des">
+        <p>不具合等が発生した場合や、お困りごとがあります場合はこちらのフォームからご連絡ください。</p>
+        <p>メッセージのご返答には数日掛かる場合がございます。ご了承ください。</p>
+    </div>
+    <form id="contact" method="post" action="contact_send.php">
+        <input type="text" id="c_name" name="c_name" placeholder="名前（必須）">
+        <input type="text" id="c_mail" name="c_mail" placeholder="メールアドレス（必須）">
+        <span id="mail_error" style="color: red; display: none;">メールアドレスが不正です</span>
+        <textarea class="input" id="c_content" name="c_content" rows="7" placeholder="お問い合わせ内容（必須）"></textarea>
+        <input type="submit" value="送信する" id="submit_button" disabled>
+</main>
+
+<!-- <script src="../src/js/ajax.js"></script>
+    <script>
+    ajaxSubmit('.myForm', "library_data.php");
+    </script> -->
+
+<!-- <script>
 var nameInput = document.getElementById('c_name');
 var mailInput = document.getElementById('c_mail');
 var contentInput = document.getElementById('c_content');
@@ -43,4 +44,6 @@ function validateInputs() {
 nameInput.addEventListener('input', validateInputs);
 mailInput.addEventListener('input', validateInputs);
 contentInput.addEventListener('input', validateInputs);
-</script>
+</script> -->
+
+<?php include __DIR__ . '/../includes/footer.php';?>

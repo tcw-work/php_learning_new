@@ -29,6 +29,19 @@
             position: relative;
         }
         form {
+            textarea {
+                width: 320px;
+                height: 320px;
+                border-radius: 24px;
+                color: #757e95;
+                border: none;
+                background: #f5f5f5;
+                box-shadow:
+                    6px 6px 12px 0px rgba(208, 208, 208, 0.7) inset,
+                    -6px -6px 12px 0px rgba(255, 255, 255, 0.7) inset;
+                padding: 26px 16px;
+                box-sizing: border-box;
+            }
             input {
                 width: 320px;
                 // height: 35px;
@@ -133,6 +146,7 @@
                 margin-left: 24px;
             }
         }
+
         .lib_btn {
             width: 100%;
             margin-bottom: 120px;
@@ -158,8 +172,11 @@
                 }
             }
         }
-
+        .message {
+            display: none;
+        }
         .message_active {
+            display: block;
             padding: 28px 40px;
             width: 463px;
             flex-shrink: 0;
@@ -368,6 +385,9 @@
                     width: 100%;
                 }
                 .cmp_box {
+                    width: 100%;
+                }
+                textarea {
                     width: 100%;
                 }
             }

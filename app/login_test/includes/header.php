@@ -30,7 +30,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.prod.js"></script>
     <script>
     //js版にも変換
     var baseUrl = '<?php echo BASE_URL; ?>';
@@ -39,9 +39,12 @@
 </head>
 
 
-<body>
-    <div class="modal"></div>
-    <div class="wrap">
-        <div class="decoration">
-            <p>Source Pack</p>
-        </div>
+<body class="overflow_none" :class="{ 'overflow_active': hasMessage }">
+    <div id="modal_mount">
+        <!-- modal用Vueインスタンスstart -->
+        <!-- プロパティ名:値　で定義 -->
+        <div class="modal" :class="{ 'modal_active': hasMessage }"></div>
+        <div class="wrap">
+            <div class="decoration">
+                <p>Source Pack</p>
+            </div>

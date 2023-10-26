@@ -32,10 +32,10 @@ class MailSender {
 
         if ($r) {//送信確認用
             $mailTrue_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
-            header("location: ./index.php?mailTrue_message=" . urlencode($mailTrue_message));// ページをリロードする
+            header("location: ../index.php?mailTrue_message=" . urlencode($mailTrue_message));// ページをリロードする
         } else {
             $mailFalse_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
-            header("location: ./index.php?mailFalse_message=" . urlencode($mailFalse_message));// ページをリロードする
+            header("location: ../index.php?mailFalse_message=" . urlencode($mailFalse_message));// ページをリロードする
         }
     }
 }

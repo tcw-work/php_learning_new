@@ -103,13 +103,37 @@ $(window).on('popstate', function() {
 
 });
 
-// messageの中があるか否かで分岐
-$(document).ready(function() {// ページが読み込まれたときの処理
-    // 「<div class="message">」の中に子要素があるか確認
-    if ($('.message').children('p').length > 0) {
-      // 子要素がある場合、<main>に「modal_active」クラスを追加
-      $('.modal').addClass('modal_active');
-      $('.message').addClass('message_active');
-      $('body').addClass('overflow_active');
-    }
-  });
+
+//〇ここからVueでのUI記述
+
+//モーダル処理 start
+const modal_mount = Vue.createApp({ // Vue.js 3の場合、new Vue{} の代わりにVue.createAppを使用してインスタンスを作る必要があル
+    data() { //どんなデータがあるのかを定義。
+        //プロパティ名:値　で定義した要素をdataとして受けとる
+        return {
+            hasMessage: false, //:class="{ 'message_active': hasMessage }"はfalseの状態でスタート
+        };
+    },
+    methods: { //methodはイベントやユーザーアクションに対する応答として使用
+        //たとえば、methodではボタンがクリックされたときの処理や、データを更新するためのカスタムメソッドを定義することができる
+        removeModalActive() { //clickディレクティブが押されたら
+            this.hasMessage = false; //falseに変更（下記の条件分岐によりtrueになってない限りは発火しない）
+            document.body.classList.remove('overflow_active'); //bodyからスクロール禁止クラス削除
+        },
+        checkAndAddOverflowClass() {
+            // 「<div class="message">」の中にP子要素がある場合、データを変更してVue.jsがDOMを更新
+            if ($('.message').children('p').length >
+                0) { //:class="{ 'message_active': hasMessage }"がtueの状態でスタート
+                this.hasMessage = true; //{ 'message_active': hasMessage }をtrueに変更
+                document.body.classList.add('overflow_active'); //bodyからスクロール禁止クラス追加
+            }
+        },
+    },
+    mounted() { // Vue インスタンスが DOM にマウントされた後に実行されるライフサイクルフック（条件分岐のような初期化処理はここで行う）
+        //Vueインスタンスの生成→データとテンプレートが結びつ→実際の DOM に挿入された時点で mounted フックが呼ばれる（methodsよりも早い）
+        this.checkAndAddOverflowClass();
+        //このVue インスタンスが DOM にマウントされた瞬間にこの処理　checkAndAddOverflowClass();　を行うことで、条件分岐によって要素を適切に出し分けている
+    },
+});
+
+modal_mount.mount('#modal_mount');

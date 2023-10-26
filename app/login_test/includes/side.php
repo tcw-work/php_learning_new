@@ -19,8 +19,8 @@
                 <p class="side_childrens ttl2-2"><img src="src/image/side_func.png" alt="">便利機能
                     <span class="triangle"></span>
                 </p>
-                <a href="<?php echo BASE_URL . '/profile.php'; ?>" class="side_childrens">保存履歴</a>
-                <a href="<?php echo BASE_URL . '/record.php'; ?>" class="side_childrens">データベースから検索</a>
+                <a href="<?php echo BASE_URL . '/profile.php'; ?>" class="side_childrens">あなたの保存履歴</a>
+                <a href="<?php echo BASE_URL . '/record.php'; ?>" class="side_childrens">キーワードから検索</a>
                 <a href="<?php echo BASE_URL . '/mail/contact.php'; ?>" class="side_childrens">お問い合わせページ</a>
                 <a href="<?php echo BASE_URL . '/mail/notice_mail.php'; ?>" class="side_childrens">メール一斉送信実行（管理者用）</a>
                 <a href="<?php echo BASE_URL . '/api/library.php'; ?>" class="side_childrens">国立国会図書館データベース</a>

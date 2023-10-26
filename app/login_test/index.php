@@ -3,9 +3,8 @@
 
 <?php include 'includes/side.php'; ?>
 <main class="index">
-    <div class="message">
-        <div class="close">
-        </div>
+    <div class="message" :class="{ 'message_active': hasMessage }">
+        <div class="close" v-on:click="removeModalActive"></div>
         <?php
 			// if (isset($_GET['correct_message'])) {//regiter.phpから
 			// 	$correct_message = urldecode($_GET['correct_message']);

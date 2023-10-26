@@ -3,6 +3,7 @@
 <script src="<?php echo BASE_URL . '/src/js/ajax.js'; ?>"></script>
 <script src="<?php echo BASE_URL . '/push.js'; ?>"></script>
 <script src="<?php echo BASE_URL . '/src/js/script.js'; ?>"></script>
+<script src="<?php echo BASE_URL . '/src/js/mail.js'; ?>"></script>
 
 <script>
 ajaxSubmit('.myForm', "function/save.php");
@@ -34,7 +35,9 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+
 </div><!-- wrap終了 -->
+</div><!-- modal用Vueインスタンス終了 -->
 </body>
 
 </html>
