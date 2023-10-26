@@ -106,7 +106,7 @@ $(window).on('popstate', function() {
 
 //〇ここからVueでのUI記述
 
-//モーダル処理 start
+//モーダル処理 start（ajaxのHTML領域をインスタンスの中にいれると非同期通信が行われなくなるので注意）
 const modal_mount = Vue.createApp({ // Vue.js 3の場合、new Vue{} の代わりにVue.createAppを使用してインスタンスを作る必要があル
     data() { //どんなデータがあるのかを定義。
         //プロパティ名:値　で定義した要素をdataとして受けとる
@@ -119,6 +119,7 @@ const modal_mount = Vue.createApp({ // Vue.js 3の場合、new Vue{} の代わ�
         removeModalActive() { //clickディレクティブが押されたら
             this.hasMessage = false; //falseに変更（下記の条件分岐によりtrueになってない限りは発火しない）
             document.body.classList.remove('overflow_active'); //bodyからスクロール禁止クラス削除
+            window.location.replace("/");//closeボタン押したらリダイレクト（これしないとajaxのJSが動かない）
         },
         checkAndAddOverflowClass() {
             // 「<div class="message">」の中にP子要素がある場合、データを変更してVue.jsがDOMを更新
@@ -126,6 +127,7 @@ const modal_mount = Vue.createApp({ // Vue.js 3の場合、new Vue{} の代わ�
                 0) { //:class="{ 'message_active': hasMessage }"がtueの状態でスタート
                 this.hasMessage = true; //{ 'message_active': hasMessage }をtrueに変更
                 document.body.classList.add('overflow_active'); //bodyからスクロール禁止クラス追加
+                $('.modal').addClass('modal_active');//ajaxタグの親子関係の問題でここで処理
             }
         },
     },

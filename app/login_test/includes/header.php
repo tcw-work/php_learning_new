@@ -39,12 +39,9 @@
 </head>
 
 
-<body class="overflow_none" :class="{ 'overflow_active': hasMessage }">
-    <div id="modal_mount">
-        <!-- modal用Vueインスタンスstart -->
-        <!-- プロパティ名:値　で定義 -->
-        <div class="modal" :class="{ 'modal_active': hasMessage }"></div>
-        <div class="wrap">
-            <div class="decoration">
-                <p>Source Pack</p>
-            </div>
+<body class="overflow_none">
+    <div class="modal"></div>
+    <div class="wrap">
+        <div class="decoration">
+            <p>Source Pack</p>
+        </div>

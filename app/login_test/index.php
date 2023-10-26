@@ -3,9 +3,12 @@
 
 <?php include 'includes/side.php'; ?>
 <main class="index">
-    <div class="message" :class="{ 'message_active': hasMessage }">
-        <div class="close" v-on:click="removeModalActive"></div>
-        <?php
+    <div id="modal_mount">
+        <!-- modal用Vueインスタンスstart -->
+        <!-- プロパティ名:値　で定義 -->
+        <div class="message" :class="{ 'message_active': hasMessage }">
+            <div class="close" v-on:click="removeModalActive"></div>
+            <?php
 			// if (isset($_GET['correct_message'])) {//regiter.phpから
 			// 	$correct_message = urldecode($_GET['correct_message']);
 			// 	echo "<p>" . "登録メールを送りました！" . "</p>";
@@ -25,7 +28,8 @@
 				echo "<p>" . "メール送信に失敗しました..." . "</p>";
 			}
 			?>
-    </div>
+        </div>
+    </div><!-- modal用Vueインスタンス終了 -->
 
     <section id="index01" class="index_section">
         <form action="function/save.php" method="GET" class="myForm">

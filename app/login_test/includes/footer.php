@@ -1,9 +1,10 @@
 <!-- firebaseトークン確認用 -->
 <p id="token-display">Loading...</p>
-<script src="<?php echo BASE_URL . '/src/js/ajax.js'; ?>"></script>
+
 <script src="<?php echo BASE_URL . '/push.js'; ?>"></script>
 <script src="<?php echo BASE_URL . '/src/js/script.js'; ?>"></script>
 <script src="<?php echo BASE_URL . '/src/js/mail.js'; ?>"></script>
+<script src="<?php echo BASE_URL . '/src/js/ajax.js'; ?>"></script><!-- ajax処理はvueよりも下に書くこと -->
 
 <script>
 ajaxSubmit('.myForm', "function/save.php");
@@ -37,7 +38,7 @@ if ('serviceWorker' in navigator) {
 
 
 </div><!-- wrap終了 -->
-</div><!-- modal用Vueインスタンス終了 -->
+
 </body>
 
 </html>
