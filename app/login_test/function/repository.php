@@ -24,7 +24,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);//fetchして全レコード抽出
 
 //selectしたデータをループで表示する
 $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
-echo '<form action="function/repository_save.php" method="POST" class="myForm form_long">';//action属性に変数セットする時の書き方　"' . $script . '"
+echo '<form action="function/repository_save.php" method="POST" class="myForm form_long" id="keywordApp">';//action属性に変数セットする時の書き方　"' . $script . '"
 echo '<div class="record_container">';
 if (empty($results)) { // $resultsが空の場合（結果が0の場合）
     // header("location: ../record.php?correct_message=". urlencode("結果が見つかりませんでした。"));
@@ -42,14 +42,14 @@ if (empty($results)) { // $resultsが空の場合（結果が0の場合）
             <div class="record_sum">
                 <p class="record_r_ttl">Result</p>
                 <p>出典ID: {$result['favorite_id']}</p>
-                <p><input type="checkbox" name="save_items[]" value="{$result['item']}"></p>
+                <p><input type="checkbox" name="save_items[]" value="{$result['item']}" v-model="isCheckboxChecked"></p>
             </div>
             <p class="record_main">{$result['item']}</p>
         </div>
 _recordList_;
 
     }
-    echo '<div class="record_btn"><input type="submit" name="save_button" value="選択したアイテムを保存"></div>';// 保存ボタンを表示
+    echo '<div class="record_btn"><input type="submit" name="save_button" value="選択したアイテムを保存" class="search_submit" v-bind:disabled="isDeleteSubmitDisabled" v-bind:class="buttonClass"></div>';// 保存ボタンを表示
 }
 
 echo '</form>';

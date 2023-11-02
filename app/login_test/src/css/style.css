@@ -129,6 +129,14 @@
   color: #757e95;
   box-shadow: 6px 6px 12px 0px rgba(208, 208, 208, 0.7), -6px -6px 12px 0px rgba(255, 255, 255, 0.7);
 }
+.wrap main input.search_submit {
+  cursor: auto;
+}
+.wrap main input.search_submit.act {
+  cursor: pointer;
+  box-shadow: 18px 18px 36px 0px rgba(208, 208, 208, 0.7), -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+  background: #e9eaf0;
+}
 .wrap main form.btn_two {
   display: flex;
 }
@@ -245,6 +253,7 @@
   background: none;
   box-shadow: none;
   border: 1px solid #d0d0d0;
+  cursor: pointer;
 }
 .wrap main .form_long .record_box p.record_main {
   font-size: 16px;

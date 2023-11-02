@@ -22,7 +22,7 @@ if (isset($_SESSION['login'])) {
                     <p class="record_r_ttl">Result</p>
                     <p>お気に入りID: {$row['favorite_id']}</p>
                     <p>いいね数: {$row['goods']}</p>
-                    <p><input type="checkbox" name="delete_items[]" value="{$row['favorite_id']}"></p>
+                    <p><input type="checkbox" name="delete_items[]" value="{$row['favorite_id']}" v-model="isCheckboxChecked"></p>
                 </div>
                 <p class="record_main">{$row['item']}</p>
             </div>
@@ -31,9 +31,9 @@ if (isset($_SESSION['login'])) {
         }
     }
     $script = $_SERVER["SCRIPT_NAME"]; // このPHPファイルのパス
-    echo '<form action="' . $script . '" method="POST" class="form_long">';//action属性に変数セットする時の書き方　"' . $script . '"
+    echo '<form action="' . $script . '" method="POST" class="form_long" id="keywordApp">';//action属性に変数セットする時の書き方　"' . $script . '"
     session_part_02($result);//ループ処理呼び出し
-    echo '<input type="submit" name="delete_button" value="選択したアイテムを削除">';// 削除ボタンを表示
+    echo '<input type="submit" name="delete_button" value="選択したアイテムを削除" class="search_submit" v-bind:disabled="isDeleteSubmitDisabled" v-bind:class="buttonClass">';// 削除ボタンを表示
     echo '</form>';
     
     }

@@ -140,6 +140,16 @@
                 6px 6px 12px 0px rgba(208, 208, 208, 0.7),
                 -6px -6px 12px 0px rgba(255, 255, 255, 0.7);
         }
+        input.search_submit {
+            cursor: auto;
+        }
+        input.search_submit.act {
+            cursor: pointer;
+            box-shadow:
+                18px 18px 36px 0px rgba(208, 208, 208, 0.7),
+                -18px -18px 36px 0px rgba(255, 255, 255, 0.7);
+            background: #e9eaf0;
+        }
         form.btn_two {
             display: flex;
             input[type="submit"] {
@@ -262,6 +272,7 @@
                         background: none;
                         box-shadow: none;
                         border: 1px solid #d0d0d0;
+                        cursor: pointer;
                     }
                 }
                 p.record_main {
