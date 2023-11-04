@@ -91,35 +91,68 @@ $(document).ready(function () {
 
 //〇ここからVueでのUI記述
 
-//〇ジェネレーターの必衰項目入力でブクマ活性化
+//〇ジェネレーターの必衰項目入力でブクマ・クリップボードコピー活性化
 const instanceMount = Vue.createApp({
     data() {
         return {
             bookName: "",
-            bookImage: "src/image/cmp01.png"//imgタグに設定した :src="bookImage" の初期値
+            ctrFlag: false,
+            bookImage: "src/image/cmp01.png",//imgタグに設定した :src="bookImage" の初期値
+            copyImage: "src/image/cmp02.png",
+
         };
     },
     methods: {//必須項目のinputに対してv-model="bookName" @input="checking"で設定した箇所を操作（addEventlisnerと同じ効果）
         //@inputは <input> 要素の入力イベントを監視し、イベントが発生するたびに checking() メソッドが呼び出される
         checking() {
-            // 入力値が空でない場合、画像をcmp01_blue.pngに変更
+            // 入力値が空でない場合の処理
             if (this.bookName.trim() !== "") {//trim() を使用して、文字列の先頭と末尾の空白を削除し、残った文字列が空でないことを確認
-                this.bookImage = "src/image/cmp01_blue.png";
+                this.ctrFlag = true;//ctrFlagにより、icon文言にクラス追加
             } else {
                 this.bookImage = "src/image/cmp01.png";
+                this.copyImage = "src/image/cmp02.png";
+                this.ctrAct = false;
             }
         },
-        handleHashTagChange() {//後にaddEventListenerで処理するために関数としてまとめておく（HTML側には設定しない）
+        handleHashTagChange() {//サイトのハッシュタグが切り替わった時のリセット処理
+            //後にaddEventListenerで処理するために関数としてまとめておく（HTML側には設定しない）
             this.bookImage = "src/image/cmp01.png";//ブックマークアイコンを非活性に戻す
+            this.copyImage = "src/image/cmp02.png";
             this.bookName = ""; // inputの中身をリセット
+        },
+        ctrInp() {//ブックマーククリック処理
+            this.bookImage = "src/image/cmp01_blue.png";
+        },
+        ctrcopy() {//コピークリックを押したときの処理（vueだと不具合出るのでjqueryでコピペ処理うる）
+            this.copyImage = "src/image/cmp02_blue.png";//アイコン活性
         }
     },
     mounted() {
         window.addEventListener('hashchange', this.handleHashTagChange);//ハッシュタグの切り替えをリアルタイムで処理
         //jsの元々の機能であるhashchangeイベントでURL のハッシュ部分が変更されたときにイベント開始し、その後のハンドラ（切り替えの関数）を実行
+
     }
 });
 instanceMount.mount('#instanceFlag');
+
+
+// クリップボードにテキストをコピー（不具合出るのでjqueryで切り分け実装）
+$(document).ready(function () {
+    $('.copy').on('click', function () {
+        // this（クリックされた.copy）に基づいて.closestを使用して親要素を見つけ、その子要素の.completeを探しvalueを取得
+        var textToCopy = $(this).closest('.cmp_func').prev('.complete').val();
+        //navigator オブジェクト（ユーザーのブラウザ環境に関する情報や機能をスクリプトからアクセス）の clipboard プロパティを使用
+        navigator.clipboard.writeText(textToCopy).then(function () {
+            // コピー成功の処理（vueの方でアイコン活性化）
+            // alert(textToCopy + 'をクリップボードにコピーしました');
+        })
+            .catch(function (error) {
+                // コピー失敗の処理
+                alert('コピーに失敗しました: ' + error);
+            });
+    });
+});
+
 
 //下層ページフォーム入力のしてからボタン活性化
 const keywordApp = Vue.createApp({// Vue.js 3の場合、new Vue{} の代わりにVue.createAppを使用してインスタンスを作る必要があル

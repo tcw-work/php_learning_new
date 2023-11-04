@@ -115,12 +115,20 @@
 .wrap main form .cmp_box .cmp_func span {
   margin-right: 8px;
 }
+.wrap main form .cmp_box .cmp_func p.copy {
+  pointer-events: none;
+}
 .wrap main form .cmp_box input.submit {
   width: auto;
   margin-bottom: 0;
   padding: 0;
   background: none;
   color: #757e95;
+}
+.wrap main form .cmp_box .cmp_func input.ctrAct,
+.wrap main form .cmp_box .cmp_func p.ctrAct {
+  color: #2e70fc;
+  pointer-events: all;
 }
 .wrap main input[type=submit] {
   cursor: pointer;

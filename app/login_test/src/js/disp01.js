@@ -13,7 +13,7 @@ for (var i = 0; i < forms.length; i++) { // "myForm" クラスを持つすべて
 
 function createInputListener(input, button) {
     //return function() { ... } の部分は、イベントリスナーとして使用するための関数
-    return function() { //ここではreturn文を無名関数に使って結果を呼び出し元に返すことで、イベントリスナーの処理として再利用できている（タイミング的には呼び出しもとで処理が行われる前になる）
+    return function () { //ここではreturn文を無名関数に使って結果を呼び出し元に返すことで、イベントリスナーの処理として再利用できている（タイミング的には呼び出しもとで処理が行われる前になる）
         //内部の関数を返すことで、外部のスコープにあるnameInputとsaveButtonの値を保持しつつ、イベントが発生した際に正しくボタンの状態を制御
         button.disabled = !input.value;
         // input の値が空であれば、ボタンを無効化（disabled = true）
@@ -41,11 +41,11 @@ function updateComplete1() {
     // 日付が入っていない場合
     if (date === '') {
         date = '発行日不明';
-        complete.value = auther01 + ' ' + date + ' ' +  "｢" + name + "｣"  + ' ' + publisher;
+        complete.value = auther01 + ' ' + date + ' ' + "｢" + name + "｣" + ' ' + publisher;
     }
     // 作者名が入っていない場合
     if (auther01 === '') {
-        complete.value =  "｢" + name + "｣"  + ' ' + '(' + date + ')' + ' ' + publisher;
+        complete.value = "｢" + name + "｣" + ' ' + '(' + date + ')' + ' ' + publisher;
     }
     // ここでcomplete_dispの内容を更新
     completeDispElement.textContent = complete.value;
@@ -78,40 +78,40 @@ function updateComplete2() {
     // 出版社が入っていない場合
     if (publisher === '') {
         complete.value =
-        nonEmptyAuthors.join("･") +//filterをかけたauthersという配列に要素があった場合（tureの場合）の処理。配列の要素すべて（作者）が"・"で連結される。（if文の必要がなくなる）
-        " " +
-        "(" +
-        date +
-        ")" +
-        "." +
-        " " +
-        "｢" +
-        name +
-        "｣";
+            nonEmptyAuthors.join("･") +//filterをかけたauthersという配列に要素があった場合（tureの場合）の処理。配列の要素すべて（作者）が"・"で連結される。（if文の必要がなくなる）
+            " " +
+            "(" +
+            date +
+            ")" +
+            "." +
+            " " +
+            "｢" +
+            name +
+            "｣";
     }
 
     // 作者がいない場合（上記で作った配列が空の場合）
     if (nonEmptyAuthors.length === 0) {//filterを掛けた要素の中身が0以上の長さを持っている場合
-        complete.value =  "｢" + name + "｣"  + ' ' + '(' + date + ')' + ' ' + publisher;
+        complete.value = "｢" + name + "｣" + ' ' + '(' + date + ')' + ' ' + publisher;
     }
     // 作者がいる場合
     else {
         complete.value =
-        nonEmptyAuthors.join("･") +//filterをかけたauthersという配列に要素があった場合（tureの場合）の処理。配列の要素すべて（作者）が"・"で連結される。（if文の必要がなくなる）
-        " " +
-        "(" +
-        date +
-        ")" +
-        "." +
-        " " +
-        "｢" +
-        name +
-        "｣" +
-        " " +
-        publisher;
+            nonEmptyAuthors.join("･") +//filterをかけたauthersという配列に要素があった場合（tureの場合）の処理。配列の要素すべて（作者）が"・"で連結される。（if文の必要がなくなる）
+            " " +
+            "(" +
+            date +
+            ")" +
+            "." +
+            " " +
+            "｢" +
+            name +
+            "｣" +
+            " " +
+            publisher;
     }
-        // ここでcomplete_dispの内容を更新
-        completeDispElement.textContent = complete.value;
+    // ここでcomplete_dispの内容を更新
+    completeDispElement.textContent = complete.value;
 }
 
 
@@ -127,7 +127,7 @@ function updateComplete3() {
 
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var translatorText = translator !== '' ? translator + '訳' + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
-    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var nameText = name !== '' ? "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
     var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
     var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する
 
@@ -155,7 +155,7 @@ function updateComplete4() {
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var pageText = page !== '' ? 'p' + page + ' ' : ''; // 「ページ番号」の表示を制御する
     var thesisText = thesis !== '' ? "｢" + thesis + "｣" + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
-    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var nameText = name !== '' ? "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
     var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
     var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する
 
@@ -202,9 +202,9 @@ function updateComplete5() {
 
     var publisherText = publisher !== '' ? publisher : '';// 「出版社」の表示を制御する
     var pageText = page !== '' ? 'p' + page : ''; // 「ページ番号」の表示を制御する
-    var pageText02 = page02 !== '' ? '-' + page02  + ' '  : '';
+    var pageText02 = page02 !== '' ? '-' + page02 + ' ' : '';
     var thesisText = thesis !== '' ? "｢" + thesis + "｣" + ' ' : '';// 「論文の書かれた書籍」の表示を制御する
-    var nameText = name !== '' ?  "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
+    var nameText = name !== '' ? "｢" + name + "｣" + ' ' : '';// 「本の名前」の表示を制御する
     var dateText = date !== '' ? "(" + date + ')' + ' ' : '';// 「発行日」の表示を制御する
     var editorText = editor !== '' ? editor + ' ' : '';// 「編者名」の表示を制御する
     var auther01Text = auther01 !== '' ? auther01 + ' ' : '';// 「作者名」の表示を制御する

@@ -121,6 +121,9 @@
                     span {
                         margin-right: 8px;
                     }
+                    p.copy {
+                        pointer-events: none;
+                    }
                 }
                 input.submit {
                     width: auto;
@@ -128,6 +131,13 @@
                     padding: 0;
                     background: none;
                     color: #757e95;
+                }
+                .cmp_func {
+                    input.ctrAct,
+                    p.ctrAct {
+                        color: #2e70fc;
+                        pointer-events: all;
+                    }
                 }
             }
         }

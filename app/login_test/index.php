@@ -53,9 +53,11 @@
                     <p class="complete_disp">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
                     <input type="hidden" name="complete" class="complete" placeholder="例：作者名 (発行日) ｢本の名前｣ 出版社" readonly>
                     <div class="cmp_func">
-                        <p><span><img :src="bookImage" alt=""></span><input type="submit" value="保存" class="submit"
-                                disabled></p>
-                        <p><span><img src="src/image/cmp02.png" alt=""></span>コピー</p>
+                        <p><span><img :src=" bookImage" alt=""></span><input type="submit" value="保存" class="submit"
+                                v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrInp" disabled></p>
+                        <p class="copy" v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrcopy"><span><img
+                                    :src=" copyImage" alt="">
+                            </span>コピー</p>
                     </div>
                 </div>
             </form>
@@ -74,12 +76,14 @@
                     <div class="cmp_in">
                         <p>入力したらこの下の内容が自動で切り替わるよ！</p>
                     </div>
-                    <p class="complete_disp">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
+                    <p class="complete_disp" ref="completeText">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
                     <input type="hidden" name="complete" class="complete" placeholder="例：作者名 (発行日) ｢本の名前｣ 出版社" readonly>
                     <div class="cmp_func">
-                        <p><span><img :src="bookImage" alt=""></span><input type="submit" value="保存" class="submit"
-                                disabled></p>
-                        <p><span><img src="src/image/cmp02.png" alt=""></span>コピー</p>
+                        <p><span><img :src=" bookImage" alt=""></span><input type="submit" value="保存" class="submit"
+                                v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrInp" disabled></p>
+                        <p class="copy" v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrcopy"><span><img
+                                    :src=" copyImage" alt="">
+                            </span>コピー</p>
                     </div>
                 </div>
             </form>
@@ -90,7 +94,8 @@
                 <h2 class="common_ttl">外国人作者・翻訳の場合</h2>
                 <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete3()">
                 <input type="text" name="date" class="date" placeholder="発行日" oninput="updateComplete3()">
-                <input type="text" name="name" class="name required" placeholder="本の名前（必須）" oninput="updateComplete3()">
+                <input type="text" name="name" class="name required" placeholder="本の名前（必須）" oninput="updateComplete3()"
+                    v-model="bookName" @input="checking">
                 <input type="text" name="translator" class="translator" placeholder="翻訳者の名前"
                     oninput="updateComplete3()">
                 <input type="text" name="publisher" class="publisher" placeholder="出版社" oninput="updateComplete3()">
@@ -101,9 +106,11 @@
                     <p class="complete_disp">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
                     <input type="hidden" name="complete" class="complete" placeholder="例：作者名 (発行日) ｢本の名前｣ 出版社" readonly>
                     <div class="cmp_func">
-                        <p><span><img :src="bookImage" alt=""></span><input type="submit" value="保存" class="submit"
-                                disabled></p>
-                        <p><span><img src="src/image/cmp02.png" alt=""></span>コピー</p>
+                        <p><span><img :src=" bookImage" alt=""></span><input type="submit" value="保存" class="submit"
+                                v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrInp" disabled></p>
+                        <p class="copy" v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrcopy"><span><img
+                                    :src=" copyImage" alt="">
+                            </span>コピー</p>
                     </div>
                 </div>
             </form>
@@ -114,8 +121,8 @@
                 <h2 class="common_ttl">論文から出典する場合</h2>
                 <input type="text" name="auther01" class="auther01" placeholder="作者名" oninput="updateComplete4()">
                 <input type="text" name="date" class="date" placeholder="発行日" oninput="updateComplete4()">
-                <input type="text" name="name" class="name required" placeholder="論文の名前（必須）"
-                    oninput="updateComplete4()">
+                <input type="text" name="name" class="name required" placeholder="論文の名前（必須）" oninput="updateComplete4()"
+                    v-model="bookName" @input="checking">
                 <input type="text" name="thesis" class="thesis" placeholder="論文がかかれた書籍名" oninput="updateComplete4()">
                 <input type="text" name="page" class="page" placeholder="ページ番号(数字のみ)" oninput="updateComplete4()">
                 <input type="text" name="publisher" class="publisher" placeholder="出版社" oninput="updateComplete4()">
@@ -126,9 +133,11 @@
                     <p class="complete_disp">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
                     <input type="hidden" name="complete" class="complete" placeholder="例：作者名 (発行日) ｢本の名前｣ 出版社" readonly>
                     <div class="cmp_func">
-                        <p><span><img :src="bookImage" alt=""></span><input type="submit" value="保存" class="submit"
-                                disabled></p>
-                        <p><span><img src="src/image/cmp02.png" alt=""></span>コピー</p>
+                        <p><span><img :src=" bookImage" alt=""></span><input type="submit" value="保存" class="submit"
+                                v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrInp" disabled></p>
+                        <p class="copy" v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrcopy"><span><img
+                                    :src=" copyImage" alt="">
+                            </span>コピー</p>
                     </div>
                 </div>
             </form>
@@ -141,8 +150,8 @@
                 <input type="text" name="editor" class="editor" placeholder="編者名" oninput="updateComplete5()">
                 <input type="text" name="date" class="date" placeholder="発行日" oninput="updateComplete5()">
                 <input type="text" name="thesis" class="thesis" placeholder="論文がかかれた書籍名" oninput="updateComplete5()">
-                <input type="text" name="name" class="name required" placeholder="論文の名前（必須）"
-                    oninput="updateComplete5()">
+                <input type="text" name="name" class="name required" placeholder="論文の名前（必須）" oninput="updateComplete5()"
+                    v-model="bookName" @input="checking">
                 <input type="text" name="page" class="page" placeholder="ページ番号①(数字のみ)" oninput="updateComplete5()">
                 <input type="text" name="page02" class="page02" placeholder="ページ番号②(数字のみ)" oninput="updateComplete5()">
                 <input type="text" name="publisher" class="publisher" placeholder="出版社" oninput="updateComplete5()">
@@ -153,9 +162,11 @@
                     <p class="complete_disp">例：作者名 (発行日) ｢本の名前｣ 出版社</p>
                     <input type="hidden" name="complete" class="complete" placeholder="例：作者名 (発行日) ｢本の名前｣ 出版社" readonly>
                     <div class="cmp_func">
-                        <p><span><img :src="bookImage" alt=""></span><input type="submit" value="保存" class="submit"
-                                disabled></p>
-                        <p><span><img src="src/image/cmp02.png" alt=""></span>コピー</p>
+                        <p><span><img :src=" bookImage" alt=""></span><input type="submit" value="保存" class="submit"
+                                v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrInp" disabled></p>
+                        <p class="copy" v-bind:class="{ 'ctrAct': ctrFlag }" @click="ctrcopy"><span><img
+                                    :src=" copyImage" alt="">
+                            </span>コピー</p>
                     </div>
                 </div>
             </form>
