@@ -9,12 +9,15 @@
         <p>不具合等が発生した場合や、お困りごとがあります場合はこちらのフォームからご連絡ください。</p>
         <p>メッセージのご返答には数日掛かる場合がございます。ご了承ください。</p>
     </div>
-    <form id="contact" method="post" action="contact_send.php">
-        <input type="text" id="c_name" name="c_name" placeholder="名前（必須）">
-        <input type="text" id="c_mail" name="c_mail" placeholder="メールアドレス（必須）">
+    <form method="post" action="contact_send.php" id="keywordApp">
+        <input type="text" id="c_name" name="c_name" placeholder="名前（必須）" v-model="keyword">
+        <input type="text" id="c_mail" name="c_mail" placeholder="メールアドレス（必須）" v-model="keyword2">
         <span id="mail_error" style="color: red; display: none;">メールアドレスが不正です</span>
-        <textarea class="input" id="c_content" name="c_content" rows="7" placeholder="お問い合わせ内容（必須）"></textarea>
-        <input type="submit" value="送信する" id="submit_button" disabled>
+        <textarea class="input" id="c_content" name="c_content" rows="7" placeholder="お問い合わせ内容（必須）"
+            v-model="keyword3"></textarea>
+        <input type="submit" value="送信する" id="submit_button" disabled class="search_submit"
+            v-bind:disabled="isSubmitDisabled" v-bind:class="buttonClass2">
+    </form>
 </main>
 
 <!-- <script src="../src/js/ajax.js"></script>

@@ -206,16 +206,22 @@
 }
 .wrap main .message_active .close {
   position: absolute;
-  right: 22px;
-  top: -19px;
+  right: 2px;
+  top: -36px;
   cursor: pointer;
+  height: 30px;
+  width: 30px;
+  display: block;
 }
 .wrap main .message_active .close:before, .wrap main .message_active .close:after {
   content: "";
   background-color: #757e95;
   width: 25px;
   height: 3px;
+  top: 12px;
+  left: 2px;
   display: block;
+  position: absolute;
   position: absolute;
 }
 .wrap main .message_active .close:before {
@@ -350,6 +356,25 @@
   z-index: auto;
 }
 
+.policy_form .policy_block {
+  margin-bottom: 40px;
+}
+.policy_form .policy_block a {
+  color: #2e70fc;
+  text-decoration: underline;
+}
+.policy_form p {
+  margin-bottom: 16px;
+}
+.policy_form h2 {
+  font-size: 20px;
+  margin-bottom: 32px;
+  font-weight: bold;
+}
+.policy_form li {
+  margin-bottom: 16px;
+}
+
 @media screen and (max-width: 768px) {
   .wrap {
     display: block;
@@ -379,6 +404,11 @@
   .wrap main .form_long .record_box {
     max-width: 765px;
     width: 100%;
+  }
+  .wrap main .message_active {
+    width: 80%;
+    top: 6%;
+    padding: 24px 16px;
   }
   .wrap .other_pattern {
     justify-content: space-between;

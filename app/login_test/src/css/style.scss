@@ -225,16 +225,22 @@
             }
             .close {
                 position: absolute;
-                right: 22px;
-                top: -19px;
+                right: 2px;
+                top: -36px;
                 cursor: pointer;
+                height: 30px;
+                width: 30px;
+                display: block;
                 &:before,
                 &:after {
                     content: "";
                     background-color: #757e95;
                     width: 25px;
                     height: 3px;
+                    top: 12px;
+                    left: 2px;
                     display: block;
+                    position: absolute;
                     position: absolute;
                 }
                 &:before {
@@ -388,6 +394,26 @@
         }
     }
 }
+.policy_form {
+    .policy_block {
+        margin-bottom: 40px;
+        a {
+            color: #2e70fc;
+            text-decoration: underline;
+        }
+    }
+    p {
+        margin-bottom: 16px;
+    }
+    h2 {
+        font-size: 20px;
+        margin-bottom: 32px;
+        font-weight: bold;
+    }
+    li {
+        margin-bottom: 16px;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .wrap {
@@ -419,6 +445,11 @@
                     max-width: 765px;
                     width: 100%;
                 }
+            }
+            .message_active {
+                width: 80%;
+                top: 6%;
+                padding: 24px 16px;
             }
         }
         .other_pattern {
