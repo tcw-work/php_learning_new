@@ -3,7 +3,7 @@
 $c_name = htmlspecialchars($_POST['c_name']);
 $c_mail = "tomizawa@t-creative-works.com";//受け取りてのアドレス
 $from_mail = htmlspecialchars($_POST['c_mail']);//インスタンス作成時に__constructに入れる引数（送りてのアドレス）
-$c_content = "お問い合わせメールのテストです";
+$c_content = htmlspecialchars($_POST['c_content']);
 $mailTrue_message = "contactSend";
 
 

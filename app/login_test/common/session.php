@@ -29,7 +29,7 @@ function session_part_01($script) {//リダイレクト先のindex.phpで呼び�
         public $state_log;
         function __construct($state_log) {
             $this->state_log = $state_log;
-            echo "<div class='side_childrens'>{$this->state_log}時のインスタンステスト</div>";
+            // echo "<div class='side_childrens'>{$this->state_log}時のインスタンステスト</div>";
         }
     }
 

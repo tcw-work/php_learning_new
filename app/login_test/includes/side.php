@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="side_parents side_parents_common side_parents_func">
-                <p class="side_childrens ttl2-2"><img src="src/image/side_func.png" alt="">便利機能
+                <p class="side_childrens ttl2-2"><img src="src/image/side_func.png" alt="">色々な便利機能
                     <span class="triangle"></span>
                 </p>
                 <a href="<?php echo BASE_URL . '/profile.php'; ?>" class="side_childrens">あなたの保存履歴</a>
