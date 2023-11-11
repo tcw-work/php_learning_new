@@ -42,7 +42,7 @@
                 </p>
             </div>
             <div class="side_parents side_parents_common side_parents_web">
-                <p class="side_childrens ttl2-2"><img src="src/image/side_icon01.png" alt="">Web情報から出典を作る
+                <p class="side_childrens ttl2-2"><img src="src/image/side_icon02.png" alt="">Web情報から出典を作る
                     <span class="triangle"></span>
                 </p>
                 <p class="side_childrens web_trigger web_trigger01"><a
@@ -55,6 +55,13 @@
                 </p>
                 <p class="side_childrens web_trigger web_trigger04"><a
                         href="<?php echo BASE_URL . '/web.php#web04'; ?>">オンラインジャーナルから出典する場合</a></p>
+            </div>
+            <div class="side_parents">
+                <p class="side_childrens ttl2-2">
+                    <a href="<?php echo BASE_URL . '/policy.php'; ?>">
+                        <img src="src/image/side_policy.png" alt="">プライバシーポリシー
+                    </a>
+                </p>
             </div>
         </div>
     </div>
