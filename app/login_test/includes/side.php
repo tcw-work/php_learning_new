@@ -20,10 +20,10 @@
                     <span class="triangle"></span>
                 </p>
                 <a href="<?php echo BASE_URL . '/profile.php'; ?>" class="side_childrens">あなたの保存履歴</a>
-                <a href="<?php echo BASE_URL . '/record.php'; ?>" class="side_childrens">キーワードから検索</a>
-                <a href="<?php echo BASE_URL . '/mail/contact.php'; ?>" class="side_childrens">お問い合わせページ</a>
-                <!-- <a href="<?php echo BASE_URL . '/mail/notice_mail.php'; ?>" class="side_childrens">メール一斉送信実行（管理者用）</a> -->
+                <a href="<?php echo BASE_URL . '/record.php'; ?>" class="side_childrens">キーワードから検索コピー</a>
                 <a href="<?php echo BASE_URL . '/api/library.php'; ?>" class="side_childrens">国立国会図書館データベース</a>
+                <a href="<?php echo BASE_URL . '/mail/contact.php'; ?>" class="side_childrens">お問い合わせ</a>
+                <!-- <a href="<?php echo BASE_URL . '/mail/notice_mail.php'; ?>" class="side_childrens">メール一斉送信実行（管理者用）</a> -->
             </div>
             <div class="side_parents side_parents_common side_parents_index">
                 <p class="side_childrens ttl2-2"><img src="src/image/side_icon01.png" alt="">著書から出典を作る
