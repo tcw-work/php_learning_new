@@ -18,7 +18,7 @@
 				echo "<h2>" . "登録が完了しました！" . "</h2>";
                 echo "<p>" . "早速参考文献から出典を作って、保存、検索機能などを使ってみましょう！" . "</p>";
 			}
-			if (isset($_GET['mailTrue_message'])) {//mail.phpから（register.php経由）
+			if (isset($_GET['mailTrue_message']) && $_GET['mailTrue_message'] == 'registerSend')  {//mail.phpから（register.php経由）
 				echo "<h2>" . "認証メールを送信しました" . "</h2>";
 				echo "<p>" . "当サービスを利用するには、登録されたメールアドレス宛に送られた認証フォームをクリックしてください。" . "<br>". "その後、登録ログインが完了となります。" . "</p>";
                 echo "<p>" . "※もし認証メールが届かない場合は、メールアドレスに不備がないか、迷惑メールに割り振られていないかをご確認ください" . "</p>";
@@ -26,6 +26,10 @@
 			if (isset($_GET['mailFalse_message'])) {//mail.phpから
 				$mailFalse_message = urldecode($_GET['mailFalse_message']);
 				echo "<p>" . "メール送信に失敗しました..." . "</p>";
+			}
+            if (isset($_GET['mailTrue_message']) && $_GET['mailTrue_message'] == 'contactSend') {//mail.phpから（contact.php経由）
+				echo "<h2>" . "お問い合わせメールを送信しました" . "</h2>";
+				echo "<p>" . "メールの返信には数日～数週間かかる場合がございますので、ご了承ください" . "<br>". "<br>". "よろしくお願いいたします。" . "</p>";
 			}
 			?>
         </div>

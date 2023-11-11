@@ -24,17 +24,17 @@ class MailSender {
         $this->contentPass = $content;
     }
 
-    public function send($name, $mail) {
+    public function send($name, $mail, $mailTrue_message) {
         $to = $mail;//プロパティにしてもいいが、あえてこのままやってみる。このfunction（メソッド）外で使いまわしはできない
         $body = "{$name}さん。{$this->contentPass}";//{$this->greeting}はプロパティを参照するので、このように書く
 
         $r = mb_send_mail($to, $this->subject, $body, $this->header); //関数実行
 
         if ($r) {//送信確認用
-            $mailTrue_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
+            // $mailTrue_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
             header("location: ../index.php?mailTrue_message=" . urlencode($mailTrue_message));// ページをリロードする
         } else {
-            $mailFalse_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
+            // $mailFalse_message = "";//topへリダイレクトする際に、登録済みのパラメーターを持たせる
             header("location: ../index.php?mailFalse_message=" . urlencode($mailFalse_message));// ページをリロードする
         }
     }
