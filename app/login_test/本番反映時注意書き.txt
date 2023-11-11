@@ -1,14 +1,15 @@
 個別に修正必要なファイル
-・common.php
-・register.php
-・login.php(headerlocationのパラメーターを必要に応じて)
-・#index01がないときに本とWeb両方が選択される問題（script.js）
+config.php
+db.php
+
 
 バグ
 ・/record.php→保存したときに後、再検索できなくなる
 record.phpリザルト番号
+・未ログインで保存履歴押すと何も表示されない
 record.php　既に保存されている＋保存されていない両方選択した場合は二つ目の選択しの赤メッセージが優先される（DB処理は正常）
-お問い合わせ文字化け（サニタイジングもしておく）
+・#index01がないときに本とWeb両方が選択される問題（script.js）
+
 
 後追いで追加機能
 DBから履歴検索（repository.php）にて作成者名追加
